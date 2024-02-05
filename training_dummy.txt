@@ -1,0 +1,949 @@
+No protocol specified
+No protocol specified
+.........Config path for training.............................. {'type': 'CBGSDataset', 'dataset': {'type': 'NuScenesDataset', 'dataset_root': 'data/nuscenes/', 'ann_file': 'data/nuscenes/nuscenes_infos_train.pkl', 'pipeline': [{'type': 'LoadMultiViewImageFromFiles', 'to_float32': True}, {'type': 'LoadPointsFromFile', 'coord_type': 'LIDAR', 'load_dim': 5, 'use_dim': 5, 'reduce_beams': 32, 'load_augmented': None}, {'type': 'LoadPointsFromMultiSweeps', 'sweeps_num': 9, 'load_dim': 5, 'use_dim': 5, 'reduce_beams': 32, 'pad_empty_sweeps': True, 'remove_close': True, 'load_augmented': None}, {'type': 'LoadAnnotations3D', 'with_bbox_3d': True, 'with_label_3d': True, 'with_attr_label': False}, {'type': 'ObjectPaste', 'stop_epoch': -1, 'db_sampler': {'dataset_root': 'data/nuscenes/', 'info_path': 'data/nuscenes/nuscenes_dbinfos_train.pkl', 'rate': 1.0, 'prepare': {'filter_by_difficulty': [-1], 'filter_by_min_points': {'car': 5, 'truck': 5, 'bus': 5, 'trailer': 5, 'construction_vehicle': 5, 'traffic_cone': 5, 'barrier': 5, 'motorcycle': 5, 'bicycle': 5, 'pedestrian': 5}}, 'classes': ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'], 'sample_groups': {'car': 2, 'truck': 3, 'construction_vehicle': 7, 'bus': 4, 'trailer': 6, 'barrier': 2, 'motorcycle': 6, 'bicycle': 6, 'pedestrian': 2, 'traffic_cone': 2}, 'points_loader': {'type': 'LoadPointsFromFile', 'coord_type': 'LIDAR', 'load_dim': 5, 'use_dim': 5, 'reduce_beams': 32}}}, {'type': 'ImageAug3D', 'final_dim': [256, 704], 'resize_lim': [0.38, 0.55], 'bot_pct_lim': [0.0, 0.0], 'rot_lim': [-5.4, 5.4], 'rand_flip': True, 'is_train': True}, {'type': 'GlobalRotScaleTrans', 'resize_lim': [0.9, 1.1], 'rot_lim': [-0.78539816, 0.78539816], 'trans_lim': 0.5, 'is_train': True}, {'type': 'LoadBEVSegmentation', 'dataset_root': 'data/nuscenes/', 'xbound': [-50.0, 50.0, 0.5], 'ybound': [-50.0, 50.0, 0.5], 'classes': ['drivable_area', 'ped_crossing', 'walkway', 'stop_line', 'carpark_area', 'divider']}, {'type': 'RandomFlip3D'}, {'type': 'PointsRangeFilter', 'point_cloud_range': [-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]}, {'type': 'ObjectRangeFilter', 'point_cloud_range': [-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]}, {'type': 'ObjectNameFilter', 'classes': ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone']}, {'type': 'ImageNormalize', 'mean': [0.485, 0.456, 0.406], 'std': [0.229, 0.224, 0.225]}, {'type': 'GridMask', 'use_h': True, 'use_w': True, 'max_epoch': 6, 'rotate': 1, 'offset': False, 'ratio': 0.5, 'mode': 1, 'prob': 0.0, 'fixed_prob': True}, {'type': 'PointShuffle'}, {'type': 'DefaultFormatBundle3D', 'classes': ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone']}, {'type': 'Collect3D', 'keys': ['img', 'points', 'gt_bboxes_3d', 'gt_labels_3d', 'gt_masks_bev'], 'meta_keys': ['camera_intrinsics', 'camera2ego', 'lidar2ego', 'lidar2camera', 'camera2lidar', 'lidar2image', 'img_aug_matrix', 'lidar_aug_matrix']}], 'object_classes': ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'], 'map_classes': ['drivable_area', 'ped_crossing', 'walkway', 'stop_line', 'carpark_area', 'divider'], 'modality': {'use_lidar': True, 'use_camera': True, 'use_radar': False, 'use_map': False, 'use_external': False}, 'test_mode': False, 'use_valid_flag': True, 'box_type_3d': 'LiDAR'}}
+2024-02-02 16:09:17,471 - mmdet3d - INFO - Config:
+seed = 0
+deterministic = False
+checkpoint_config = dict(interval=1, max_keep_ckpts=50)
+log_config = dict(
+    interval=100,
+    hooks=[dict(type='TextLoggerHook'),
+           dict(type='TensorboardLoggerHook')])
+load_from = 'pretrained/lidar-only-det.pth'
+resume_from = None
+cudnn_benchmark = False
+fp16 = dict(loss_scale=dict(growth_interval=2000))
+max_epochs = 6
+runner = dict(type='CustomEpochBasedRunner', max_epochs=6)
+dataset_type = 'NuScenesDataset'
+dataset_root = 'data/nuscenes/'
+gt_paste_stop_epoch = -1
+reduce_beams = 32
+load_dim = 5
+use_dim = 5
+load_augmented = None
+point_cloud_range = [-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]
+voxel_size = [0.075, 0.075, 0.2]
+image_size = [256, 704]
+augment2d = dict(
+    resize=[[0.38, 0.55], [0.48, 0.48]],
+    rotate=[-5.4, 5.4],
+    gridmask=dict(prob=0.0, fixed_prob=True))
+augment3d = dict(
+    scale=[0.9, 1.1], rotate=[-0.78539816, 0.78539816], translate=0.5)
+object_classes = [
+    'car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier',
+    'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'
+]
+map_classes = [
+    'drivable_area', 'ped_crossing', 'walkway', 'stop_line', 'carpark_area',
+    'divider'
+]
+input_modality = dict(
+    use_lidar=True,
+    use_camera=True,
+    use_radar=False,
+    use_map=False,
+    use_external=False)
+train_pipeline = [
+    dict(type='LoadMultiViewImageFromFiles', to_float32=True),
+    dict(
+        type='LoadPointsFromFile',
+        coord_type='LIDAR',
+        load_dim=5,
+        use_dim=5,
+        reduce_beams=32,
+        load_augmented=None),
+    dict(
+        type='LoadPointsFromMultiSweeps',
+        sweeps_num=9,
+        load_dim=5,
+        use_dim=5,
+        reduce_beams=32,
+        pad_empty_sweeps=True,
+        remove_close=True,
+        load_augmented=None),
+    dict(
+        type='LoadAnnotations3D',
+        with_bbox_3d=True,
+        with_label_3d=True,
+        with_attr_label=False),
+    dict(
+        type='ObjectPaste',
+        stop_epoch=-1,
+        db_sampler=dict(
+            dataset_root='data/nuscenes/',
+            info_path='data/nuscenes/nuscenes_dbinfos_train.pkl',
+            rate=1.0,
+            prepare=dict(
+                filter_by_difficulty=[-1],
+                filter_by_min_points=dict(
+                    car=5,
+                    truck=5,
+                    bus=5,
+                    trailer=5,
+                    construction_vehicle=5,
+                    traffic_cone=5,
+                    barrier=5,
+                    motorcycle=5,
+                    bicycle=5,
+                    pedestrian=5)),
+            classes=[
+                'car', 'truck', 'construction_vehicle', 'bus', 'trailer',
+                'barrier', 'motorcycle', 'bicycle', 'pedestrian',
+                'traffic_cone'
+            ],
+            sample_groups=dict(
+                car=2,
+                truck=3,
+                construction_vehicle=7,
+                bus=4,
+                trailer=6,
+                barrier=2,
+                motorcycle=6,
+                bicycle=6,
+                pedestrian=2,
+                traffic_cone=2),
+            points_loader=dict(
+                type='LoadPointsFromFile',
+                coord_type='LIDAR',
+                load_dim=5,
+                use_dim=5,
+                reduce_beams=32))),
+    dict(
+        type='ImageAug3D',
+        final_dim=[256, 704],
+        resize_lim=[0.38, 0.55],
+        bot_pct_lim=[0.0, 0.0],
+        rot_lim=[-5.4, 5.4],
+        rand_flip=True,
+        is_train=True),
+    dict(
+        type='GlobalRotScaleTrans',
+        resize_lim=[0.9, 1.1],
+        rot_lim=[-0.78539816, 0.78539816],
+        trans_lim=0.5,
+        is_train=True),
+    dict(
+        type='LoadBEVSegmentation',
+        dataset_root='data/nuscenes/',
+        xbound=[-50.0, 50.0, 0.5],
+        ybound=[-50.0, 50.0, 0.5],
+        classes=[
+            'drivable_area', 'ped_crossing', 'walkway', 'stop_line',
+            'carpark_area', 'divider'
+        ]),
+    dict(type='RandomFlip3D'),
+    dict(
+        type='PointsRangeFilter',
+        point_cloud_range=[-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]),
+    dict(
+        type='ObjectRangeFilter',
+        point_cloud_range=[-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]),
+    dict(
+        type='ObjectNameFilter',
+        classes=[
+            'car', 'truck', 'construction_vehicle', 'bus', 'trailer',
+            'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'
+        ]),
+    dict(
+        type='ImageNormalize',
+        mean=[0.485, 0.456, 0.406],
+        std=[0.229, 0.224, 0.225]),
+    dict(
+        type='GridMask',
+        use_h=True,
+        use_w=True,
+        max_epoch=6,
+        rotate=1,
+        offset=False,
+        ratio=0.5,
+        mode=1,
+        prob=0.0,
+        fixed_prob=True),
+    dict(type='PointShuffle'),
+    dict(
+        type='DefaultFormatBundle3D',
+        classes=[
+            'car', 'truck', 'construction_vehicle', 'bus', 'trailer',
+            'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'
+        ]),
+    dict(
+        type='Collect3D',
+        keys=['img', 'points', 'gt_bboxes_3d', 'gt_labels_3d', 'gt_masks_bev'],
+        meta_keys=[
+            'camera_intrinsics', 'camera2ego', 'lidar2ego', 'lidar2camera',
+            'camera2lidar', 'lidar2image', 'img_aug_matrix', 'lidar_aug_matrix'
+        ])
+]
+test_pipeline = [
+    dict(type='LoadMultiViewImageFromFiles', to_float32=True),
+    dict(
+        type='LoadPointsFromFile',
+        coord_type='LIDAR',
+        load_dim=5,
+        use_dim=5,
+        reduce_beams=32,
+        load_augmented=None),
+    dict(
+        type='LoadPointsFromMultiSweeps',
+        sweeps_num=9,
+        load_dim=5,
+        use_dim=5,
+        reduce_beams=32,
+        pad_empty_sweeps=True,
+        remove_close=True,
+        load_augmented=None),
+    dict(
+        type='LoadAnnotations3D',
+        with_bbox_3d=True,
+        with_label_3d=True,
+        with_attr_label=False),
+    dict(
+        type='ImageAug3D',
+        final_dim=[256, 704],
+        resize_lim=[0.48, 0.48],
+        bot_pct_lim=[0.0, 0.0],
+        rot_lim=[0.0, 0.0],
+        rand_flip=False,
+        is_train=False),
+    dict(
+        type='GlobalRotScaleTrans',
+        resize_lim=[1.0, 1.0],
+        rot_lim=[0.0, 0.0],
+        trans_lim=0.0,
+        is_train=False),
+    dict(
+        type='LoadBEVSegmentation',
+        dataset_root='data/nuscenes/',
+        xbound=[-50.0, 50.0, 0.5],
+        ybound=[-50.0, 50.0, 0.5],
+        classes=[
+            'drivable_area', 'ped_crossing', 'walkway', 'stop_line',
+            'carpark_area', 'divider'
+        ]),
+    dict(
+        type='PointsRangeFilter',
+        point_cloud_range=[-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]),
+    dict(
+        type='ImageNormalize',
+        mean=[0.485, 0.456, 0.406],
+        std=[0.229, 0.224, 0.225]),
+    dict(
+        type='DefaultFormatBundle3D',
+        classes=[
+            'car', 'truck', 'construction_vehicle', 'bus', 'trailer',
+            'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'
+        ]),
+    dict(
+        type='Collect3D',
+        keys=['img', 'points', 'gt_bboxes_3d', 'gt_labels_3d', 'gt_masks_bev'],
+        meta_keys=[
+            'camera_intrinsics', 'camera2ego', 'lidar2ego', 'lidar2camera',
+            'camera2lidar', 'lidar2image', 'img_aug_matrix', 'lidar_aug_matrix'
+        ])
+]
+data = dict(
+    samples_per_gpu=4,
+    workers_per_gpu=4,
+    train=dict(
+        type='CBGSDataset',
+        dataset=dict(
+            type='NuScenesDataset',
+            dataset_root='data/nuscenes/',
+            ann_file='data/nuscenes/nuscenes_infos_train.pkl',
+            pipeline=[
+                dict(type='LoadMultiViewImageFromFiles', to_float32=True),
+                dict(
+                    type='LoadPointsFromFile',
+                    coord_type='LIDAR',
+                    load_dim=5,
+                    use_dim=5,
+                    reduce_beams=32,
+                    load_augmented=None),
+                dict(
+                    type='LoadPointsFromMultiSweeps',
+                    sweeps_num=9,
+                    load_dim=5,
+                    use_dim=5,
+                    reduce_beams=32,
+                    pad_empty_sweeps=True,
+                    remove_close=True,
+                    load_augmented=None),
+                dict(
+                    type='LoadAnnotations3D',
+                    with_bbox_3d=True,
+                    with_label_3d=True,
+                    with_attr_label=False),
+                dict(
+                    type='ObjectPaste',
+                    stop_epoch=-1,
+                    db_sampler=dict(
+                        dataset_root='data/nuscenes/',
+                        info_path='data/nuscenes/nuscenes_dbinfos_train.pkl',
+                        rate=1.0,
+                        prepare=dict(
+                            filter_by_difficulty=[-1],
+                            filter_by_min_points=dict(
+                                car=5,
+                                truck=5,
+                                bus=5,
+                                trailer=5,
+                                construction_vehicle=5,
+                                traffic_cone=5,
+                                barrier=5,
+                                motorcycle=5,
+                                bicycle=5,
+                                pedestrian=5)),
+                        classes=[
+                            'car', 'truck', 'construction_vehicle', 'bus',
+                            'trailer', 'barrier', 'motorcycle', 'bicycle',
+                            'pedestrian', 'traffic_cone'
+                        ],
+                        sample_groups=dict(
+                            car=2,
+                            truck=3,
+                            construction_vehicle=7,
+                            bus=4,
+                            trailer=6,
+                            barrier=2,
+                            motorcycle=6,
+                            bicycle=6,
+                            pedestrian=2,
+                            traffic_cone=2),
+                        points_loader=dict(
+                            type='LoadPointsFromFile',
+                            coord_type='LIDAR',
+                            load_dim=5,
+                            use_dim=5,
+                            reduce_beams=32))),
+                dict(
+                    type='ImageAug3D',
+                    final_dim=[256, 704],
+                    resize_lim=[0.38, 0.55],
+                    bot_pct_lim=[0.0, 0.0],
+                    rot_lim=[-5.4, 5.4],
+                    rand_flip=True,
+                    is_train=True),
+                dict(
+                    type='GlobalRotScaleTrans',
+                    resize_lim=[0.9, 1.1],
+                    rot_lim=[-0.78539816, 0.78539816],
+                    trans_lim=0.5,
+                    is_train=True),
+                dict(
+                    type='LoadBEVSegmentation',
+                    dataset_root='data/nuscenes/',
+                    xbound=[-50.0, 50.0, 0.5],
+                    ybound=[-50.0, 50.0, 0.5],
+                    classes=[
+                        'drivable_area', 'ped_crossing', 'walkway',
+                        'stop_line', 'carpark_area', 'divider'
+                    ]),
+                dict(type='RandomFlip3D'),
+                dict(
+                    type='PointsRangeFilter',
+                    point_cloud_range=[-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]),
+                dict(
+                    type='ObjectRangeFilter',
+                    point_cloud_range=[-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]),
+                dict(
+                    type='ObjectNameFilter',
+                    classes=[
+                        'car', 'truck', 'construction_vehicle', 'bus',
+                        'trailer', 'barrier', 'motorcycle', 'bicycle',
+                        'pedestrian', 'traffic_cone'
+                    ]),
+                dict(
+                    type='ImageNormalize',
+                    mean=[0.485, 0.456, 0.406],
+                    std=[0.229, 0.224, 0.225]),
+                dict(
+                    type='GridMask',
+                    use_h=True,
+                    use_w=True,
+                    max_epoch=6,
+                    rotate=1,
+                    offset=False,
+                    ratio=0.5,
+                    mode=1,
+                    prob=0.0,
+                    fixed_prob=True),
+                dict(type='PointShuffle'),
+                dict(
+                    type='DefaultFormatBundle3D',
+                    classes=[
+                        'car', 'truck', 'construction_vehicle', 'bus',
+                        'trailer', 'barrier', 'motorcycle', 'bicycle',
+                        'pedestrian', 'traffic_cone'
+                    ]),
+                dict(
+                    type='Collect3D',
+                    keys=[
+                        'img', 'points', 'gt_bboxes_3d', 'gt_labels_3d',
+                        'gt_masks_bev'
+                    ],
+                    meta_keys=[
+                        'camera_intrinsics', 'camera2ego', 'lidar2ego',
+                        'lidar2camera', 'camera2lidar', 'lidar2image',
+                        'img_aug_matrix', 'lidar_aug_matrix'
+                    ])
+            ],
+            object_classes=[
+                'car', 'truck', 'construction_vehicle', 'bus', 'trailer',
+                'barrier', 'motorcycle', 'bicycle', 'pedestrian',
+                'traffic_cone'
+            ],
+            map_classes=[
+                'drivable_area', 'ped_crossing', 'walkway', 'stop_line',
+                'carpark_area', 'divider'
+            ],
+            modality=dict(
+                use_lidar=True,
+                use_camera=True,
+                use_radar=False,
+                use_map=False,
+                use_external=False),
+            test_mode=False,
+            use_valid_flag=True,
+            box_type_3d='LiDAR')),
+    val=dict(
+        type='NuScenesDataset',
+        dataset_root='data/nuscenes/',
+        ann_file='data/nuscenes/nuscenes_infos_val.pkl',
+        pipeline=[
+            dict(type='LoadMultiViewImageFromFiles', to_float32=True),
+            dict(
+                type='LoadPointsFromFile',
+                coord_type='LIDAR',
+                load_dim=5,
+                use_dim=5,
+                reduce_beams=32,
+                load_augmented=None),
+            dict(
+                type='LoadPointsFromMultiSweeps',
+                sweeps_num=9,
+                load_dim=5,
+                use_dim=5,
+                reduce_beams=32,
+                pad_empty_sweeps=True,
+                remove_close=True,
+                load_augmented=None),
+            dict(
+                type='LoadAnnotations3D',
+                with_bbox_3d=True,
+                with_label_3d=True,
+                with_attr_label=False),
+            dict(
+                type='ImageAug3D',
+                final_dim=[256, 704],
+                resize_lim=[0.48, 0.48],
+                bot_pct_lim=[0.0, 0.0],
+                rot_lim=[0.0, 0.0],
+                rand_flip=False,
+                is_train=False),
+            dict(
+                type='GlobalRotScaleTrans',
+                resize_lim=[1.0, 1.0],
+                rot_lim=[0.0, 0.0],
+                trans_lim=0.0,
+                is_train=False),
+            dict(
+                type='LoadBEVSegmentation',
+                dataset_root='data/nuscenes/',
+                xbound=[-50.0, 50.0, 0.5],
+                ybound=[-50.0, 50.0, 0.5],
+                classes=[
+                    'drivable_area', 'ped_crossing', 'walkway', 'stop_line',
+                    'carpark_area', 'divider'
+                ]),
+            dict(
+                type='PointsRangeFilter',
+                point_cloud_range=[-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]),
+            dict(
+                type='ImageNormalize',
+                mean=[0.485, 0.456, 0.406],
+                std=[0.229, 0.224, 0.225]),
+            dict(
+                type='DefaultFormatBundle3D',
+                classes=[
+                    'car', 'truck', 'construction_vehicle', 'bus', 'trailer',
+                    'barrier', 'motorcycle', 'bicycle', 'pedestrian',
+                    'traffic_cone'
+                ]),
+            dict(
+                type='Collect3D',
+                keys=[
+                    'img', 'points', 'gt_bboxes_3d', 'gt_labels_3d',
+                    'gt_masks_bev'
+                ],
+                meta_keys=[
+                    'camera_intrinsics', 'camera2ego', 'lidar2ego',
+                    'lidar2camera', 'camera2lidar', 'lidar2image',
+                    'img_aug_matrix', 'lidar_aug_matrix'
+                ])
+        ],
+        object_classes=[
+            'car', 'truck', 'construction_vehicle', 'bus', 'trailer',
+            'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'
+        ],
+        map_classes=[
+            'drivable_area', 'ped_crossing', 'walkway', 'stop_line',
+            'carpark_area', 'divider'
+        ],
+        modality=dict(
+            use_lidar=True,
+            use_camera=True,
+            use_radar=False,
+            use_map=False,
+            use_external=False),
+        test_mode=False,
+        box_type_3d='LiDAR'),
+    test=dict(
+        type='NuScenesDataset',
+        dataset_root='data/nuscenes/',
+        ann_file='data/nuscenes/nuscenes_infos_val.pkl',
+        pipeline=[
+            dict(type='LoadMultiViewImageFromFiles', to_float32=True),
+            dict(
+                type='LoadPointsFromFile',
+                coord_type='LIDAR',
+                load_dim=5,
+                use_dim=5,
+                reduce_beams=32,
+                load_augmented=None),
+            dict(
+                type='LoadPointsFromMultiSweeps',
+                sweeps_num=9,
+                load_dim=5,
+                use_dim=5,
+                reduce_beams=32,
+                pad_empty_sweeps=True,
+                remove_close=True,
+                load_augmented=None),
+            dict(
+                type='LoadAnnotations3D',
+                with_bbox_3d=True,
+                with_label_3d=True,
+                with_attr_label=False),
+            dict(
+                type='ImageAug3D',
+                final_dim=[256, 704],
+                resize_lim=[0.48, 0.48],
+                bot_pct_lim=[0.0, 0.0],
+                rot_lim=[0.0, 0.0],
+                rand_flip=False,
+                is_train=False),
+            dict(
+                type='GlobalRotScaleTrans',
+                resize_lim=[1.0, 1.0],
+                rot_lim=[0.0, 0.0],
+                trans_lim=0.0,
+                is_train=False),
+            dict(
+                type='LoadBEVSegmentation',
+                dataset_root='data/nuscenes/',
+                xbound=[-50.0, 50.0, 0.5],
+                ybound=[-50.0, 50.0, 0.5],
+                classes=[
+                    'drivable_area', 'ped_crossing', 'walkway', 'stop_line',
+                    'carpark_area', 'divider'
+                ]),
+            dict(
+                type='PointsRangeFilter',
+                point_cloud_range=[-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]),
+            dict(
+                type='ImageNormalize',
+                mean=[0.485, 0.456, 0.406],
+                std=[0.229, 0.224, 0.225]),
+            dict(
+                type='DefaultFormatBundle3D',
+                classes=[
+                    'car', 'truck', 'construction_vehicle', 'bus', 'trailer',
+                    'barrier', 'motorcycle', 'bicycle', 'pedestrian',
+                    'traffic_cone'
+                ]),
+            dict(
+                type='Collect3D',
+                keys=[
+                    'img', 'points', 'gt_bboxes_3d', 'gt_labels_3d',
+                    'gt_masks_bev'
+                ],
+                meta_keys=[
+                    'camera_intrinsics', 'camera2ego', 'lidar2ego',
+                    'lidar2camera', 'camera2lidar', 'lidar2image',
+                    'img_aug_matrix', 'lidar_aug_matrix'
+                ])
+        ],
+        object_classes=[
+            'car', 'truck', 'construction_vehicle', 'bus', 'trailer',
+            'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'
+        ],
+        map_classes=[
+            'drivable_area', 'ped_crossing', 'walkway', 'stop_line',
+            'carpark_area', 'divider'
+        ],
+        modality=dict(
+            use_lidar=True,
+            use_camera=True,
+            use_radar=False,
+            use_map=False,
+            use_external=False),
+        test_mode=True,
+        box_type_3d='LiDAR'))
+evaluation = dict(
+    interval=1,
+    pipeline=[
+        dict(type='LoadMultiViewImageFromFiles', to_float32=True),
+        dict(
+            type='LoadPointsFromFile',
+            coord_type='LIDAR',
+            load_dim=5,
+            use_dim=5,
+            reduce_beams=32,
+            load_augmented=None),
+        dict(
+            type='LoadPointsFromMultiSweeps',
+            sweeps_num=9,
+            load_dim=5,
+            use_dim=5,
+            reduce_beams=32,
+            pad_empty_sweeps=True,
+            remove_close=True,
+            load_augmented=None),
+        dict(
+            type='LoadAnnotations3D',
+            with_bbox_3d=True,
+            with_label_3d=True,
+            with_attr_label=False),
+        dict(
+            type='ImageAug3D',
+            final_dim=[256, 704],
+            resize_lim=[0.48, 0.48],
+            bot_pct_lim=[0.0, 0.0],
+            rot_lim=[0.0, 0.0],
+            rand_flip=False,
+            is_train=False),
+        dict(
+            type='GlobalRotScaleTrans',
+            resize_lim=[1.0, 1.0],
+            rot_lim=[0.0, 0.0],
+            trans_lim=0.0,
+            is_train=False),
+        dict(
+            type='LoadBEVSegmentation',
+            dataset_root='data/nuscenes/',
+            xbound=[-50.0, 50.0, 0.5],
+            ybound=[-50.0, 50.0, 0.5],
+            classes=[
+                'drivable_area', 'ped_crossing', 'walkway', 'stop_line',
+                'carpark_area', 'divider'
+            ]),
+        dict(
+            type='PointsRangeFilter',
+            point_cloud_range=[-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]),
+        dict(
+            type='ImageNormalize',
+            mean=[0.485, 0.456, 0.406],
+            std=[0.229, 0.224, 0.225]),
+        dict(
+            type='DefaultFormatBundle3D',
+            classes=[
+                'car', 'truck', 'construction_vehicle', 'bus', 'trailer',
+                'barrier', 'motorcycle', 'bicycle', 'pedestrian',
+                'traffic_cone'
+            ]),
+        dict(
+            type='Collect3D',
+            keys=[
+                'img', 'points', 'gt_bboxes_3d', 'gt_labels_3d', 'gt_masks_bev'
+            ],
+            meta_keys=[
+                'camera_intrinsics', 'camera2ego', 'lidar2ego', 'lidar2camera',
+                'camera2lidar', 'lidar2image', 'img_aug_matrix',
+                'lidar_aug_matrix'
+            ])
+    ])
+model = dict(
+    type='BEVFusion',
+    encoders=dict(
+        camera=dict(
+            neck=dict(
+                type='GeneralizedLSSFPN',
+                in_channels=[192, 384, 768],
+                out_channels=256,
+                start_level=0,
+                num_outs=3,
+                norm_cfg=dict(type='BN2d', requires_grad=True),
+                act_cfg=dict(type='ReLU', inplace=True),
+                upsample_cfg=dict(mode='bilinear', align_corners=False)),
+            vtransform=dict(
+                type='DepthLSSTransform',
+                in_channels=256,
+                out_channels=80,
+                image_size=[256, 704],
+                feature_size=[32, 88],
+                xbound=[-54.0, 54.0, 0.3],
+                ybound=[-54.0, 54.0, 0.3],
+                zbound=[-10.0, 10.0, 20.0],
+                dbound=[1.0, 60.0, 0.5],
+                downsample=2),
+            backbone=dict(
+                type='SwinTransformer',
+                embed_dims=96,
+                depths=[2, 2, 6, 2],
+                num_heads=[3, 6, 12, 24],
+                window_size=7,
+                mlp_ratio=4,
+                qkv_bias=True,
+                qk_scale=None,
+                drop_rate=0.0,
+                attn_drop_rate=0.0,
+                drop_path_rate=0.2,
+                patch_norm=True,
+                out_indices=[1, 2, 3],
+                with_cp=False,
+                convert_weights=True,
+                init_cfg=dict(
+                    type='Pretrained',
+                    checkpoint='pretrained/swint-nuimages-pretrained.pth'))),
+        lidar=dict(
+            voxelize=dict(
+                max_num_points=10,
+                point_cloud_range=[-54.0, -54.0, -5.0, 54.0, 54.0, 3.0],
+                voxel_size=[0.075, 0.075, 0.2],
+                max_voxels=[120000, 160000]),
+            backbone=dict(
+                type='SparseEncoder',
+                in_channels=5,
+                sparse_shape=[1440, 1440, 41],
+                output_channels=128,
+                order=['conv', 'norm', 'act'],
+                encoder_channels=[[16, 16, 32], [32, 32, 64], [64, 64, 128],
+                                  [128, 128]],
+                encoder_paddings=[[0, 0, 1], [0, 0, 1], [0, 0, [1, 1, 0]],
+                                  [0, 0]],
+                block_type='basicblock'))),
+    gating=dict(type='Gating'),
+    fuser=dict(type='ConvFuser', in_channels=[80, 256], out_channels=256),
+    heads=dict(
+        map=None,
+        object=dict(
+            type='TransFusionHead',
+            num_proposals=200,
+            auxiliary=True,
+            in_channels=512,
+            hidden_channel=128,
+            num_classes=10,
+            num_decoder_layers=1,
+            num_heads=8,
+            nms_kernel_size=3,
+            ffn_channel=256,
+            dropout=0.1,
+            bn_momentum=0.1,
+            activation='relu',
+            train_cfg=dict(
+                dataset='nuScenes',
+                point_cloud_range=[-54.0, -54.0, -5.0, 54.0, 54.0, 3.0],
+                grid_size=[1440, 1440, 41],
+                voxel_size=[0.075, 0.075, 0.2],
+                out_size_factor=8,
+                gaussian_overlap=0.1,
+                min_radius=2,
+                pos_weight=-1,
+                code_weights=[
+                    1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.2, 0.2
+                ],
+                assigner=dict(
+                    type='HungarianAssigner3D',
+                    iou_calculator=dict(
+                        type='BboxOverlaps3D', coordinate='lidar'),
+                    cls_cost=dict(
+                        type='FocalLossCost',
+                        gamma=2.0,
+                        alpha=0.25,
+                        weight=0.15),
+                    reg_cost=dict(type='BBoxBEVL1Cost', weight=0.25),
+                    iou_cost=dict(type='IoU3DCost', weight=0.25))),
+            test_cfg=dict(
+                dataset='nuScenes',
+                grid_size=[1440, 1440, 41],
+                out_size_factor=8,
+                voxel_size=[0.075, 0.075],
+                pc_range=[-54.0, -54.0],
+                nms_type=None),
+            common_heads=dict(
+                center=[2, 2],
+                height=[1, 2],
+                dim=[3, 2],
+                rot=[2, 2],
+                vel=[2, 2]),
+            bbox_coder=dict(
+                type='TransFusionBBoxCoder',
+                pc_range=[-54.0, -54.0],
+                post_center_range=[-61.2, -61.2, -10.0, 61.2, 61.2, 10.0],
+                score_threshold=0.0,
+                out_size_factor=8,
+                voxel_size=[0.075, 0.075],
+                code_size=10),
+            loss_cls=dict(
+                type='FocalLoss',
+                use_sigmoid=True,
+                gamma=2.0,
+                alpha=0.25,
+                reduction='mean',
+                loss_weight=1.0),
+            loss_heatmap=dict(
+                type='GaussianFocalLoss', reduction='mean', loss_weight=1.0),
+            loss_bbox=dict(type='L1Loss', reduction='mean',
+                           loss_weight=0.25))),
+    decoder=dict(
+        backbone=dict(
+            type='SECOND',
+            in_channels=256,
+            out_channels=[128, 256],
+            layer_nums=[5, 5],
+            layer_strides=[1, 2],
+            norm_cfg=dict(type='BN', eps=0.001, momentum=0.01),
+            conv_cfg=dict(type='Conv2d', bias=False)),
+        neck=dict(
+            type='SECONDFPN',
+            in_channels=[128, 256],
+            out_channels=[256, 256],
+            upsample_strides=[1, 2],
+            norm_cfg=dict(type='BN', eps=0.001, momentum=0.01),
+            upsample_cfg=dict(type='deconv', bias=False),
+            use_conv_for_no_stride=True)))
+optimizer = dict(type='AdamW', lr=0.2, weight_decay=0.01)
+optimizer_config = dict(grad_clip=dict(max_norm=35, norm_type=2))
+lr_config = dict(
+    policy='CosineAnnealing',
+    warmup='linear',
+    warmup_iters=500,
+    warmup_ratio=0.33333333,
+    min_lr_ratio=0.001)
+momentum_config = dict(policy='cyclic')
+run_dir = 'runs/run-cbe4786a'
+
+2024-02-02 16:09:17,471 - mmdet3d - INFO - Set random seed to 0, deterministic mode: False
+.........Config path for training.............................. {'type': 'CBGSDataset', 'dataset': {'type': 'NuScenesDataset', 'dataset_root': 'data/nuscenes/', 'ann_file': 'data/nuscenes/nuscenes_infos_train.pkl', 'pipeline': [{'type': 'LoadMultiViewImageFromFiles', 'to_float32': True}, {'type': 'LoadPointsFromFile', 'coord_type': 'LIDAR', 'load_dim': 5, 'use_dim': 5, 'reduce_beams': 32, 'load_augmented': None}, {'type': 'LoadPointsFromMultiSweeps', 'sweeps_num': 9, 'load_dim': 5, 'use_dim': 5, 'reduce_beams': 32, 'pad_empty_sweeps': True, 'remove_close': True, 'load_augmented': None}, {'type': 'LoadAnnotations3D', 'with_bbox_3d': True, 'with_label_3d': True, 'with_attr_label': False}, {'type': 'ObjectPaste', 'stop_epoch': -1, 'db_sampler': {'dataset_root': 'data/nuscenes/', 'info_path': 'data/nuscenes/nuscenes_dbinfos_train.pkl', 'rate': 1.0, 'prepare': {'filter_by_difficulty': [-1], 'filter_by_min_points': {'car': 5, 'truck': 5, 'bus': 5, 'trailer': 5, 'construction_vehicle': 5, 'traffic_cone': 5, 'barrier': 5, 'motorcycle': 5, 'bicycle': 5, 'pedestrian': 5}}, 'classes': ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'], 'sample_groups': {'car': 2, 'truck': 3, 'construction_vehicle': 7, 'bus': 4, 'trailer': 6, 'barrier': 2, 'motorcycle': 6, 'bicycle': 6, 'pedestrian': 2, 'traffic_cone': 2}, 'points_loader': {'type': 'LoadPointsFromFile', 'coord_type': 'LIDAR', 'load_dim': 5, 'use_dim': 5, 'reduce_beams': 32}}}, {'type': 'ImageAug3D', 'final_dim': [256, 704], 'resize_lim': [0.38, 0.55], 'bot_pct_lim': [0.0, 0.0], 'rot_lim': [-5.4, 5.4], 'rand_flip': True, 'is_train': True}, {'type': 'GlobalRotScaleTrans', 'resize_lim': [0.9, 1.1], 'rot_lim': [-0.78539816, 0.78539816], 'trans_lim': 0.5, 'is_train': True}, {'type': 'LoadBEVSegmentation', 'dataset_root': 'data/nuscenes/', 'xbound': [-50.0, 50.0, 0.5], 'ybound': [-50.0, 50.0, 0.5], 'classes': ['drivable_area', 'ped_crossing', 'walkway', 'stop_line', 'carpark_area', 'divider']}, {'type': 'RandomFlip3D'}, {'type': 'PointsRangeFilter', 'point_cloud_range': [-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]}, {'type': 'ObjectRangeFilter', 'point_cloud_range': [-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]}, {'type': 'ObjectNameFilter', 'classes': ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone']}, {'type': 'ImageNormalize', 'mean': [0.485, 0.456, 0.406], 'std': [0.229, 0.224, 0.225]}, {'type': 'GridMask', 'use_h': True, 'use_w': True, 'max_epoch': 6, 'rotate': 1, 'offset': False, 'ratio': 0.5, 'mode': 1, 'prob': 0.0, 'fixed_prob': True}, {'type': 'PointShuffle'}, {'type': 'DefaultFormatBundle3D', 'classes': ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone']}, {'type': 'Collect3D', 'keys': ['img', 'points', 'gt_bboxes_3d', 'gt_labels_3d', 'gt_masks_bev'], 'meta_keys': ['camera_intrinsics', 'camera2ego', 'lidar2ego', 'lidar2camera', 'camera2lidar', 'lidar2image', 'img_aug_matrix', 'lidar_aug_matrix']}], 'object_classes': ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'], 'map_classes': ['drivable_area', 'ped_crossing', 'walkway', 'stop_line', 'carpark_area', 'divider'], 'modality': {'use_lidar': True, 'use_camera': True, 'use_radar': False, 'use_map': False, 'use_external': False}, 'test_mode': False, 'use_valid_flag': True, 'box_type_3d': 'LiDAR'}}
+dict_items([('car', 5), ('truck', 5), ('bus', 5), ('trailer', 5), ('construction_vehicle', 5), ('traffic_cone', 5), ('barrier', 5), ('motorcycle', 5), ('bicycle', 5), ('pedestrian', 5)])
+car 5
+truck 5
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.8/site-packages/mmcv/utils/registry.py", line 52, in build_from_cfg
+    return obj_cls(**args)
+  File "/data1/mmdet3d/datasets/pipelines/dbsampler.py", line 127, in __init__
+    db_infos = getattr(self, prep_func)(db_infos, val)
+  File "/data1/mmdet3d/datasets/pipelines/dbsampler.py", line 189, in filter_by_min_points
+    for info in db_infos[name]:
+KeyError: 'truck'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.8/site-packages/mmcv/utils/registry.py", line 52, in build_from_cfg
+    return obj_cls(**args)
+  File "/data1/mmdet3d/datasets/pipelines/transforms_3d.py", line 290, in __init__
+    self.db_sampler = build_from_cfg(db_sampler, OBJECTSAMPLERS)
+  File "/opt/conda/lib/python3.8/site-packages/mmcv/utils/registry.py", line 55, in build_from_cfg
+    raise type(e)(f'{obj_cls.__name__}: {e}')
+KeyError: "DataBaseSampler: 'truck'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.8/site-packages/mmcv/utils/registry.py", line 52, in build_from_cfg
+    return obj_cls(**args)
+  File "/data1/mmdet3d/datasets/nuscenes_dataset.py", line 148, in __init__
+    super().__init__(
+  File "/data1/mmdet3d/datasets/custom_3d.py", line 69, in __init__
+    self.pipeline = Compose(pipeline)
+  File "/opt/conda/lib/python3.8/site-packages/mmdet/datasets/pipelines/compose.py", line 23, in __init__
+    transform = build_from_cfg(transform, PIPELINES)
+  File "/opt/conda/lib/python3.8/site-packages/mmcv/utils/registry.py", line 55, in build_from_cfg
+    raise type(e)(f'{obj_cls.__name__}: {e}')
+KeyError: 'ObjectPaste: "DataBaseSampler: \'truck\'"'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "tools/train.py", line 88, in <module>
+    main()
+  File "tools/train.py", line 67, in main
+    datasets = [build_dataset(cfg.data.train)]
+  File "/data1/mmdet3d/datasets/builder.py", line 38, in build_dataset
+    dataset = CBGSDataset(build_dataset(cfg["dataset"], default_args))
+  File "/data1/mmdet3d/datasets/builder.py", line 42, in build_dataset
+    dataset = build_from_cfg(cfg, DATASETS, default_args)
+  File "/opt/conda/lib/python3.8/site-packages/mmcv/utils/registry.py", line 55, in build_from_cfg
+    raise type(e)(f'{obj_cls.__name__}: {e}')
+KeyError: 'NuScenesDataset: \'ObjectPaste: "DataBaseSampler: \\\'truck\\\'"\''
+2024-02-02 16:09:17,517 - mmdet3d - INFO - load 193 car database infos
+2024-02-02 16:09:17,517 - mmdet3d - INFO - load 661 pedestrian database infos
+2024-02-02 16:09:17,517 - mmdet3d - INFO - load 39 traffic_cone database infos
+2024-02-02 16:09:17,517 - mmdet3d - INFO - load 13 motorcycle database infos
+2024-02-02 16:09:17,517 - mmdet3d - INFO - load 125 bus database infos
+dict_items([('car', 5), ('truck', 5), ('bus', 5), ('trailer', 5), ('construction_vehicle', 5), ('traffic_cone', 5), ('barrier', 5), ('motorcycle', 5), ('bicycle', 5), ('pedestrian', 5)])
+car 5
+truck 5
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.8/site-packages/mmcv/utils/registry.py", line 52, in build_from_cfg
+    return obj_cls(**args)
+  File "/data1/mmdet3d/datasets/pipelines/dbsampler.py", line 127, in __init__
+    db_infos = getattr(self, prep_func)(db_infos, val)
+  File "/data1/mmdet3d/datasets/pipelines/dbsampler.py", line 189, in filter_by_min_points
+    for info in db_infos[name]:
+KeyError: 'truck'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.8/site-packages/mmcv/utils/registry.py", line 52, in build_from_cfg
+    return obj_cls(**args)
+  File "/data1/mmdet3d/datasets/pipelines/transforms_3d.py", line 290, in __init__
+    self.db_sampler = build_from_cfg(db_sampler, OBJECTSAMPLERS)
+  File "/opt/conda/lib/python3.8/site-packages/mmcv/utils/registry.py", line 55, in build_from_cfg
+    raise type(e)(f'{obj_cls.__name__}: {e}')
+KeyError: "DataBaseSampler: 'truck'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.8/site-packages/mmcv/utils/registry.py", line 52, in build_from_cfg
+    return obj_cls(**args)
+  File "/data1/mmdet3d/datasets/nuscenes_dataset.py", line 148, in __init__
+    super().__init__(
+  File "/data1/mmdet3d/datasets/custom_3d.py", line 69, in __init__
+    self.pipeline = Compose(pipeline)
+  File "/opt/conda/lib/python3.8/site-packages/mmdet/datasets/pipelines/compose.py", line 23, in __init__
+    transform = build_from_cfg(transform, PIPELINES)
+  File "/opt/conda/lib/python3.8/site-packages/mmcv/utils/registry.py", line 55, in build_from_cfg
+    raise type(e)(f'{obj_cls.__name__}: {e}')
+KeyError: 'ObjectPaste: "DataBaseSampler: \'truck\'"'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "tools/train.py", line 88, in <module>
+    main()
+  File "tools/train.py", line 67, in main
+    datasets = [build_dataset(cfg.data.train)]
+  File "/data1/mmdet3d/datasets/builder.py", line 38, in build_dataset
+    dataset = CBGSDataset(build_dataset(cfg["dataset"], default_args))
+  File "/data1/mmdet3d/datasets/builder.py", line 42, in build_dataset
+    dataset = build_from_cfg(cfg, DATASETS, default_args)
+  File "/opt/conda/lib/python3.8/site-packages/mmcv/utils/registry.py", line 55, in build_from_cfg
+    raise type(e)(f'{obj_cls.__name__}: {e}')
+KeyError: 'NuScenesDataset: \'ObjectPaste: "DataBaseSampler: \\\'truck\\\'"\''
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[5779,1],1]
+  Exit code:    1
+--------------------------------------------------------------------------

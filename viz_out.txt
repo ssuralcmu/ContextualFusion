@@ -1,0 +1,116 @@
+No protocol specified
+No protocol specified
+[80, 256] 256
+/opt/conda/lib/python3.8/site-packages/torch/functional.py:445: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1639180588308/work/aten/src/ATen/native/TensorShape.cpp:2157.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+2024-01-29 13:51:21,540 - mmdet - INFO - load checkpoint from http path: https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_tiny_patch4_window7_224.pth
+load checkpoint from local path: pretrained/models_for_paper/orig_bevfusion_trained_by_me.pth
+The model and loaded state dict do not match exactly
+
+missing keys in source state_dict: gating.gating.weight
+
+  0% 0/301 [00:00<?, ?it/s]/opt/conda/lib/python3.8/site-packages/nuscenes/map_expansion/map_api.py:1823: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  exteriors = [int_coords(poly.exterior.coords) for poly in polygons]
+/opt/conda/lib/python3.8/site-packages/nuscenes/map_expansion/map_api.py:1824: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  interiors = [int_coords(pi.coords) for poly in polygons for pi in poly.interiors]
+/opt/conda/lib/python3.8/site-packages/nuscenes/map_expansion/map_api.py:1823: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  exteriors = [int_coords(poly.exterior.coords) for poly in polygons]
+/opt/conda/lib/python3.8/site-packages/nuscenes/map_expansion/map_api.py:1824: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  interiors = [int_coords(pi.coords) for poly in polygons for pi in poly.interiors]
+/opt/conda/lib/python3.8/site-packages/nuscenes/map_expansion/map_api.py:1823: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  exteriors = [int_coords(poly.exterior.coords) for poly in polygons]
+/opt/conda/lib/python3.8/site-packages/nuscenes/map_expansion/map_api.py:1824: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  interiors = [int_coords(pi.coords) for poly in polygons for pi in poly.interiors]
+/opt/conda/lib/python3.8/site-packages/nuscenes/map_expansion/map_api.py:1823: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  exteriors = [int_coords(poly.exterior.coords) for poly in polygons]
+/opt/conda/lib/python3.8/site-packages/nuscenes/map_expansion/map_api.py:1824: ShapelyDeprecationWarning: Iteration over multi-part geometries is deprecated and will be removed in Shapely 2.0. Use the `geoms` property to access the constituent parts of a multi-part geometry.
+  interiors = [int_coords(pi.coords) for poly in polygons for pi in poly.interiors]
+/data1/mmdet3d/models/heads/bbox/transfusion.py:273: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  top_proposals_class = top_proposals // heatmap.shape[-1]
+PRED [[ -0.15068436 -15.299057    -2.2398968    1.8142663    4.3853445
+    1.5219735    3.129935    -0.08235408   1.6658934 ]
+ [  3.0831451    0.3610878   -1.9503098    1.8576807    4.623217
+    1.6080917    0.02423222  -0.01598161  -2.9043186 ]]
+  0% 1/301 [00:02<14:41,  2.94s/it]/data1/mmdet3d/core/bbox/coders/transfusion_bbox_coder.py:104: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  self.post_center_range = torch.tensor(
+PRED [[ -0.23997879 -13.612984    -2.2151442    1.8111137    4.3412123
+    1.5005853   -3.1371474   -0.10201003   4.9147587 ]]
+  1% 2/301 [00:03<09:01,  1.81s/it]PRED [[  2.7252197  -22.918661    -2.4999433    1.7806625    4.2976837
+    1.5062745    0.01911611  -0.06362025  -9.0856905 ]]
+  1% 3/301 [00:04<07:10,  1.44s/it]PRED [[  5.6431847   19.877808    -0.7843928    1.8381023    4.4738245
+    1.6403003   -2.3091383    1.85766      1.609508  ]
+ [  0.03744888 -10.334908    -2.0566945    1.7973045    4.3077626
+    1.5269048   -3.1135285    0.16640316   3.2478704 ]]
+  1% 4/301 [00:05<06:16,  1.27s/it]PRED [[ 8.198471   20.021004   -0.9027123   1.8914859   4.53924     1.740248
+  -2.1148734   2.4363613   1.4578198 ]
+ [ 0.3969307  -8.988125   -1.987894    1.8390422   4.5283446   1.5263089
+  -3.0245125   0.22617011  2.415467  ]]
+  2% 5/301 [00:06<05:47,  1.17s/it]PRED [[ 0.827137   -8.085789   -1.9261491   1.8464326   4.4871454   1.5346982
+  -2.99143     0.3277971   2.0937169 ]
+ [ 9.915146   20.031288   -0.82773685  1.8883812   4.4999323   1.6954406
+  -2.2235277   1.9542567   1.4419699 ]]
+  2% 6/301 [00:07<05:28,  1.11s/it]PRED [[ 1.1189728  -8.326366   -1.9800763   1.8550051   4.468416    1.5525752
+  -3.064242    0.20062488  2.338548  ]]
+  2% 7/301 [00:08<05:18,  1.08s/it]PRED [[ 1.2993736  -8.562916   -1.879221    1.8733834   4.5489955   1.6290573
+   3.129794   -0.00073492  2.3353033 ]]
+  3% 8/301 [00:10<05:12,  1.07s/it]PRED [[10.565796   17.5234     -0.8680241   1.9013234   4.719978    1.6741569
+  -2.870443    0.00000507 -0.00005251]
+ [ 1.2396584  -9.413467   -2.0133584   1.8457593   4.4397664   1.5582074
+   3.0623522  -0.06542452  2.6039777 ]]
+  3% 9/301 [00:11<05:07,  1.05s/it]PRED [[  1.5581856  -10.653931    -2.1096888    1.8318646    4.4119277
+    1.560053     2.9917219   -0.28552827   1.9354659 ]]
+  3% 10/301 [00:12<05:02,  1.04s/it]PRED [[  2.0985641 -10.137489   -2.1541376   1.8972459   4.546542    1.6288391
+    2.8831089  -0.8515147   3.4255033]]
+  4% 11/301 [00:13<04:59,  1.03s/it]PRED [[ 2.1692314 -8.800926  -2.107033   1.8540658  4.485785   1.5392523
+   2.752196  -1.0297116  2.4488223]]
+  4% 12/301 [00:14<04:56,  1.03s/it]PRED []
+  4% 13/301 [00:15<04:53,  1.02s/it]PRED [[ 2.4386864  -8.068687   -1.9894624   1.7989538   4.3722186   1.509044
+   2.5934935  -0.94914895  1.45675   ]]
+  5% 14/301 [00:16<04:52,  1.02s/it]PRED [[ 2.2625961  -7.531357   -1.9652671   1.8132075   4.4456043   1.4861224
+   2.5837984  -0.84394926  1.3222169 ]]
+  5% 15/301 [00:17<04:48,  1.01s/it]PRED [[ 2.0827675  -7.112461   -1.982261    1.810535    4.426059    1.5078747
+   2.6146622   0.00000507 -0.00005251]]
+  5% 16/301 [00:18<04:45,  1.00s/it]PRED [[ 2.3341675  -7.4711533  -1.9385886   1.811843    4.381487    1.5268251
+   2.5842524  -0.00572244  0.00257029]]
+  6% 17/301 [00:19<04:46,  1.01s/it]PRED [[ 3.312889   -9.631096   -1.9322753   1.8128703   4.502599    1.5014726
+   2.4658585   0.00000507 -0.00005251]]
+  6% 18/301 [00:20<04:47,  1.02s/it]PRED [[  3.982357   -13.313377    -2.0297637    1.7877563    4.453445
+    1.4925531    2.3920312    0.00000507  -0.00005251]]
+  6% 19/301 [00:21<04:50,  1.03s/it]PRED []
+  7% 20/301 [00:22<04:47,  1.02s/it]PRED [[  1.4153328 -20.531258   -2.083521    1.8051741   4.3223896   1.5479809
+    2.8205616  -1.0245456   2.8236482]]
+  7% 21/301 [00:23<05:01,  1.08s/it]PRED [[  0.42702866 -23.689447    -2.2288191    1.9222763    4.6101217
+    1.6520458    3.0022814   -0.66110545   5.187299  ]]
+  7% 22/301 [00:24<04:54,  1.06s/it]PRED [[  0.10187912 -24.98024     -2.426749     1.8747814    4.506246
+    1.6008778    3.108545    -0.14968361   5.6379495 ]]
+  8% 23/301 [00:25<04:51,  1.05s/it]PRED [[ -2.073368  -24.00017    -2.5908885   1.8816968   4.497606    1.6257687
+   -3.073676    0.6738262   6.7763677]]
+  8% 24/301 [00:26<04:51,  1.05s/it]PRED [[ -7.305523  -20.57713    -2.0464253   1.8284613   4.3902783   1.5555367
+   -2.76054     3.0054235   7.0426235]]
+  8% 25/301 [00:27<04:48,  1.05s/it]PRED []
+  9% 26/301 [00:28<04:47,  1.05s/it]PRED [[ -8.107559  -18.971458   -2.0425606   1.79534     4.3516746   1.5273955
+   -2.1346822   5.71128     3.362426 ]]
+  9% 27/301 [00:29<04:43,  1.04s/it]PRED []
+  9% 28/301 [00:30<04:41,  1.03s/it]PRED [[  2.2028847 -32.10642    -2.2761235   1.829837    4.4276266   1.5791364
+   -1.6834013   6.348511    0.3706441]]
+ 10% 29/301 [00:31<04:39,  1.03s/it]PRED []
+ 10% 30/301 [00:32<04:39,  1.03s/it]PRED []
+ 10% 31/301 [00:33<04:36,  1.03s/it]PRED [[  3.7672882  -30.386816    -2.58319      1.8074671    4.3876414
+    1.5699799    0.00570293  -0.08720016 -12.867268  ]
+ [  1.1664772   12.875       -1.4064205    1.7802985    4.302323
+    1.5641923    3.138776    -0.16071478   7.9697876 ]]
+ 11% 32/301 [00:34<04:36,  1.03s/it]PRED [[  4.45607      5.220997    -1.7128482    1.7039851    4.0117354
+    1.5518197    0.01603916   0.00000507  -0.00005251]
+ [  4.478092    13.382744    -1.4620123    1.779573     4.363213
+    1.4894502    0.01867559   0.00000507  -0.00005251]
+ [  4.3549995  -12.355183    -2.2972956    1.7748036    4.29847
+    1.5531483    0.01943289   0.00000507  -0.00005251]
+ [  4.585102   -19.424942    -2.3983474    1.8656298    4.6221194
+    1.634406     0.03224238   0.00000507  -0.00005251]
+ [  4.485195   -27.121916    -2.8023653    1.8616662    4.4559274
+    1.6880505    0.02060133   0.00000507  -0.00005251]
+ [  0.730072    17.043388    -1.2875388    1.7549685    4.226515
+    1.5596136    3.1404355    0.17000939  12.103667  ]]
+ 11% 33/301 [00:35<04:35,  1.03s/it]PRED []
+ 11% 34/301 [00:36<04:33,  1.03s/it]PRED [[ 0.09796524  6.99596    -1.5037844   1.7000738   4.062974    1.4572089
+  -3.106866    0.00000507 -0.00005251]]

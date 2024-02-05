@@ -1,0 +1,12 @@
+/viz*/*
+/runs/*
+/weighting_results/*
+/pretrained/*
+/rain_training/*
+/night_training/*
+/nusc_viz/*
+/junk*/
+/build/*
+/336_training/*
+/data/*
+
