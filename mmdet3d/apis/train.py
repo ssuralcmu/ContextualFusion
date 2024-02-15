@@ -49,26 +49,27 @@ def train_model(
         model.cuda(),
         device_ids=[torch.cuda.current_device()],
         broadcast_buffers=False,
-        find_unused_parameters=False, #SHOUNAK changed from False to True
+        find_unused_parameters=find_unused_parameters, #SHOUNAK changed from False to True
     )
 
     print("MODELPARAMS------------------------------------------------------------------------")
     
 
-    parameters = []
-    for name, p in model.named_parameters():
-        if "gating" in name:
-            #print(name)
-            parameters.append(p)
-        else:
-            #p.requires_grad = False
-            #print(p.requires_grad)
-            parameters.append(p)
+    # parameters = []
+    # for name, p in model.named_parameters():
+    #     if "gating" in name:
+    #         #print(name)
+    #         parameters.append(p)
+    #     else:
+    #         #p.requires_grad = False
+    #         #print(p.requires_grad)
+    #         parameters.append(p)
 
-    optimizer = torch.optim.SGD(
-        parameters, lr=cfg.optimizer['lr'])
+    # optimizer = torch.optim.SGD(
+    #     parameters, lr=cfg.optimizer['lr'])
 
-
+    optimizer = build_optimizer(model, cfg.optimizer)
+    
     print("TOTALPARAMS----------------------")
     print(sum(p.numel() for p in model.parameters() if p.requires_grad))
 

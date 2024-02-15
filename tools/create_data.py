@@ -10,7 +10,7 @@ def nuscenes_data_prep(
     version,
     dataset_name,
     out_dir,
-    max_sweeps=0,
+    max_sweeps=10,
     load_augmented=None,
 ):
     """Prepare data related to nuScenes dataset.

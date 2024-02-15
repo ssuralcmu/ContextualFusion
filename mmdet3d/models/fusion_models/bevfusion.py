@@ -1,14 +1,12 @@
 from typing import Any, Dict
 
 import torch
-import numpy as np
 from mmcv.runner import auto_fp16, force_fp32
 from torch import nn
 from torch.nn import functional as F
 import numpy as np
 from mmdet3d.models.builder import (
     build_backbone,
-    build_gating,
     build_fuser,
     build_head,
     build_neck,
@@ -28,7 +26,6 @@ class BEVFusion(Base3DFusionModel):
     def __init__(
         self,
         encoders: Dict[str, Any],
-        gating: Dict[str, Any],
         fuser: Dict[str, Any],
         decoder: Dict[str, Any],
         heads: Dict[str, Any],
@@ -62,12 +59,6 @@ class BEVFusion(Base3DFusionModel):
             self.fuser = build_fuser(fuser)
         else:
             self.fuser = None
-
-        if gating is not None:
-            self.gating = build_gating(gating)
-        else:
-            self.gating = None
-
 
         self.decoder = nn.ModuleDict(
             {
@@ -188,7 +179,6 @@ class BEVFusion(Base3DFusionModel):
         gt_masks_bev=None,
         gt_bboxes_3d=None,
         gt_labels_3d=None,
-        #scene_description,
         **kwargs,
     ):
         if isinstance(img, list):
@@ -266,14 +256,6 @@ class BEVFusion(Base3DFusionModel):
 
         #torch.save(features,"features.pt")
 
-        #print(self.fuser.parameters)
-
-        #Comment out this part for training/testing original BEVFusion
-        # if self.gating is not None:
-        #     batch_size=len(metas)
-        #     context=np.array([metas[i]['scene_description'] for i in range(len(metas))]).reshape((batch_size,1))
-        #     features = self.gating(features,context)
-
         if self.fuser is not None:
             x = self.fuser(features)
         else:
@@ -286,17 +268,8 @@ class BEVFusion(Base3DFusionModel):
 
         batch_size = x.shape[0]
 
-        backbone=self.decoder["backbone"]
-        #print(backbone)
-        
-        #for param in backbone.parameters():
-        #    param.requires_grad = False
-
         x = self.decoder["backbone"](x)
-
         x = self.decoder["neck"](x)
-
-        #print(self.decoder["neck"].parameters)
 
         if self.training:
             outputs = {}

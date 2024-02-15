@@ -92,7 +92,7 @@ mmdet3d/models/fusers/conv_trainable_sigmoid_bounded.py
 mmdet3d/models/fusion_models/__init__.py
 mmdet3d/models/fusion_models/base.py
 mmdet3d/models/fusion_models/bevfusion.py
-mmdet3d/models/fusion_models/bevfusion_original.py
+mmdet3d/models/fusion_models/bevfusion_contextualfusion.py
 mmdet3d/models/fusion_models/bevfusion_working_jan23_2024.py
 mmdet3d/models/gating/__init__.py
 mmdet3d/models/gating/gating.py
@@ -101,6 +101,7 @@ mmdet3d/models/heads/bbox/__init__.py
 mmdet3d/models/heads/bbox/centerpoint.py
 mmdet3d/models/heads/bbox/transfusion (copy).py
 mmdet3d/models/heads/bbox/transfusion.py
+mmdet3d/models/heads/bbox/transfusion_fewshot.py
 mmdet3d/models/heads/segm/__init__.py
 mmdet3d/models/heads/segm/vanilla.py
 mmdet3d/models/losses/__init__.py
