@@ -58,6 +58,7 @@ class BEVGridTransform(nn.Module):
         self.prescale_factor = prescale_factor
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        #print("x_before_shape: ", x.shape)
         if self.prescale_factor != 1:
             x = F.interpolate(
                 x,
@@ -65,7 +66,8 @@ class BEVGridTransform(nn.Module):
                 mode="bilinear",
                 align_corners=False,
             )
-
+        #print("prescale_factor: ", self.prescale_factor)
+        #print("x_after_shape: ", x.shape)
         coords = []
         for (imin, imax, _), (omin, omax, ostep) in zip(
             self.input_scope, self.output_scope
@@ -77,13 +79,14 @@ class BEVGridTransform(nn.Module):
         u, v = torch.meshgrid(coords, indexing="ij")
         grid = torch.stack([v, u], dim=-1)
         grid = torch.stack([grid] * x.shape[0], dim=0)
-
+        #print("grid shape: ",grid.shape)
         x = F.grid_sample(
             x,
             grid,
             mode="bilinear",
             align_corners=False,
         )
+        #print("x_final_shape: ", x.shape)
         return x
 
 

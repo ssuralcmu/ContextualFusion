@@ -126,7 +126,7 @@ def main() -> None:
             labels = None
 
         if args.mode == "gt" and "gt_masks_bev" in data:
-            masks = data[""].data[0].numpy()
+            masks = data["gt_masks_bev"].data[0].numpy()
             masks = masks.astype(np.bool)
         elif args.mode == "pred" and "masks_bev" in outputs[0]:
             masks = outputs[0]["masks_bev"].numpy()

@@ -49,7 +49,7 @@ def train_model(
         model.cuda(),
         device_ids=[torch.cuda.current_device()],
         broadcast_buffers=False,
-        find_unused_parameters=find_unused_parameters, #SHOUNAK changed from False to True
+        find_unused_parameters=find_unused_parameters,#find_unused_parameters, #SHOUNAK changed from False to True
     )
 
     print("MODELPARAMS------------------------------------------------------------------------")
@@ -57,11 +57,11 @@ def train_model(
 
     # parameters = []
     # for name, p in model.named_parameters():
-    #     if "gating" in name:
+    #     if "heads.map.transform" in name or "heads.map.classifier" in name:
     #         #print(name)
     #         parameters.append(p)
     #     else:
-    #         #p.requires_grad = False
+    #         p.requires_grad = False
     #         #print(p.requires_grad)
     #         parameters.append(p)
 
