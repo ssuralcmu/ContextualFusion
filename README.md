@@ -5,11 +5,11 @@ This has been created starting from the repository- https://github.com/mit-han-l
 Link to AdverseOp3D dataset- https://cmu.box.com/s/xq4tkgefljakzo75drydvj8eiie8cgju
 
 Citation-
-@misc{sural2024contextualfusion,
-      title={ContextualFusion: Context-Based Multi-Sensor Fusion for 3D Object Detection in Adverse Operating Conditions}, 
-      author={Shounak Sural and Nishad Sahu and Ragunathan Rajkumar},
-      year={2024},
-      eprint={2404.14780},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@misc{sural2024contextualfusion, <br />
+      title={ContextualFusion: Context-Based Multi-Sensor Fusion for 3D Object Detection in Adverse Operating Conditions}, <br />
+      author={Shounak Sural and Nishad Sahu and Ragunathan Rajkumar}, <br />
+      year={2024}, <br />
+      eprint={2404.14780}, <br />
+      archivePrefix={arXiv}, <br />
+      primaryClass={cs.CV} <br />
 }
