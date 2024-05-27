@@ -1,1044 +1,0 @@
-.........Config path for training.............................. {'type': 'CBGSDataset', 'dataset': {'type': 'NuScenesDataset', 'dataset_root': 'data/nuscenes/', 'ann_file': 'data/nuscenes/nuscenes_infos_train.pkl', 'pipeline': [{'type': 'LoadMultiViewImageFromFiles', 'to_float32': True}, {'type': 'LoadPointsFromFile', 'coord_type': 'LIDAR', 'load_dim': 5, 'use_dim': 5, 'reduce_beams': 32, 'load_augmented': None}, {'type': 'LoadPointsFromMultiSweeps', 'sweeps_num': 9, 'load_dim': 5, 'use_dim': 5, 'reduce_beams': 32, 'pad_empty_sweeps': True, 'remove_close': True, 'load_augmented': None}, {'type': 'LoadAnnotations3D', 'with_bbox_3d': True, 'with_label_3d': True, 'with_attr_label': False}, {'type': 'ObjectPaste', 'stop_epoch': -1, 'db_sampler': {'dataset_root': 'data/nuscenes/', 'info_path': 'data/nuscenes/nuscenes_dbinfos_train.pkl', 'rate': 1.0, 'prepare': {'filter_by_difficulty': [-1], 'filter_by_min_points': {'car': 5, 'motorcycle': 5, 'pedestrian': 5}}, 'classes': ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'], 'sample_groups': {'car': 2, 'motorcycle': 6, 'pedestrian': 2}, 'points_loader': {'type': 'LoadPointsFromFile', 'coord_type': 'LIDAR', 'load_dim': 5, 'use_dim': 5, 'reduce_beams': 32}}}, {'type': 'ImageAug3D', 'final_dim': [256, 704], 'resize_lim': [0.38, 0.55], 'bot_pct_lim': [0.0, 0.0], 'rot_lim': [-5.4, 5.4], 'rand_flip': True, 'is_train': True}, {'type': 'GlobalRotScaleTrans', 'resize_lim': [0.9, 1.1], 'rot_lim': [-0.78539816, 0.78539816], 'trans_lim': 0.5, 'is_train': True}, {'type': 'LoadBEVSegmentation', 'dataset_root': 'data/nuscenes/', 'xbound': [-50.0, 50.0, 0.5], 'ybound': [-50.0, 50.0, 0.5], 'classes': ['drivable_area', 'ped_crossing', 'walkway', 'stop_line', 'carpark_area', 'divider']}, {'type': 'RandomFlip3D'}, {'type': 'PointsRangeFilter', 'point_cloud_range': [-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]}, {'type': 'ObjectRangeFilter', 'point_cloud_range': [-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]}, {'type': 'ObjectNameFilter', 'classes': ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone']}, {'type': 'ImageNormalize', 'mean': [0.485, 0.456, 0.406], 'std': [0.229, 0.224, 0.225]}, {'type': 'GridMask', 'use_h': True, 'use_w': True, 'max_epoch': 6, 'rotate': 1, 'offset': False, 'ratio': 0.5, 'mode': 1, 'prob': 0.0, 'fixed_prob': True}, {'type': 'PointShuffle'}, {'type': 'DefaultFormatBundle3D', 'classes': ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone']}, {'type': 'Collect3D', 'keys': ['img', 'points', 'gt_bboxes_3d', 'gt_labels_3d', 'gt_masks_bev'], 'meta_keys': ['camera_intrinsics', 'camera2ego', 'lidar2ego', 'lidar2camera', 'camera2lidar', 'lidar2image', 'img_aug_matrix', 'lidar_aug_matrix']}], 'object_classes': ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'], 'map_classes': ['drivable_area', 'ped_crossing', 'walkway', 'stop_line', 'carpark_area', 'divider'], 'modality': {'use_lidar': True, 'use_camera': True, 'use_radar': False, 'use_map': False, 'use_external': False}, 'test_mode': False, 'use_valid_flag': True, 'box_type_3d': 'LiDAR'}}
-.........Config path for training.............................. {'type': 'CBGSDataset', 'dataset': {'type': 'NuScenesDataset', 'dataset_root': 'data/nuscenes/', 'ann_file': 'data/nuscenes/nuscenes_infos_train.pkl', 'pipeline': [{'type': 'LoadMultiViewImageFromFiles', 'to_float32': True}, {'type': 'LoadPointsFromFile', 'coord_type': 'LIDAR', 'load_dim': 5, 'use_dim': 5, 'reduce_beams': 32, 'load_augmented': None}, {'type': 'LoadPointsFromMultiSweeps', 'sweeps_num': 9, 'load_dim': 5, 'use_dim': 5, 'reduce_beams': 32, 'pad_empty_sweeps': True, 'remove_close': True, 'load_augmented': None}, {'type': 'LoadAnnotations3D', 'with_bbox_3d': True, 'with_label_3d': True, 'with_attr_label': False}, {'type': 'ObjectPaste', 'stop_epoch': -1, 'db_sampler': {'dataset_root': 'data/nuscenes/', 'info_path': 'data/nuscenes/nuscenes_dbinfos_train.pkl', 'rate': 1.0, 'prepare': {'filter_by_difficulty': [-1], 'filter_by_min_points': {'car': 5, 'motorcycle': 5, 'pedestrian': 5}}, 'classes': ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'], 'sample_groups': {'car': 2, 'motorcycle': 6, 'pedestrian': 2}, 'points_loader': {'type': 'LoadPointsFromFile', 'coord_type': 'LIDAR', 'load_dim': 5, 'use_dim': 5, 'reduce_beams': 32}}}, {'type': 'ImageAug3D', 'final_dim': [256, 704], 'resize_lim': [0.38, 0.55], 'bot_pct_lim': [0.0, 0.0], 'rot_lim': [-5.4, 5.4], 'rand_flip': True, 'is_train': True}, {'type': 'GlobalRotScaleTrans', 'resize_lim': [0.9, 1.1], 'rot_lim': [-0.78539816, 0.78539816], 'trans_lim': 0.5, 'is_train': True}, {'type': 'LoadBEVSegmentation', 'dataset_root': 'data/nuscenes/', 'xbound': [-50.0, 50.0, 0.5], 'ybound': [-50.0, 50.0, 0.5], 'classes': ['drivable_area', 'ped_crossing', 'walkway', 'stop_line', 'carpark_area', 'divider']}, {'type': 'RandomFlip3D'}, {'type': 'PointsRangeFilter', 'point_cloud_range': [-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]}, {'type': 'ObjectRangeFilter', 'point_cloud_range': [-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]}, {'type': 'ObjectNameFilter', 'classes': ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone']}, {'type': 'ImageNormalize', 'mean': [0.485, 0.456, 0.406], 'std': [0.229, 0.224, 0.225]}, {'type': 'GridMask', 'use_h': True, 'use_w': True, 'max_epoch': 6, 'rotate': 1, 'offset': False, 'ratio': 0.5, 'mode': 1, 'prob': 0.0, 'fixed_prob': True}, {'type': 'PointShuffle'}, {'type': 'DefaultFormatBundle3D', 'classes': ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone']}, {'type': 'Collect3D', 'keys': ['img', 'points', 'gt_bboxes_3d', 'gt_labels_3d', 'gt_masks_bev'], 'meta_keys': ['camera_intrinsics', 'camera2ego', 'lidar2ego', 'lidar2camera', 'camera2lidar', 'lidar2image', 'img_aug_matrix', 'lidar_aug_matrix']}], 'object_classes': ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'], 'map_classes': ['drivable_area', 'ped_crossing', 'walkway', 'stop_line', 'carpark_area', 'divider'], 'modality': {'use_lidar': True, 'use_camera': True, 'use_radar': False, 'use_map': False, 'use_external': False}, 'test_mode': False, 'use_valid_flag': True, 'box_type_3d': 'LiDAR'}}
-dict_items([('car', 5), ('motorcycle', 5), ('pedestrian', 5)])
-car 5
-motorcycle 5
-pedestrian 5
-dict_items([('car', 5), ('motorcycle', 5), ('pedestrian', 5)])
-car 5
-motorcycle 5
-pedestrian 5
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-sample_cat_ids: []
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 1, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2, 0]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-sample_cat_ids: []
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-HERE ('car', 'motorcycle', 'pedestrian')
-sample_cat_ids: [2]
-[80, 256] 256
-[80, 256] 256
-MODELPARAMS------------------------------------------------------------------------
-MODELPARAMS------------------------------------------------------------------------
-TOTALPARAMS----------------------
-TOTALPARAMS----------------------
-336
-336
-[                                                  ] 0/602, elapsed: 0s, ETA:[  ] 1/602, 0.3 task/s, elapsed: 3s, ETA:  1997s[  ] 2/602, 0.6 task/s, elapsed: 3s, ETA:   997s[  ] 3/602, 0.8 task/s, elapsed: 4s, ETA:   710s[  ] 4/602, 1.1 task/s, elapsed: 4s, ETA:   531s[  ] 5/602, 1.3 task/s, elapsed: 4s, ETA:   451s[  ] 6/602, 1.6 task/s, elapsed: 4s, ETA:   375s[  ] 7/602, 1.8 task/s, elapsed: 4s, ETA:   339s[  ] 8/602, 2.0 task/s, elapsed: 4s, ETA:   296s[  ] 9/602, 2.1 task/s, elapsed: 4s, ETA:   277s[  ] 10/602, 2.4 task/s, elapsed: 4s, ETA:   249s[  ] 11/602, 2.5 task/s, elapsed: 4s, ETA:   237s[  ] 12/602, 2.7 task/s, elapsed: 4s, ETA:   217s[  ] 13/602, 2.8 task/s, elapsed: 5s, ETA:   210s[  ] 14/602, 3.0 task/s, elapsed: 5s, ETA:   194s[  ] 15/602, 3.1 task/s, elapsed: 5s, ETA:   190s[  ] 16/602, 3.3 task/s, elapsed: 5s, ETA:   177s[  ] 17/602, 3.4 task/s, elapsed: 5s, ETA:   175s[  ] 18/602, 3.5 task/s, elapsed: 5s, ETA:   165s[  ] 19/602, 3.6 task/s, elapsed: 5s, ETA:   162s[  ] 20/602, 3.8 task/s, elapsed: 5s, ETA:   154s[  ] 21/602, 3.8 task/s, elapsed: 5s, ETA:   152s[  ] 22/602, 4.0 task/s, elapsed: 5s, ETA:   145s[  ] 23/602, 4.0 task/s, elapsed: 6s, ETA:   144s[  ] 24/602, 4.2 task/s, elapsed: 6s, ETA:   138s[  ] 25/602, 4.2 task/s, elapsed: 6s, ETA:   137s[  ] 26/602, 4.4 task/s, elapsed: 6s, ETA:   131s[  ] 27/602, 4.4 task/s, elapsed: 6s, ETA:   131s[  ] 28/602, 4.6 task/s, elapsed: 6s, ETA:   126s[  ] 29/602, 4.6 task/s, elapsed: 6s, ETA:   126s[  ] 30/602, 4.7 task/s, elapsed: 6s, ETA:   121s[  ] 31/602, 4.7 task/s, elapsed: 7s, ETA:   121s[  ] 32/602, 4.9 task/s, elapsed: 7s, ETA:   117s[  ] 33/602, 4.9 task/s, elapsed: 7s, ETA:   117s[  ] 34/602, 5.0 task/s, elapsed: 7s, ETA:   113s[  ] 35/602, 5.0 task/s, elapsed: 7s, ETA:   113s[  ] 36/602, 5.2 task/s, elapsed: 7s, ETA:   110s[  ] 37/602, 5.1 task/s, elapsed: 7s, ETA:   110s[  ] 38/602, 5.3 task/s, elapsed: 7s, ETA:   107s[  ] 39/602, 5.3 task/s, elapsed: 7s, ETA:   107s[  ] 40/602, 5.4 task/s, elapsed: 7s, ETA:   104s[  ] 41/602, 5.4 task/s, elapsed: 8s, ETA:   104s[  ] 42/602, 5.5 task/s, elapsed: 8s, ETA:   102s[  ] 43/602, 5.5 task/s, elapsed: 8s, ETA:   102s[  ] 44/602, 5.6 task/s, elapsed: 8s, ETA:   100snight tensor([[1.]], device='cuda:1')
-Sample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-[  ] 45/602, 5.6 task/s, elapsed: 8s, ETA:   100s[  ] 46/602, 5.7 task/s, elapsed: 8s, ETA:    98snight tensor([[1.]], device='cuda:0')
-Sample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-[  ] 47/602, 5.7 task/s, elapsed: 8s, ETA:    98s[  ] 48/602, 5.8 task/s, elapsed: 8s, ETA:    96s[  ] 49/602, 5.8 task/s, elapsed: 9s, ETA:    96s[  ] 50/602, 5.9 task/s, elapsed: 9s, ETA:    94s[  ] 51/602, 5.8 task/s, elapsed: 9s, ETA:    94s[  ] 52/602, 5.9 task/s, elapsed: 9s, ETA:    92s[  ] 53/602, 5.9 task/s, elapsed: 9s, ETA:    93s[  ] 54/602, 6.0 task/s, elapsed: 9s, ETA:    91s[  ] 55/602, 6.0 task/s, elapsed: 9s, ETA:    91s[  ] 56/602, 6.1 task/s, elapsed: 9s, ETA:    90s[  ] 57/602, 6.1 task/s, elapsed: 9s, ETA:    90s[  ] 58/602, 6.2 task/s, elapsed: 9s, ETA:    88s[  ] 59/602, 6.1 task/s, elapsed: 10s, ETA:    89s[  ] 60/602, 6.2 task/s, elapsed: 10s, ETA:    87s[  ] 61/602, 6.2 task/s, elapsed: 10s, ETA:    87s[  ] 62/602, 6.3 task/s, elapsed: 10s, ETA:    86s[  ] 63/602, 6.3 task/s, elapsed: 10s, ETA:    86s[  ] 64/602, 6.4 task/s, elapsed: 10s, ETA:    85s[  ] 65/602, 6.3 task/s, elapsed: 10s, ETA:    85s[  ] 66/602, 6.4 task/s, elapsed: 10s, ETA:    84s[  ] 67/602, 6.4 task/s, elapsed: 11s, ETA:    84s[  ] 68/602, 6.5 task/s, elapsed: 11s, ETA:    83s[  ] 69/602, 6.4 task/s, elapsed: 11s, ETA:    83s[  ] 70/602, 6.5 task/s, elapsed: 11s, ETA:    82s[  ] 71/602, 6.5 task/s, elapsed: 11s, ETA:    82s[  ] 72/602, 6.6 task/s, elapsed: 11s, ETA:    81s[  ] 73/602, 6.5 task/s, elapsed: 11s, ETA:    81s[  ] 74/602, 6.6 task/s, elapsed: 11s, ETA:    80s[  ] 75/602, 6.6 task/s, elapsed: 11s, ETA:    80s[  ] 76/602, 6.7 task/s, elapsed: 11s, ETA:    79s[  ] 77/602, 6.6 task/s, elapsed: 12s, ETA:    79s[  ] 78/602, 6.7 task/s, elapsed: 12s, ETA:    78s[  ] 79/602, 6.7 task/s, elapsed: 12s, ETA:    78s[  ] 80/602, 6.8 task/s, elapsed: 12s, ETA:    77s[  ] 81/602, 6.7 task/s, elapsed: 12s, ETA:    77s[  ] 82/602, 6.8 task/s, elapsed: 12s, ETA:    76s[  ] 83/602, 6.8 task/s, elapsed: 12s, ETA:    77s[  ] 84/602, 6.9 task/s, elapsed: 12s, ETA:    76s[  ] 85/602, 6.8 task/s, elapsed: 12s, ETA:    76s[  ] 86/602, 6.9 task/s, elapsed: 12s, ETA:    75s[  ] 87/602, 6.9 task/s, elapsed: 13s, ETA:    75s[  ] 88/602, 6.9 task/s, elapsed: 13s, ETA:    74s[  ] 89/602, 6.9 task/s, elapsed: 13s, ETA:    74s[  ] 90/602, 7.0 task/s, elapsed: 13s, ETA:    73s[  ] 91/602, 6.9 task/s, elapsed: 13s, ETA:    74s[  ] 92/602, 7.0 task/s, elapsed: 13s, ETA:    73s[  ] 93/602, 7.0 task/s, elapsed: 13s, ETA:    73s[  ] 94/602, 7.0 task/s, elapsed: 13s, ETA:    72s[  ] 95/602, 7.0 task/s, elapsed: 14s, ETA:    73s[  ] 96/602, 7.1 task/s, elapsed: 14s, ETA:    72s[  ] 97/602, 7.0 task/s, elapsed: 14s, ETA:    72s[  ] 98/602, 7.1 task/s, elapsed: 14s, ETA:    71s[  ] 99/602, 7.1 task/s, elapsed: 14s, ETA:    71s[  ] 100/602, 7.1 task/s, elapsed: 14s, ETA:    70s[  ] 101/602, 7.1 task/s, elapsed: 14s, ETA:    71s[  ] 102/602, 7.2 task/s, elapsed: 14s, ETA:    70s[  ] 103/602, 7.1 task/s, elapsed: 14s, ETA:    70s[  ] 104/602, 7.2 task/s, elapsed: 14s, ETA:    69s[  ] 105/602, 7.1 task/s, elapsed: 15s, ETA:    70s[  ] 106/602, 7.2 task/s, elapsed: 15s, ETA:    69s[  ] 107/602, 7.2 task/s, elapsed: 15s, ETA:    69s[  ] 108/602, 7.2 task/s, elapsed: 15s, ETA:    68s[  ] 109/602, 7.2 task/s, elapsed: 15s, ETA:    68s[  ] 110/602, 7.3 task/s, elapsed: 15s, ETA:    68s[  ] 111/602, 7.2 task/s, elapsed: 15s, ETA:    68s[  ] 112/602, 7.3 task/s, elapsed: 15s, ETA:    67s[  ] 113/602, 7.3 task/s, elapsed: 16s, ETA:    67s[  ] 114/602, 7.3 task/s, elapsed: 16s, ETA:    67s[  ] 115/602, 7.3 task/s, elapsed: 16s, ETA:    67s[  ] 116/602, 7.3 task/s, elapsed: 16s, ETA:    66s[  ] 117/602, 7.3 task/s, elapsed: 16s, ETA:    66s[  ] 118/602, 7.4 task/s, elapsed: 16s, ETA:    66s[  ] 119/602, 7.3 task/s, elapsed: 16s, ETA:    66s[  ] 120/602, 7.4 task/s, elapsed: 16s, ETA:    65s[  ] 121/602, 7.4 task/s, elapsed: 16s, ETA:    65s[  ] 122/602, 7.4 task/s, elapsed: 16s, ETA:    65s[  ] 123/602, 7.4 task/s, elapsed: 17s, ETA:    65s[  ] 124/602, 7.4 task/s, elapsed: 17s, ETA:    64s[  ] 125/602, 7.4 task/s, elapsed: 17s, ETA:    64s[  ] 126/602, 7.5 task/s, elapsed: 17s, ETA:    64sSample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-[  ] 127/602, 7.4 task/s, elapsed: 17s, ETA:    64s[  ] 128/602, 7.5 task/s, elapsed: 17s, ETA:    63s[  ] 129/602, 7.4 task/s, elapsed: 17s, ETA:    64s[  ] 130/602, 7.5 task/s, elapsed: 17s, ETA:    63s[  ] 131/602, 7.5 task/s, elapsed: 18s, ETA:    63s[  ] 132/602, 7.5 task/s, elapsed: 18s, ETA:    62s[  ] 133/602, 7.5 task/s, elapsed: 18s, ETA:    63s[  ] 134/602, 7.5 task/s, elapsed: 18s, ETA:    62s[  ] 135/602, 7.5 task/s, elapsed: 18s, ETA:    62s[  ] 136/602, 7.6 task/s, elapsed: 18s, ETA:    62s[  ] 137/602, 7.5 task/s, elapsed: 18s, ETA:    62s[  ] 138/602, 7.6 task/s, elapsed: 18s, ETA:    61s[  ] 139/602, 7.5 task/s, elapsed: 18s, ETA:    61s[  ] 140/602, 7.6 task/s, elapsed: 18s, ETA:    61s[  ] 141/602, 7.6 task/s, elapsed: 19s, ETA:    61s[  ] 142/602, 7.6 task/s, elapsed: 19s, ETA:    60s[  ] 143/602, 7.6 task/s, elapsed: 19s, ETA:    61s[  ] 144/602, 7.6 task/s, elapsed: 19s, ETA:    60s[  ] 145/602, 7.6 task/s, elapsed: 19s, ETA:    60s[  ] 146/602, 7.6 task/s, elapsed: 19s, ETA:    60s[  ] 147/602, 7.6 task/s, elapsed: 19s, ETA:    60s[  ] 148/602, 7.7 task/s, elapsed: 19s, ETA:    59s[  ] 149/602, 7.6 task/s, elapsed: 20s, ETA:    59s[  ] 150/602, 7.7 task/s, elapsed: 20s, ETA:    59s[  ] 151/602, 7.6 task/s, elapsed: 20s, ETA:    59s[  ] 152/602, 7.7 task/s, elapsed: 20s, ETA:    58s[  ] 153/602, 7.7 task/s, elapsed: 20s, ETA:    59s[  ] 154/602, 7.7 task/s, elapsed: 20s, ETA:    58s[  ] 155/602, 7.7 task/s, elapsed: 20s, ETA:    58s[  ] 156/602, 7.7 task/s, elapsed: 20s, ETA:    58s[  ] 157/602, 7.7 task/s, elapsed: 20s, ETA:    58s[  ] 158/602, 7.8 task/s, elapsed: 20s, ETA:    57s[  ] 159/602, 7.7 task/s, elapsed: 21s, ETA:    57s[  ] 160/602, 7.8 task/s, elapsed: 21s, ETA:    57s[  ] 161/602, 7.7 task/s, elapsed: 21s, ETA:    57s[  ] 162/602, 7.8 task/s, elapsed: 21s, ETA:    56s[  ] 163/602, 7.8 task/s, elapsed: 21s, ETA:    57s[  ] 164/602, 7.8 task/s, elapsed: 21s, ETA:    56s[  ] 165/602, 7.8 task/s, elapsed: 21s, ETA:    56s[  ] 166/602, 7.8 task/s, elapsed: 21s, ETA:    56s[  ] 167/602, 7.8 task/s, elapsed: 21s, ETA:    56s[  ] 168/602, 7.8 task/s, elapsed: 21s, ETA:    55s[  ] 169/602, 7.8 task/s, elapsed: 22s, ETA:    56s[  ] 170/602, 7.8 task/s, elapsed: 22s, ETA:    55s[  ] 171/602, 7.8 task/s, elapsed: 22s, ETA:    55s[  ] 172/602, 7.9 task/s, elapsed: 22s, ETA:    55s[  ] 173/602, 7.8 task/s, elapsed: 22s, ETA:    55s[  ] 174/602, 7.9 task/s, elapsed: 22s, ETA:    54s[  ] 175/602, 7.8 task/s, elapsed: 22s, ETA:    55s[  ] 176/602, 7.9 task/s, elapsed: 22s, ETA:    54s[  ] 177/602, 7.8 task/s, elapsed: 23s, ETA:    54s[  ] 178/602, 7.9 task/s, elapsed: 23s, ETA:    54s[  ] 179/602, 7.9 task/s, elapsed: 23s, ETA:    54s[  ] 180/602, 7.9 task/s, elapsed: 23s, ETA:    53s[  ] 181/602, 7.9 task/s, elapsed: 23s, ETA:    54s[  ] 182/602, 7.9 task/s, elapsed: 23s, ETA:    53s[  ] 183/602, 7.9 task/s, elapsed: 23s, ETA:    53s[  ] 184/602, 7.9 task/s, elapsed: 23s, ETA:    53s[  ] 185/602, 7.9 task/s, elapsed: 23s, ETA:    53s[  ] 186/602, 7.9 task/s, elapsed: 23s, ETA:    52s[  ] 187/602, 7.9 task/s, elapsed: 24s, ETA:    52s[  ] 188/602, 8.0 task/s, elapsed: 24s, ETA:    52s[  ] 189/602, 7.9 task/s, elapsed: 24s, ETA:    52s[  ] 190/602, 8.0 task/s, elapsed: 24s, ETA:    52s[  ] 191/602, 7.9 task/s, elapsed: 24s, ETA:    52s[  ] 192/602, 8.0 task/s, elapsed: 24s, ETA:    51s[  ] 193/602, 7.9 task/s, elapsed: 24s, ETA:    51s[  ] 194/602, 8.0 task/s, elapsed: 24s, ETA:    51s[  ] 195/602, 8.0 task/s, elapsed: 25s, ETA:    51s[  ] 196/602, 8.0 task/s, elapsed: 25s, ETA:    51s[  ] 197/602, 8.0 task/s, elapsed: 25s, ETA:    51s[  ] 198/602, 8.0 task/s, elapsed: 25s, ETA:    50s[  ] 199/602, 8.0 task/s, elapsed: 25s, ETA:    51s[  ] 200/602, 8.0 task/s, elapsed: 25s, ETA:    50s[  ] 201/602, 8.0 task/s, elapsed: 25s, ETA:    50s[  ] 202/602, 8.0 task/s, elapsed: 25s, ETA:    50s[  ] 203/602, 8.0 task/s, elapsed: 25s, ETA:    50s[  ] 204/602, 8.0 task/s, elapsed: 25s, ETA:    50s[  ] 205/602, 8.0 task/s, elapsed: 26s, ETA:    50s[  ] 206/602, 8.0 task/s, elapsed: 26s, ETA:    49s[  ] 207/602, 8.0 task/s, elapsed: 26s, ETA:    49s[  ] 208/602, 8.1 task/s, elapsed: 26s, ETA:    49s[  ] 209/602, 8.0 task/s, elapsed: 26s, ETA:    49s[  ] 210/602, 8.1 task/s, elapsed: 26s, ETA:    49s[  ] 211/602, 8.0 task/s, elapsed: 26s, ETA:    49s[  ] 212/602, 8.1 task/s, elapsed: 26s, ETA:    48s[  ] 213/602, 8.0 task/s, elapsed: 26s, ETA:    48s[  ] 214/602, 8.1 task/s, elapsed: 26s, ETA:    48s[  ] 215/602, 8.1 task/s, elapsed: 27s, ETA:    48s[  ] 216/602, 8.1 task/s, elapsed: 27s, ETA:    48s[  ] 217/602, 8.1 task/s, elapsed: 27s, ETA:    48s[  ] 218/602, 8.1 task/s, elapsed: 27s, ETA:    47s[  ] 219/602, 8.1 task/s, elapsed: 27s, ETA:    47s[  ] 220/602, 8.1 task/s, elapsed: 27s, ETA:    47s[  ] 221/602, 8.1 task/s, elapsed: 27s, ETA:    47s[  ] 222/602, 8.1 task/s, elapsed: 27s, ETA:    47s[  ] 223/602, 8.1 task/s, elapsed: 28s, ETA:    47s[  ] 224/602, 8.1 task/s, elapsed: 28s, ETA:    46s[  ] 225/602, 8.1 task/s, elapsed: 28s, ETA:    46s[  ] 226/602, 8.1 task/s, elapsed: 28s, ETA:    46s[  ] 227/602, 8.1 task/s, elapsed: 28s, ETA:    46s[  ] 228/602, 8.2 task/s, elapsed: 28s, ETA:    46s[  ] 229/602, 8.1 task/s, elapsed: 28s, ETA:    46s[  ] 230/602, 8.2 task/s, elapsed: 28s, ETA:    46s[  ] 231/602, 8.1 task/s, elapsed: 28s, ETA:    46s[  ] 232/602, 8.2 task/s, elapsed: 28s, ETA:    45s[  ] 233/602, 8.1 task/s, elapsed: 29s, ETA:    45s[  ] 234/602, 8.2 task/s, elapsed: 29s, ETA:    45s[  ] 235/602, 8.1 task/s, elapsed: 29s, ETA:    45s[  ] 236/602, 8.2 task/s, elapsed: 29s, ETA:    45s[  ] 237/602, 8.2 task/s, elapsed: 29s, ETA:    45s[  ] 238/602, 8.2 task/s, elapsed: 29s, ETA:    44s[  ] 239/602, 8.2 task/s, elapsed: 29s, ETA:    44s[  ] 240/602, 8.2 task/s, elapsed: 29s, ETA:    44s[  ] 241/602, 8.2 task/s, elapsed: 29s, ETA:    44s[  ] 242/602, 8.2 task/s, elapsed: 29s, ETA:    44s[  ] 243/602, 8.2 task/s, elapsed: 30s, ETA:    44s[  ] 244/602, 8.2 task/s, elapsed: 30s, ETA:    44s[  ] 245/602, 8.2 task/s, elapsed: 30s, ETA:    44s[  ] 246/602, 8.2 task/s, elapsed: 30s, ETA:    43snight tensor([[1.]], device='cuda:1')
-Sample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-night tensor([[1.]], device='cuda:0')
-Sample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-[  ] 247/602, 8.2 task/s, elapsed: 30s, ETA:    43s[  ] 248/602, 8.2 task/s, elapsed: 30s, ETA:    43s[  ] 249/602, 8.2 task/s, elapsed: 30s, ETA:    43s[  ] 250/602, 8.2 task/s, elapsed: 30s, ETA:    43s[  ] 251/602, 8.2 task/s, elapsed: 31s, ETA:    43s[  ] 252/602, 8.2 task/s, elapsed: 31s, ETA:    43s[  ] 253/602, 8.2 task/s, elapsed: 31s, ETA:    43s[  ] 254/602, 8.2 task/s, elapsed: 31s, ETA:    42s[  ] 255/602, 8.2 task/s, elapsed: 31s, ETA:    42s[  ] 256/602, 8.2 task/s, elapsed: 31s, ETA:    42s[  ] 257/602, 8.2 task/s, elapsed: 31s, ETA:    42s[  ] 258/602, 8.2 task/s, elapsed: 31s, ETA:    42s[  ] 259/602, 8.2 task/s, elapsed: 32s, ETA:    42s[  ] 260/602, 8.3 task/s, elapsed: 32s, ETA:    41s[  ] 261/602, 8.2 task/s, elapsed: 32s, ETA:    41s[  ] 262/602, 8.3 task/s, elapsed: 32s, ETA:    41s[  ] 263/602, 8.2 task/s, elapsed: 32s, ETA:    41s[  ] 264/602, 8.3 task/s, elapsed: 32s, ETA:    41s[  ] 265/602, 8.2 task/s, elapsed: 32s, ETA:    41s[  ] 266/602, 8.3 task/s, elapsed: 32s, ETA:    41snight tensor([[1.]], device='cuda:1')
-Sample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-night tensor([[1.]], device='cuda:0')
-Sample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-[  ] 267/602, 8.2 task/s, elapsed: 32s, ETA:    41s[  ] 268/602, 8.3 task/s, elapsed: 32s, ETA:    40s[  ] 269/602, 8.2 task/s, elapsed: 33s, ETA:    40s[  ] 270/602, 8.3 task/s, elapsed: 33s, ETA:    40s[  ] 271/602, 8.2 task/s, elapsed: 33s, ETA:    40s[  ] 272/602, 8.3 task/s, elapsed: 33s, ETA:    40s[  ] 273/602, 8.3 task/s, elapsed: 33s, ETA:    40s[  ] 274/602, 8.3 task/s, elapsed: 33s, ETA:    40s[  ] 275/602, 8.3 task/s, elapsed: 33s, ETA:    40s[  ] 276/602, 8.3 task/s, elapsed: 33s, ETA:    39s[  ] 277/602, 8.3 task/s, elapsed: 34s, ETA:    39s[  ] 278/602, 8.3 task/s, elapsed: 34s, ETA:    39s[  ] 279/602, 8.3 task/s, elapsed: 34s, ETA:    39s[  ] 280/602, 8.3 task/s, elapsed: 34s, ETA:    39s[  ] 281/602, 8.3 task/s, elapsed: 34s, ETA:    39s[  ] 282/602, 8.3 task/s, elapsed: 34s, ETA:    39s[  ] 283/602, 8.3 task/s, elapsed: 34s, ETA:    39s[  ] 284/602, 8.3 task/s, elapsed: 34s, ETA:    38s[  ] 285/602, 8.3 task/s, elapsed: 34s, ETA:    38s[  ] 286/602, 8.3 task/s, elapsed: 34s, ETA:    38s[  ] 287/602, 8.3 task/s, elapsed: 35s, ETA:    38s[  ] 288/602, 8.3 task/s, elapsed: 35s, ETA:    38s[  ] 289/602, 8.3 task/s, elapsed: 35s, ETA:    38s[  ] 290/602, 8.3 task/s, elapsed: 35s, ETA:    38s[  ] 291/602, 8.3 task/s, elapsed: 35s, ETA:    38s[  ] 292/602, 8.3 task/s, elapsed: 35s, ETA:    37s[  ] 293/602, 8.3 task/s, elapsed: 35s, ETA:    37s[  ] 294/602, 8.3 task/s, elapsed: 35s, ETA:    37s[  ] 295/602, 8.3 task/s, elapsed: 36s, ETA:    37s[  ] 296/602, 8.3 task/s, elapsed: 36s, ETA:    37s[  ] 297/602, 8.3 task/s, elapsed: 36s, ETA:    37s[  ] 298/602, 8.3 task/s, elapsed: 36s, ETA:    37s[  ] 299/602, 8.3 task/s, elapsed: 36s, ETA:    36s[  ] 300/602, 8.3 task/s, elapsed: 36s, ETA:    36s[> ] 301/602, 8.3 task/s, elapsed: 36s, ETA:    36s[> ] 302/602, 8.3 task/s, elapsed: 36s, ETA:    36s[> ] 303/602, 8.3 task/s, elapsed: 36s, ETA:    36s[> ] 304/602, 8.3 task/s, elapsed: 36s, ETA:    36s[> ] 305/602, 8.3 task/s, elapsed: 37s, ETA:    36s[> ] 306/602, 8.3 task/s, elapsed: 37s, ETA:    35s[> ] 307/602, 8.3 task/s, elapsed: 37s, ETA:    35s[> ] 308/602, 8.3 task/s, elapsed: 37s, ETA:    35s[> ] 309/602, 8.3 task/s, elapsed: 37s, ETA:    35s[> ] 310/602, 8.4 task/s, elapsed: 37s, ETA:    35s[> ] 311/602, 8.3 task/s, elapsed: 37s, ETA:    35s[> ] 312/602, 8.4 task/s, elapsed: 37s, ETA:    35s[> ] 313/602, 8.3 task/s, elapsed: 38s, ETA:    35s[> ] 314/602, 8.4 task/s, elapsed: 38s, ETA:    34s[> ] 315/602, 8.3 task/s, elapsed: 38s, ETA:    34s[> ] 316/602, 8.4 task/s, elapsed: 38s, ETA:    34s[> ] 317/602, 8.3 task/s, elapsed: 38s, ETA:    34s[> ] 318/602, 8.4 task/s, elapsed: 38s, ETA:    34s[> ] 319/602, 8.3 task/s, elapsed: 38s, ETA:    34s[> ] 320/602, 8.4 task/s, elapsed: 38s, ETA:    34s[> ] 321/602, 8.3 task/s, elapsed: 38s, ETA:    34s[> ] 322/602, 8.4 task/s, elapsed: 38s, ETA:    33s[> ] 323/602, 8.4 task/s, elapsed: 39s, ETA:    33s[> ] 324/602, 8.4 task/s, elapsed: 39s, ETA:    33s[> ] 325/602, 8.4 task/s, elapsed: 39s, ETA:    33s[> ] 326/602, 8.4 task/s, elapsed: 39s, ETA:    33snight tensor([[1.]], device='cuda:1')
-Sample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-night tensor([[1.]], device='cuda:0')
-Sample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-[> ] 327/602, 8.4 task/s, elapsed: 39s, ETA:    33s[> ] 328/602, 8.4 task/s, elapsed: 39s, ETA:    33s[> ] 329/602, 8.4 task/s, elapsed: 39s, ETA:    33s[> ] 330/602, 8.4 task/s, elapsed: 39s, ETA:    32s[> ] 331/602, 8.4 task/s, elapsed: 40s, ETA:    32s[> ] 332/602, 8.4 task/s, elapsed: 40s, ETA:    32s[> ] 333/602, 8.4 task/s, elapsed: 40s, ETA:    32s[> ] 334/602, 8.4 task/s, elapsed: 40s, ETA:    32s[> ] 335/602, 8.4 task/s, elapsed: 40s, ETA:    32s[> ] 336/602, 8.4 task/s, elapsed: 40s, ETA:    32s[> ] 337/602, 8.4 task/s, elapsed: 40s, ETA:    32s[> ] 338/602, 8.4 task/s, elapsed: 40s, ETA:    31s[> ] 339/602, 8.4 task/s, elapsed: 40s, ETA:    31s[> ] 340/602, 8.4 task/s, elapsed: 40s, ETA:    31s[> ] 341/602, 8.4 task/s, elapsed: 41s, ETA:    31s[> ] 342/602, 8.4 task/s, elapsed: 41s, ETA:    31s[> ] 343/602, 8.4 task/s, elapsed: 41s, ETA:    31s[> ] 344/602, 8.4 task/s, elapsed: 41s, ETA:    31s[> ] 345/602, 8.4 task/s, elapsed: 41s, ETA:    31s[> ] 346/602, 8.4 task/s, elapsed: 41s, ETA:    30snight tensor([[1.]], device='cuda:1')
-Sample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-night tensor([[1.]], device='cuda:0')
-Sample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-[> ] 347/602, 8.4 task/s, elapsed: 41s, ETA:    30s[> ] 348/602, 8.4 task/s, elapsed: 41s, ETA:    30s[> ] 349/602, 8.4 task/s, elapsed: 42s, ETA:    30s[> ] 350/602, 8.4 task/s, elapsed: 42s, ETA:    30s[> ] 351/602, 8.4 task/s, elapsed: 42s, ETA:    30s[> ] 352/602, 8.4 task/s, elapsed: 42s, ETA:    30s[> ] 353/602, 8.4 task/s, elapsed: 42s, ETA:    30s[> ] 354/602, 8.4 task/s, elapsed: 42s, ETA:    29s[> ] 355/602, 8.4 task/s, elapsed: 42s, ETA:    29s[> ] 356/602, 8.4 task/s, elapsed: 42s, ETA:    29s[> ] 357/602, 8.4 task/s, elapsed: 42s, ETA:    29s[> ] 358/602, 8.5 task/s, elapsed: 42s, ETA:    29s[> ] 359/602, 8.4 task/s, elapsed: 43s, ETA:    29s[> ] 360/602, 8.5 task/s, elapsed: 43s, ETA:    29s[> ] 361/602, 8.4 task/s, elapsed: 43s, ETA:    29s[> ] 362/602, 8.5 task/s, elapsed: 43s, ETA:    28s[> ] 363/602, 8.4 task/s, elapsed: 43s, ETA:    28s[> ] 364/602, 8.5 task/s, elapsed: 43s, ETA:    28s[> ] 365/602, 8.4 task/s, elapsed: 43s, ETA:    28s[> ] 366/602, 8.5 task/s, elapsed: 43s, ETA:    28s[> ] 367/602, 8.5 task/s, elapsed: 43s, ETA:    28s[> ] 368/602, 8.5 task/s, elapsed: 43s, ETA:    28s[> ] 369/602, 8.5 task/s, elapsed: 44s, ETA:    28s[> ] 370/602, 8.5 task/s, elapsed: 44s, ETA:    27s[> ] 371/602, 8.5 task/s, elapsed: 44s, ETA:    27s[> ] 372/602, 8.5 task/s, elapsed: 44s, ETA:    27s[> ] 373/602, 8.5 task/s, elapsed: 44s, ETA:    27s[> ] 374/602, 8.5 task/s, elapsed: 44s, ETA:    27s[> ] 375/602, 8.5 task/s, elapsed: 44s, ETA:    27s[> ] 376/602, 8.5 task/s, elapsed: 44s, ETA:    27s[> ] 377/602, 8.5 task/s, elapsed: 44s, ETA:    27s[> ] 378/602, 8.5 task/s, elapsed: 44s, ETA:    26s[> ] 379/602, 8.5 task/s, elapsed: 45s, ETA:    26s[> ] 380/602, 8.5 task/s, elapsed: 45s, ETA:    26s[> ] 381/602, 8.5 task/s, elapsed: 45s, ETA:    26s[> ] 382/602, 8.5 task/s, elapsed: 45s, ETA:    26s[> ] 383/602, 8.5 task/s, elapsed: 45s, ETA:    26s[> ] 384/602, 8.5 task/s, elapsed: 45s, ETA:    26s[> ] 385/602, 8.5 task/s, elapsed: 45s, ETA:    26s[> ] 386/602, 8.5 task/s, elapsed: 45s, ETA:    25s[> ] 387/602, 8.5 task/s, elapsed: 46s, ETA:    25s[> ] 388/602, 8.5 task/s, elapsed: 46s, ETA:    25s[> ] 389/602, 8.5 task/s, elapsed: 46s, ETA:    25s[> ] 390/602, 8.5 task/s, elapsed: 46s, ETA:    25s[> ] 391/602, 8.5 task/s, elapsed: 46s, ETA:    25s[> ] 392/602, 8.5 task/s, elapsed: 46s, ETA:    25s[> ] 393/602, 8.5 task/s, elapsed: 46s, ETA:    25s[> ] 394/602, 8.5 task/s, elapsed: 46s, ETA:    24s[> ] 395/602, 8.5 task/s, elapsed: 46s, ETA:    24s[> ] 396/602, 8.5 task/s, elapsed: 46s, ETA:    24s[> ] 397/602, 8.5 task/s, elapsed: 47s, ETA:    24s[> ] 398/602, 8.5 task/s, elapsed: 47s, ETA:    24s[> ] 399/602, 8.5 task/s, elapsed: 47s, ETA:    24s[> ] 400/602, 8.5 task/s, elapsed: 47s, ETA:    24s[> ] 401/602, 8.5 task/s, elapsed: 47s, ETA:    24s[> ] 402/602, 8.5 task/s, elapsed: 47s, ETA:    23s[> ] 403/602, 8.5 task/s, elapsed: 47s, ETA:    23s[> ] 404/602, 8.5 task/s, elapsed: 47s, ETA:    23s[> ] 405/602, 8.5 task/s, elapsed: 47s, ETA:    23s[> ] 406/602, 8.6 task/s, elapsed: 47s, ETA:    23s[> ] 407/602, 8.5 task/s, elapsed: 48s, ETA:    23s[> ] 408/602, 8.6 task/s, elapsed: 48s, ETA:    23s[> ] 409/602, 8.5 task/s, elapsed: 48s, ETA:    23s[> ] 410/602, 8.6 task/s, elapsed: 48s, ETA:    22s[> ] 411/602, 8.6 task/s, elapsed: 48s, ETA:    22s[> ] 412/602, 8.6 task/s, elapsed: 48s, ETA:    22s[> ] 413/602, 8.6 task/s, elapsed: 48s, ETA:    22s[> ] 414/602, 8.6 task/s, elapsed: 48s, ETA:    22s[> ] 415/602, 8.6 task/s, elapsed: 48s, ETA:    22s[> ] 416/602, 8.6 task/s, elapsed: 48s, ETA:    22s[> ] 417/602, 8.6 task/s, elapsed: 49s, ETA:    22s[> ] 418/602, 8.6 task/s, elapsed: 49s, ETA:    21s[> ] 419/602, 8.6 task/s, elapsed: 49s, ETA:    21s[> ] 420/602, 8.6 task/s, elapsed: 49s, ETA:    21s[> ] 421/602, 8.6 task/s, elapsed: 49s, ETA:    21s[> ] 422/602, 8.6 task/s, elapsed: 49s, ETA:    21s[> ] 423/602, 8.6 task/s, elapsed: 49s, ETA:    21s[> ] 424/602, 8.6 task/s, elapsed: 49s, ETA:    21s[> ] 425/602, 8.6 task/s, elapsed: 50s, ETA:    21s[> ] 426/602, 8.6 task/s, elapsed: 50s, ETA:    20s[> ] 427/602, 8.6 task/s, elapsed: 50s, ETA:    20s[> ] 428/602, 8.6 task/s, elapsed: 50s, ETA:    20s[> ] 429/602, 8.6 task/s, elapsed: 50s, ETA:    20s[> ] 430/602, 8.6 task/s, elapsed: 50s, ETA:    20s[> ] 431/602, 8.6 task/s, elapsed: 50s, ETA:    20s[> ] 432/602, 8.6 task/s, elapsed: 50s, ETA:    20s[> ] 433/602, 8.6 task/s, elapsed: 50s, ETA:    20s[> ] 434/602, 8.6 task/s, elapsed: 50s, ETA:    20s[> ] 435/602, 8.6 task/s, elapsed: 51s, ETA:    19s[> ] 436/602, 8.6 task/s, elapsed: 51s, ETA:    19s[> ] 437/602, 8.6 task/s, elapsed: 51s, ETA:    19s[> ] 438/602, 8.6 task/s, elapsed: 51s, ETA:    19s[> ] 439/602, 8.6 task/s, elapsed: 51s, ETA:    19s[> ] 440/602, 8.6 task/s, elapsed: 51s, ETA:    19s[> ] 441/602, 8.6 task/s, elapsed: 51s, ETA:    19s[> ] 442/602, 8.6 task/s, elapsed: 51s, ETA:    19s[> ] 443/602, 8.6 task/s, elapsed: 52s, ETA:    18s[> ] 444/602, 8.6 task/s, elapsed: 52s, ETA:    18s[> ] 445/602, 8.6 task/s, elapsed: 52s, ETA:    18s[> ] 446/602, 8.6 task/s, elapsed: 52s, ETA:    18s[> ] 447/602, 8.6 task/s, elapsed: 52s, ETA:    18s[> ] 448/602, 8.6 task/s, elapsed: 52s, ETA:    18s[> ] 449/602, 8.6 task/s, elapsed: 52s, ETA:    18s[> ] 450/602, 8.6 task/s, elapsed: 52s, ETA:    18s[> ] 451/602, 8.6 task/s, elapsed: 52s, ETA:    18s[> ] 452/602, 8.6 task/s, elapsed: 52s, ETA:    17s[> ] 453/602, 8.6 task/s, elapsed: 53s, ETA:    17s[> ] 454/602, 8.6 task/s, elapsed: 53s, ETA:    17s[> ] 455/602, 8.6 task/s, elapsed: 53s, ETA:    17s[> ] 456/602, 8.6 task/s, elapsed: 53s, ETA:    17s[> ] 457/602, 8.6 task/s, elapsed: 53s, ETA:    17s[> ] 458/602, 8.6 task/s, elapsed: 53s, ETA:    17s[> ] 459/602, 8.6 task/s, elapsed: 53s, ETA:    17s[> ] 460/602, 8.6 task/s, elapsed: 53s, ETA:    16s[> ] 461/602, 8.6 task/s, elapsed: 53s, ETA:    16s[> ] 462/602, 8.6 task/s, elapsed: 53s, ETA:    16s[> ] 463/602, 8.6 task/s, elapsed: 54s, ETA:    16s[> ] 464/602, 8.6 task/s, elapsed: 54s, ETA:    16s[> ] 465/602, 8.6 task/s, elapsed: 54s, ETA:    16s[> ] 466/602, 8.6 task/s, elapsed: 54s, ETA:    16s[> ] 467/602, 8.6 task/s, elapsed: 54s, ETA:    16s[> ] 468/602, 8.6 task/s, elapsed: 54s, ETA:    16s[> ] 469/602, 8.6 task/s, elapsed: 54s, ETA:    15s[> ] 470/602, 8.6 task/s, elapsed: 54s, ETA:    15s[> ] 471/602, 8.6 task/s, elapsed: 55s, ETA:    15s[> ] 472/602, 8.6 task/s, elapsed: 55s, ETA:    15s[> ] 473/602, 8.6 task/s, elapsed: 55s, ETA:    15s[> ] 474/602, 8.6 task/s, elapsed: 55s, ETA:    15s[> ] 475/602, 8.6 task/s, elapsed: 55s, ETA:    15s[> ] 476/602, 8.6 task/s, elapsed: 55s, ETA:    15s[> ] 477/602, 8.6 task/s, elapsed: 55s, ETA:    14s[> ] 478/602, 8.6 task/s, elapsed: 55s, ETA:    14s[> ] 479/602, 8.6 task/s, elapsed: 56s, ETA:    14s[> ] 480/602, 8.6 task/s, elapsed: 56s, ETA:    14s[> ] 481/602, 8.6 task/s, elapsed: 56s, ETA:    14s[> ] 482/602, 8.6 task/s, elapsed: 56s, ETA:    14s[> ] 483/602, 8.6 task/s, elapsed: 56s, ETA:    14s[> ] 484/602, 8.7 task/s, elapsed: 56s, ETA:    14s[> ] 485/602, 8.6 task/s, elapsed: 56s, ETA:    14s[> ] 486/602, 8.7 task/s, elapsed: 56s, ETA:    13s[> ] 487/602, 8.6 task/s, elapsed: 56s, ETA:    13s[> ] 488/602, 8.7 task/s, elapsed: 56s, ETA:    13s[> ] 489/602, 8.6 task/s, elapsed: 57s, ETA:    13s[> ] 490/602, 8.7 task/s, elapsed: 57s, ETA:    13s[> ] 491/602, 8.6 task/s, elapsed: 57s, ETA:    13s[> ] 492/602, 8.7 task/s, elapsed: 57s, ETA:    13s[> ] 493/602, 8.6 task/s, elapsed: 57s, ETA:    13s[> ] 494/602, 8.7 task/s, elapsed: 57s, ETA:    12s[> ] 495/602, 8.6 task/s, elapsed: 57s, ETA:    12s[> ] 496/602, 8.7 task/s, elapsed: 57s, ETA:    12s[> ] 497/602, 8.6 task/s, elapsed: 57s, ETA:    12s[> ] 498/602, 8.7 task/s, elapsed: 57s, ETA:    12s[> ] 499/602, 8.7 task/s, elapsed: 58s, ETA:    12s[> ] 500/602, 8.7 task/s, elapsed: 58s, ETA:    12s[> ] 501/602, 8.7 task/s, elapsed: 58s, ETA:    12s[> ] 502/602, 8.7 task/s, elapsed: 58s, ETA:    12s[> ] 503/602, 8.7 task/s, elapsed: 58s, ETA:    11s[> ] 504/602, 8.7 task/s, elapsed: 58s, ETA:    11s[> ] 505/602, 8.7 task/s, elapsed: 58s, ETA:    11s[> ] 506/602, 8.7 task/s, elapsed: 58s, ETA:    11s[> ] 507/602, 8.7 task/s, elapsed: 59s, ETA:    11s[> ] 508/602, 8.7 task/s, elapsed: 59s, ETA:    11s[> ] 509/602, 8.7 task/s, elapsed: 59s, ETA:    11s[> ] 510/602, 8.7 task/s, elapsed: 59s, ETA:    11s[> ] 511/602, 8.7 task/s, elapsed: 59s, ETA:    11s[> ] 512/602, 8.7 task/s, elapsed: 59s, ETA:    10s[> ] 513/602, 8.7 task/s, elapsed: 59s, ETA:    10s[> ] 514/602, 8.7 task/s, elapsed: 59s, ETA:    10s[> ] 515/602, 8.7 task/s, elapsed: 59s, ETA:    10s[> ] 516/602, 8.7 task/s, elapsed: 59s, ETA:    10s[> ] 517/602, 8.7 task/s, elapsed: 60s, ETA:    10s[> ] 518/602, 8.7 task/s, elapsed: 60s, ETA:    10s[> ] 519/602, 8.7 task/s, elapsed: 60s, ETA:    10s[> ] 520/602, 8.7 task/s, elapsed: 60s, ETA:     9s[> ] 521/602, 8.7 task/s, elapsed: 60s, ETA:     9s[> ] 522/602, 8.7 task/s, elapsed: 60s, ETA:     9s[> ] 523/602, 8.7 task/s, elapsed: 60s, ETA:     9s[> ] 524/602, 8.7 task/s, elapsed: 60s, ETA:     9s[> ] 525/602, 8.7 task/s, elapsed: 61s, ETA:     9s[> ] 526/602, 8.7 task/s, elapsed: 61s, ETA:     9sSample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-[> ] 527/602, 8.7 task/s, elapsed: 61s, ETA:     9s[> ] 528/602, 8.7 task/s, elapsed: 61s, ETA:     9s[> ] 529/602, 8.7 task/s, elapsed: 61s, ETA:     8s[> ] 530/602, 8.7 task/s, elapsed: 61s, ETA:     8s[> ] 531/602, 8.7 task/s, elapsed: 61s, ETA:     8s[> ] 532/602, 8.7 task/s, elapsed: 61s, ETA:     8s[> ] 533/602, 8.7 task/s, elapsed: 61s, ETA:     8s[> ] 534/602, 8.7 task/s, elapsed: 61s, ETA:     8s[> ] 535/602, 8.7 task/s, elapsed: 62s, ETA:     8s[> ] 536/602, 8.7 task/s, elapsed: 62s, ETA:     8s[> ] 537/602, 8.7 task/s, elapsed: 62s, ETA:     7s[> ] 538/602, 8.7 task/s, elapsed: 62s, ETA:     7s[> ] 539/602, 8.7 task/s, elapsed: 62s, ETA:     7s[> ] 540/602, 8.7 task/s, elapsed: 62s, ETA:     7s[> ] 541/602, 8.7 task/s, elapsed: 62s, ETA:     7s[> ] 542/602, 8.7 task/s, elapsed: 62s, ETA:     7s[> ] 543/602, 8.7 task/s, elapsed: 62s, ETA:     7s[> ] 544/602, 8.7 task/s, elapsed: 62s, ETA:     7s[> ] 545/602, 8.7 task/s, elapsed: 63s, ETA:     7s[> ] 546/602, 8.7 task/s, elapsed: 63s, ETA:     6s[> ] 547/602, 8.7 task/s, elapsed: 63s, ETA:     6s[> ] 548/602, 8.7 task/s, elapsed: 63s, ETA:     6s[> ] 549/602, 8.7 task/s, elapsed: 63s, ETA:     6s[> ] 550/602, 8.7 task/s, elapsed: 63s, ETA:     6s[> ] 551/602, 8.7 task/s, elapsed: 63s, ETA:     6s[> ] 552/602, 8.7 task/s, elapsed: 63s, ETA:     6s[> ] 553/602, 8.7 task/s, elapsed: 64s, ETA:     6s[> ] 554/602, 8.7 task/s, elapsed: 64s, ETA:     6s[> ] 555/602, 8.7 task/s, elapsed: 64s, ETA:     5s[> ] 556/602, 8.7 task/s, elapsed: 64s, ETA:     5s[> ] 557/602, 8.7 task/s, elapsed: 64s, ETA:     5s[> ] 558/602, 8.7 task/s, elapsed: 64s, ETA:     5s[> ] 559/602, 8.7 task/s, elapsed: 64s, ETA:     5s[> ] 560/602, 8.7 task/s, elapsed: 64s, ETA:     5s[> ] 561/602, 8.7 task/s, elapsed: 64s, ETA:     5s[> ] 562/602, 8.7 task/s, elapsed: 64s, ETA:     5s[> ] 563/602, 8.7 task/s, elapsed: 65s, ETA:     4s[> ] 564/602, 8.7 task/s, elapsed: 65s, ETA:     4s[> ] 565/602, 8.7 task/s, elapsed: 65s, ETA:     4s[> ] 566/602, 8.7 task/s, elapsed: 65s, ETA:     4s[> ] 567/602, 8.7 task/s, elapsed: 65s, ETA:     4s[> ] 568/602, 8.7 task/s, elapsed: 65s, ETA:     4s[> ] 569/602, 8.7 task/s, elapsed: 65s, ETA:     4s[> ] 570/602, 8.7 task/s, elapsed: 65s, ETA:     4s[> ] 571/602, 8.7 task/s, elapsed: 65s, ETA:     4s[> ] 572/602, 8.7 task/s, elapsed: 65s, ETA:     3s[> ] 573/602, 8.7 task/s, elapsed: 66s, ETA:     3s[> ] 574/602, 8.7 task/s, elapsed: 66s, ETA:     3s[> ] 575/602, 8.7 task/s, elapsed: 66s, ETA:     3s[> ] 576/602, 8.7 task/s, elapsed: 66s, ETA:     3s[> ] 577/602, 8.7 task/s, elapsed: 66s, ETA:     3s[> ] 578/602, 8.8 task/s, elapsed: 66s, ETA:     3s[> ] 579/602, 8.7 task/s, elapsed: 66s, ETA:     3s[> ] 580/602, 8.8 task/s, elapsed: 66s, ETA:     3s[> ] 581/602, 8.7 task/s, elapsed: 66s, ETA:     2s[> ] 582/602, 8.8 task/s, elapsed: 66s, ETA:     2s[> ] 583/602, 8.7 task/s, elapsed: 67s, ETA:     2s[> ] 584/602, 8.8 task/s, elapsed: 67s, ETA:     2s[> ] 585/602, 8.7 task/s, elapsed: 67s, ETA:     2s[> ] 586/602, 8.8 task/s, elapsed: 67s, ETA:     2s[> ] 587/602, 8.7 task/s, elapsed: 67s, ETA:     2s[> ] 588/602, 8.8 task/s, elapsed: 67s, ETA:     2s[> ] 589/602, 8.8 task/s, elapsed: 67s, ETA:     1s[> ] 590/602, 8.8 task/s, elapsed: 67s, ETA:     1s[> ] 591/602, 8.8 task/s, elapsed: 67s, ETA:     1s[> ] 592/602, 8.8 task/s, elapsed: 67s, ETA:     1s[> ] 593/602, 8.8 task/s, elapsed: 68s, ETA:     1s[> ] 594/602, 8.8 task/s, elapsed: 68s, ETA:     1s[> ] 595/602, 8.8 task/s, elapsed: 68s, ETA:     1s[> ] 596/602, 8.8 task/s, elapsed: 68s, ETA:     1s[> ] 597/602, 8.8 task/s, elapsed: 68s, ETA:     1s[> ] 598/602, 8.8 task/s, elapsed: 68s, ETA:     0s[> ] 599/602, 8.8 task/s, elapsed: 68s, ETA:     0s[> ] 600/602, 8.8 task/s, elapsed: 68s, ETA:     0s[> ] 601/602, 8.8 task/s, elapsed: 68s, ETA:     0s[>>] 602/602, 8.8 task/s, elapsed: 68s, ETA:     0s
-
-Start to convert detection format...
-[                                                  ] 0/602, elapsed: 0s, ETA:[  ] 1/602, 26.0 task/s, elapsed: 0s, ETA:    23s[  ] 2/602, 25.2 task/s, elapsed: 0s, ETA:    24s[  ] 3/602, 26.5 task/s, elapsed: 0s, ETA:    23s[  ] 4/602, 26.5 task/s, elapsed: 0s, ETA:    23s[  ] 5/602, 26.6 task/s, elapsed: 0s, ETA:    22s[  ] 6/602, 26.5 task/s, elapsed: 0s, ETA:    22s[  ] 7/602, 26.8 task/s, elapsed: 0s, ETA:    22s[  ] 8/602, 26.8 task/s, elapsed: 0s, ETA:    22s[  ] 9/602, 26.8 task/s, elapsed: 0s, ETA:    22s[  ] 10/602, 26.7 task/s, elapsed: 0s, ETA:    22s[  ] 11/602, 26.7 task/s, elapsed: 0s, ETA:    22s[  ] 12/602, 26.6 task/s, elapsed: 0s, ETA:    22s[  ] 13/602, 26.4 task/s, elapsed: 0s, ETA:    22s[  ] 14/602, 26.4 task/s, elapsed: 1s, ETA:    22s[  ] 15/602, 26.3 task/s, elapsed: 1s, ETA:    22s[  ] 16/602, 26.2 task/s, elapsed: 1s, ETA:    22s[  ] 17/602, 26.2 task/s, elapsed: 1s, ETA:    22s[  ] 18/602, 18.4 task/s, elapsed: 1s, ETA:    32s[  ] 19/602, 18.7 task/s, elapsed: 1s, ETA:    31s[  ] 20/602, 18.9 task/s, elapsed: 1s, ETA:    31s[  ] 21/602, 19.1 task/s, elapsed: 1s, ETA:    30s[  ] 22/602, 19.4 task/s, elapsed: 1s, ETA:    30s[  ] 23/602, 19.6 task/s, elapsed: 1s, ETA:    30s[  ] 24/602, 19.7 task/s, elapsed: 1s, ETA:    29s[  ] 25/602, 19.9 task/s, elapsed: 1s, ETA:    29s[  ] 26/602, 20.1 task/s, elapsed: 1s, ETA:    29s[  ] 27/602, 20.2 task/s, elapsed: 1s, ETA:    28s[  ] 28/602, 20.4 task/s, elapsed: 1s, ETA:    28s[  ] 29/602, 20.5 task/s, elapsed: 1s, ETA:    28s[  ] 30/602, 20.7 task/s, elapsed: 1s, ETA:    28s[  ] 31/602, 20.8 task/s, elapsed: 1s, ETA:    27s[  ] 32/602, 21.0 task/s, elapsed: 2s, ETA:    27s[  ] 33/602, 21.1 task/s, elapsed: 2s, ETA:    27s[  ] 34/602, 21.2 task/s, elapsed: 2s, ETA:    27s[  ] 35/602, 21.3 task/s, elapsed: 2s, ETA:    27s[  ] 36/602, 21.4 task/s, elapsed: 2s, ETA:    26s[  ] 37/602, 21.5 task/s, elapsed: 2s, ETA:    26s[  ] 38/602, 21.6 task/s, elapsed: 2s, ETA:    26s[  ] 39/602, 21.7 task/s, elapsed: 2s, ETA:    26s[  ] 40/602, 21.8 task/s, elapsed: 2s, ETA:    26s[  ] 41/602, 21.9 task/s, elapsed: 2s, ETA:    26s[  ] 42/602, 22.0 task/s, elapsed: 2s, ETA:    25s[  ] 43/602, 22.1 task/s, elapsed: 2s, ETA:    25s[  ] 44/602, 22.2 task/s, elapsed: 2s, ETA:    25s[  ] 45/602, 22.2 task/s, elapsed: 2s, ETA:    25s[  ] 46/602, 22.3 task/s, elapsed: 2s, ETA:    25s[  ] 47/602, 22.3 task/s, elapsed: 2s, ETA:    25s[  ] 48/602, 22.4 task/s, elapsed: 2s, ETA:    25s[  ] 49/602, 22.4 task/s, elapsed: 2s, ETA:    25s[  ] 50/602, 22.5 task/s, elapsed: 2s, ETA:    25s[  ] 51/602, 22.5 task/s, elapsed: 2s, ETA:    24s[  ] 52/602, 22.6 task/s, elapsed: 2s, ETA:    24s[  ] 53/602, 22.6 task/s, elapsed: 2s, ETA:    24s[  ] 54/602, 22.0 task/s, elapsed: 2s, ETA:    25s[  ] 55/602, 22.1 task/s, elapsed: 2s, ETA:    25s[  ] 56/602, 22.1 task/s, elapsed: 3s, ETA:    25s[  ] 57/602, 22.2 task/s, elapsed: 3s, ETA:    25s[  ] 58/602, 22.2 task/s, elapsed: 3s, ETA:    24s[  ] 59/602, 22.2 task/s, elapsed: 3s, ETA:    24s[  ] 60/602, 22.3 task/s, elapsed: 3s, ETA:    24s[  ] 61/602, 22.3 task/s, elapsed: 3s, ETA:    24s[  ] 62/602, 22.3 task/s, elapsed: 3s, ETA:    24s[  ] 63/602, 22.3 task/s, elapsed: 3s, ETA:    24s[  ] 64/602, 22.3 task/s, elapsed: 3s, ETA:    24s[  ] 65/602, 22.4 task/s, elapsed: 3s, ETA:    24s[  ] 66/602, 22.5 task/s, elapsed: 3s, ETA:    24s[  ] 67/602, 22.6 task/s, elapsed: 3s, ETA:    24s[  ] 68/602, 22.6 task/s, elapsed: 3s, ETA:    24s[  ] 69/602, 22.7 task/s, elapsed: 3s, ETA:    24s[  ] 70/602, 22.7 task/s, elapsed: 3s, ETA:    23s[  ] 71/602, 22.8 task/s, elapsed: 3s, ETA:    23s[  ] 72/602, 22.8 task/s, elapsed: 3s, ETA:    23s[  ] 73/602, 22.8 task/s, elapsed: 3s, ETA:    23s[  ] 74/602, 22.8 task/s, elapsed: 3s, ETA:    23s[  ] 75/602, 22.9 task/s, elapsed: 3s, ETA:    23s[  ] 76/602, 22.9 task/s, elapsed: 3s, ETA:    23s[  ] 77/602, 22.9 task/s, elapsed: 3s, ETA:    23s[  ] 78/602, 22.9 task/s, elapsed: 3s, ETA:    23s[  ] 79/602, 23.0 task/s, elapsed: 3s, ETA:    23s[  ] 80/602, 23.0 task/s, elapsed: 3s, ETA:    23s[  ] 81/602, 23.0 task/s, elapsed: 4s, ETA:    23s[  ] 82/602, 23.0 task/s, elapsed: 4s, ETA:    23s[  ] 83/602, 23.1 task/s, elapsed: 4s, ETA:    22s[  ] 84/602, 23.1 task/s, elapsed: 4s, ETA:    22s[  ] 85/602, 23.1 task/s, elapsed: 4s, ETA:    22s[  ] 86/602, 23.1 task/s, elapsed: 4s, ETA:    22s[  ] 87/602, 23.2 task/s, elapsed: 4s, ETA:    22s[  ] 88/602, 23.2 task/s, elapsed: 4s, ETA:    22s[  ] 89/602, 23.3 task/s, elapsed: 4s, ETA:    22s[  ] 90/602, 23.3 task/s, elapsed: 4s, ETA:    22s[  ] 91/602, 23.3 task/s, elapsed: 4s, ETA:    22s[  ] 92/602, 23.4 task/s, elapsed: 4s, ETA:    22s[  ] 93/602, 23.4 task/s, elapsed: 4s, ETA:    22s[  ] 94/602, 23.4 task/s, elapsed: 4s, ETA:    22s[  ] 95/602, 23.5 task/s, elapsed: 4s, ETA:    22s[  ] 96/602, 23.5 task/s, elapsed: 4s, ETA:    22s[  ] 97/602, 23.5 task/s, elapsed: 4s, ETA:    21s[  ] 98/602, 23.5 task/s, elapsed: 4s, ETA:    21s[  ] 99/602, 23.6 task/s, elapsed: 4s, ETA:    21s[  ] 100/602, 23.6 task/s, elapsed: 4s, ETA:    21s[  ] 101/602, 23.6 task/s, elapsed: 4s, ETA:    21s[  ] 102/602, 23.6 task/s, elapsed: 4s, ETA:    21s[  ] 103/602, 23.6 task/s, elapsed: 4s, ETA:    21s[  ] 104/602, 23.6 task/s, elapsed: 4s, ETA:    21s[  ] 105/602, 23.6 task/s, elapsed: 4s, ETA:    21s[  ] 106/602, 23.6 task/s, elapsed: 4s, ETA:    21s[  ] 107/602, 23.6 task/s, elapsed: 5s, ETA:    21s[  ] 108/602, 23.6 task/s, elapsed: 5s, ETA:    21s[  ] 109/602, 23.6 task/s, elapsed: 5s, ETA:    21s[  ] 110/602, 23.7 task/s, elapsed: 5s, ETA:    21s[  ] 111/602, 23.7 task/s, elapsed: 5s, ETA:    21s[  ] 112/602, 23.7 task/s, elapsed: 5s, ETA:    21s[  ] 113/602, 23.7 task/s, elapsed: 5s, ETA:    21s[  ] 114/602, 23.7 task/s, elapsed: 5s, ETA:    21s[  ] 115/602, 23.7 task/s, elapsed: 5s, ETA:    21s[  ] 116/602, 23.8 task/s, elapsed: 5s, ETA:    20s[  ] 117/602, 23.8 task/s, elapsed: 5s, ETA:    20s[  ] 118/602, 23.8 task/s, elapsed: 5s, ETA:    20s[  ] 119/602, 23.8 task/s, elapsed: 5s, ETA:    20s[  ] 120/602, 23.8 task/s, elapsed: 5s, ETA:    20s[  ] 121/602, 23.8 task/s, elapsed: 5s, ETA:    20s[  ] 122/602, 23.8 task/s, elapsed: 5s, ETA:    20s[  ] 123/602, 23.9 task/s, elapsed: 5s, ETA:    20s[  ] 124/602, 23.9 task/s, elapsed: 5s, ETA:    20s[  ] 125/602, 23.9 task/s, elapsed: 5s, ETA:    20s[  ] 126/602, 23.9 task/s, elapsed: 5s, ETA:    20s[  ] 127/602, 23.9 task/s, elapsed: 5s, ETA:    20s[  ] 128/602, 23.9 task/s, elapsed: 5s, ETA:    20s[  ] 129/602, 23.9 task/s, elapsed: 5s, ETA:    20s[  ] 130/602, 23.9 task/s, elapsed: 5s, ETA:    20s[  ] 131/602, 24.0 task/s, elapsed: 5s, ETA:    20s[  ] 132/602, 24.0 task/s, elapsed: 6s, ETA:    20s[  ] 133/602, 24.0 task/s, elapsed: 6s, ETA:    20s[  ] 134/602, 24.0 task/s, elapsed: 6s, ETA:    20s[  ] 135/602, 24.0 task/s, elapsed: 6s, ETA:    19s[  ] 136/602, 24.0 task/s, elapsed: 6s, ETA:    19s[  ] 137/602, 24.0 task/s, elapsed: 6s, ETA:    19s[  ] 138/602, 24.0 task/s, elapsed: 6s, ETA:    19s[  ] 139/602, 24.1 task/s, elapsed: 6s, ETA:    19s[  ] 140/602, 24.1 task/s, elapsed: 6s, ETA:    19s[  ] 141/602, 24.0 task/s, elapsed: 6s, ETA:    19s[  ] 142/602, 24.1 task/s, elapsed: 6s, ETA:    19s[  ] 143/602, 24.1 task/s, elapsed: 6s, ETA:    19s[  ] 144/602, 24.1 task/s, elapsed: 6s, ETA:    19s[  ] 145/602, 24.1 task/s, elapsed: 6s, ETA:    19s[  ] 146/602, 24.1 task/s, elapsed: 6s, ETA:    19s[  ] 147/602, 24.1 task/s, elapsed: 6s, ETA:    19s[  ] 148/602, 24.2 task/s, elapsed: 6s, ETA:    19s[  ] 149/602, 24.2 task/s, elapsed: 6s, ETA:    19s[  ] 150/602, 24.2 task/s, elapsed: 6s, ETA:    19s[  ] 151/602, 24.2 task/s, elapsed: 6s, ETA:    19s[  ] 152/602, 24.3 task/s, elapsed: 6s, ETA:    19s[  ] 153/602, 24.3 task/s, elapsed: 6s, ETA:    18s[  ] 154/602, 24.3 task/s, elapsed: 6s, ETA:    18s[  ] 155/602, 24.3 task/s, elapsed: 6s, ETA:    18s[  ] 156/602, 24.3 task/s, elapsed: 6s, ETA:    18s[  ] 157/602, 24.3 task/s, elapsed: 6s, ETA:    18s[  ] 158/602, 24.3 task/s, elapsed: 7s, ETA:    18s[  ] 159/602, 24.3 task/s, elapsed: 7s, ETA:    18s[  ] 160/602, 24.3 task/s, elapsed: 7s, ETA:    18s[  ] 161/602, 24.3 task/s, elapsed: 7s, ETA:    18s[  ] 162/602, 24.3 task/s, elapsed: 7s, ETA:    18s[  ] 163/602, 24.3 task/s, elapsed: 7s, ETA:    18s[  ] 164/602, 24.4 task/s, elapsed: 7s, ETA:    18s[  ] 165/602, 24.4 task/s, elapsed: 7s, ETA:    18s[  ] 166/602, 24.4 task/s, elapsed: 7s, ETA:    18s[  ] 167/602, 24.4 task/s, elapsed: 7s, ETA:    18s[  ] 168/602, 24.4 task/s, elapsed: 7s, ETA:    18s[  ] 169/602, 24.4 task/s, elapsed: 7s, ETA:    18s[  ] 170/602, 24.5 task/s, elapsed: 7s, ETA:    18s[  ] 171/602, 24.5 task/s, elapsed: 7s, ETA:    18s[  ] 172/602, 24.5 task/s, elapsed: 7s, ETA:    18s[  ] 173/602, 24.5 task/s, elapsed: 7s, ETA:    18s[  ] 174/602, 24.5 task/s, elapsed: 7s, ETA:    17s[  ] 175/602, 24.5 task/s, elapsed: 7s, ETA:    17s[  ] 176/602, 24.5 task/s, elapsed: 7s, ETA:    17s[  ] 177/602, 24.5 task/s, elapsed: 7s, ETA:    17s[  ] 178/602, 24.6 task/s, elapsed: 7s, ETA:    17s[  ] 179/602, 24.6 task/s, elapsed: 7s, ETA:    17s[  ] 180/602, 24.6 task/s, elapsed: 7s, ETA:    17s[  ] 181/602, 24.6 task/s, elapsed: 7s, ETA:    17s[  ] 182/602, 24.6 task/s, elapsed: 7s, ETA:    17s[  ] 183/602, 24.6 task/s, elapsed: 7s, ETA:    17s[  ] 184/602, 24.6 task/s, elapsed: 7s, ETA:    17s[  ] 185/602, 24.6 task/s, elapsed: 8s, ETA:    17s[  ] 186/602, 24.6 task/s, elapsed: 8s, ETA:    17s[  ] 187/602, 24.6 task/s, elapsed: 8s, ETA:    17s[  ] 188/602, 24.6 task/s, elapsed: 8s, ETA:    17s[  ] 189/602, 24.6 task/s, elapsed: 8s, ETA:    17s[  ] 190/602, 24.6 task/s, elapsed: 8s, ETA:    17s[  ] 191/602, 24.6 task/s, elapsed: 8s, ETA:    17s[  ] 192/602, 24.7 task/s, elapsed: 8s, ETA:    17s[  ] 193/602, 24.7 task/s, elapsed: 8s, ETA:    17s[  ] 194/602, 24.7 task/s, elapsed: 8s, ETA:    17s[  ] 195/602, 24.7 task/s, elapsed: 8s, ETA:    16s[  ] 196/602, 24.7 task/s, elapsed: 8s, ETA:    16s[  ] 197/602, 24.7 task/s, elapsed: 8s, ETA:    16s[  ] 198/602, 24.7 task/s, elapsed: 8s, ETA:    16s[  ] 199/602, 24.7 task/s, elapsed: 8s, ETA:    16s[  ] 200/602, 24.7 task/s, elapsed: 8s, ETA:    16s[  ] 201/602, 24.8 task/s, elapsed: 8s, ETA:    16s[  ] 202/602, 24.8 task/s, elapsed: 8s, ETA:    16s[  ] 203/602, 24.8 task/s, elapsed: 8s, ETA:    16s[  ] 204/602, 24.8 task/s, elapsed: 8s, ETA:    16s[  ] 205/602, 24.8 task/s, elapsed: 8s, ETA:    16s[  ] 206/602, 24.8 task/s, elapsed: 8s, ETA:    16s[  ] 207/602, 24.8 task/s, elapsed: 8s, ETA:    16s[  ] 208/602, 24.9 task/s, elapsed: 8s, ETA:    16s[  ] 209/602, 24.9 task/s, elapsed: 8s, ETA:    16s[  ] 210/602, 24.9 task/s, elapsed: 8s, ETA:    16s[  ] 211/602, 24.9 task/s, elapsed: 8s, ETA:    16s[  ] 212/602, 24.9 task/s, elapsed: 9s, ETA:    16s[  ] 213/602, 24.9 task/s, elapsed: 9s, ETA:    16s[  ] 214/602, 24.9 task/s, elapsed: 9s, ETA:    16s[  ] 215/602, 24.9 task/s, elapsed: 9s, ETA:    16s[  ] 216/602, 24.9 task/s, elapsed: 9s, ETA:    15s[  ] 217/602, 24.9 task/s, elapsed: 9s, ETA:    15s[  ] 218/602, 24.9 task/s, elapsed: 9s, ETA:    15s[  ] 219/602, 24.9 task/s, elapsed: 9s, ETA:    15s[  ] 220/602, 24.9 task/s, elapsed: 9s, ETA:    15s[  ] 221/602, 24.9 task/s, elapsed: 9s, ETA:    15s[  ] 222/602, 25.0 task/s, elapsed: 9s, ETA:    15s[  ] 223/602, 25.0 task/s, elapsed: 9s, ETA:    15s[  ] 224/602, 25.0 task/s, elapsed: 9s, ETA:    15s[  ] 225/602, 25.0 task/s, elapsed: 9s, ETA:    15s[  ] 226/602, 25.0 task/s, elapsed: 9s, ETA:    15s[  ] 227/602, 25.0 task/s, elapsed: 9s, ETA:    15s[  ] 228/602, 25.0 task/s, elapsed: 9s, ETA:    15s[  ] 229/602, 25.0 task/s, elapsed: 9s, ETA:    15s[  ] 230/602, 25.0 task/s, elapsed: 9s, ETA:    15s[  ] 231/602, 25.0 task/s, elapsed: 9s, ETA:    15s[  ] 232/602, 25.0 task/s, elapsed: 9s, ETA:    15s[  ] 233/602, 25.0 task/s, elapsed: 9s, ETA:    15s[  ] 234/602, 25.0 task/s, elapsed: 9s, ETA:    15s[  ] 235/602, 25.0 task/s, elapsed: 9s, ETA:    15s[  ] 236/602, 25.0 task/s, elapsed: 9s, ETA:    15s[  ] 237/602, 25.0 task/s, elapsed: 9s, ETA:    15s[  ] 238/602, 25.0 task/s, elapsed: 10s, ETA:    15s[  ] 239/602, 25.0 task/s, elapsed: 10s, ETA:    15s[  ] 240/602, 25.0 task/s, elapsed: 10s, ETA:    14s[  ] 241/602, 25.0 task/s, elapsed: 10s, ETA:    14s[  ] 242/602, 25.1 task/s, elapsed: 10s, ETA:    14s[  ] 243/602, 25.1 task/s, elapsed: 10s, ETA:    14s[  ] 244/602, 25.1 task/s, elapsed: 10s, ETA:    14s[  ] 245/602, 25.1 task/s, elapsed: 10s, ETA:    14s[  ] 246/602, 25.1 task/s, elapsed: 10s, ETA:    14s[  ] 247/602, 25.1 task/s, elapsed: 10s, ETA:    14s[  ] 248/602, 25.1 task/s, elapsed: 10s, ETA:    14s[  ] 249/602, 25.1 task/s, elapsed: 10s, ETA:    14s[  ] 250/602, 25.1 task/s, elapsed: 10s, ETA:    14s[  ] 251/602, 25.2 task/s, elapsed: 10s, ETA:    14s[  ] 252/602, 25.2 task/s, elapsed: 10s, ETA:    14s[  ] 253/602, 25.2 task/s, elapsed: 10s, ETA:    14s[  ] 254/602, 25.2 task/s, elapsed: 10s, ETA:    14s[  ] 255/602, 24.4 task/s, elapsed: 10s, ETA:    14s[  ] 256/602, 24.4 task/s, elapsed: 10s, ETA:    14s[  ] 257/602, 24.5 task/s, elapsed: 11s, ETA:    14s[  ] 258/602, 24.5 task/s, elapsed: 11s, ETA:    14s[  ] 259/602, 24.5 task/s, elapsed: 11s, ETA:    14s[  ] 260/602, 24.5 task/s, elapsed: 11s, ETA:    14s[  ] 261/602, 24.5 task/s, elapsed: 11s, ETA:    14s[  ] 262/602, 24.5 task/s, elapsed: 11s, ETA:    14s[  ] 263/602, 24.5 task/s, elapsed: 11s, ETA:    14s[  ] 264/602, 24.5 task/s, elapsed: 11s, ETA:    14s[  ] 265/602, 24.5 task/s, elapsed: 11s, ETA:    14s[  ] 266/602, 24.6 task/s, elapsed: 11s, ETA:    14s[  ] 267/602, 24.6 task/s, elapsed: 11s, ETA:    14s[  ] 268/602, 24.6 task/s, elapsed: 11s, ETA:    14s[  ] 269/602, 24.6 task/s, elapsed: 11s, ETA:    14s[  ] 270/602, 24.6 task/s, elapsed: 11s, ETA:    14s[  ] 271/602, 24.6 task/s, elapsed: 11s, ETA:    13s[  ] 272/602, 24.6 task/s, elapsed: 11s, ETA:    13s[  ] 273/602, 24.6 task/s, elapsed: 11s, ETA:    13s[  ] 274/602, 24.6 task/s, elapsed: 11s, ETA:    13s[  ] 275/602, 24.6 task/s, elapsed: 11s, ETA:    13s[  ] 276/602, 24.6 task/s, elapsed: 11s, ETA:    13s[  ] 277/602, 24.6 task/s, elapsed: 11s, ETA:    13s[  ] 278/602, 24.6 task/s, elapsed: 11s, ETA:    13s[  ] 279/602, 24.6 task/s, elapsed: 11s, ETA:    13s[  ] 280/602, 24.6 task/s, elapsed: 11s, ETA:    13s[  ] 281/602, 24.6 task/s, elapsed: 11s, ETA:    13s[  ] 282/602, 24.6 task/s, elapsed: 11s, ETA:    13s[  ] 283/602, 24.7 task/s, elapsed: 11s, ETA:    13s[  ] 284/602, 24.7 task/s, elapsed: 12s, ETA:    13s[  ] 285/602, 24.7 task/s, elapsed: 12s, ETA:    13s[  ] 286/602, 24.7 task/s, elapsed: 12s, ETA:    13s[  ] 287/602, 24.7 task/s, elapsed: 12s, ETA:    13s[  ] 288/602, 24.7 task/s, elapsed: 12s, ETA:    13s[  ] 289/602, 24.7 task/s, elapsed: 12s, ETA:    13s[  ] 290/602, 24.7 task/s, elapsed: 12s, ETA:    13s[  ] 291/602, 24.7 task/s, elapsed: 12s, ETA:    13s[  ] 292/602, 24.7 task/s, elapsed: 12s, ETA:    13s[  ] 293/602, 24.7 task/s, elapsed: 12s, ETA:    12s[  ] 294/602, 24.7 task/s, elapsed: 12s, ETA:    12s[  ] 295/602, 24.7 task/s, elapsed: 12s, ETA:    12s[  ] 296/602, 24.8 task/s, elapsed: 12s, ETA:    12s[  ] 297/602, 24.8 task/s, elapsed: 12s, ETA:    12s[  ] 298/602, 24.8 task/s, elapsed: 12s, ETA:    12s[  ] 299/602, 24.8 task/s, elapsed: 12s, ETA:    12s[  ] 300/602, 24.8 task/s, elapsed: 12s, ETA:    12s[> ] 301/602, 24.8 task/s, elapsed: 12s, ETA:    12s[> ] 302/602, 24.8 task/s, elapsed: 12s, ETA:    12s[> ] 303/602, 24.8 task/s, elapsed: 12s, ETA:    12s[> ] 304/602, 24.8 task/s, elapsed: 12s, ETA:    12s[> ] 305/602, 24.9 task/s, elapsed: 12s, ETA:    12s[> ] 306/602, 24.9 task/s, elapsed: 12s, ETA:    12s[> ] 307/602, 24.9 task/s, elapsed: 12s, ETA:    12s[> ] 308/602, 24.9 task/s, elapsed: 12s, ETA:    12s[> ] 309/602, 24.9 task/s, elapsed: 12s, ETA:    12s[> ] 310/602, 24.9 task/s, elapsed: 12s, ETA:    12s[> ] 311/602, 24.9 task/s, elapsed: 12s, ETA:    12s[> ] 312/602, 24.9 task/s, elapsed: 13s, ETA:    12s[> ] 313/602, 24.9 task/s, elapsed: 13s, ETA:    12s[> ] 314/602, 24.9 task/s, elapsed: 13s, ETA:    12s[> ] 315/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 316/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 317/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 318/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 319/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 320/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 321/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 322/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 323/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 324/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 325/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 326/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 327/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 328/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 329/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 330/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 331/602, 25.0 task/s, elapsed: 13s, ETA:    11s[> ] 332/602, 25.1 task/s, elapsed: 13s, ETA:    11s[> ] 333/602, 25.1 task/s, elapsed: 13s, ETA:    11s[> ] 334/602, 25.1 task/s, elapsed: 13s, ETA:    11s[> ] 335/602, 25.1 task/s, elapsed: 13s, ETA:    11s[> ] 336/602, 25.1 task/s, elapsed: 13s, ETA:    11s[> ] 337/602, 25.1 task/s, elapsed: 13s, ETA:    11s[> ] 338/602, 25.1 task/s, elapsed: 13s, ETA:    11s[> ] 339/602, 25.1 task/s, elapsed: 14s, ETA:    10s[> ] 340/602, 25.1 task/s, elapsed: 14s, ETA:    10s[> ] 341/602, 25.1 task/s, elapsed: 14s, ETA:    10s[> ] 342/602, 25.1 task/s, elapsed: 14s, ETA:    10s[> ] 343/602, 25.1 task/s, elapsed: 14s, ETA:    10s[> ] 344/602, 25.1 task/s, elapsed: 14s, ETA:    10s[> ] 345/602, 25.1 task/s, elapsed: 14s, ETA:    10s[> ] 346/602, 25.1 task/s, elapsed: 14s, ETA:    10s[> ] 347/602, 25.1 task/s, elapsed: 14s, ETA:    10s[> ] 348/602, 25.1 task/s, elapsed: 14s, ETA:    10s[> ] 349/602, 25.1 task/s, elapsed: 14s, ETA:    10s[> ] 350/602, 25.1 task/s, elapsed: 14s, ETA:    10s[> ] 351/602, 25.1 task/s, elapsed: 14s, ETA:    10s[> ] 352/602, 25.1 task/s, elapsed: 14s, ETA:    10s[> ] 353/602, 25.1 task/s, elapsed: 14s, ETA:    10s[> ] 354/602, 25.1 task/s, elapsed: 14s, ETA:    10s[> ] 355/602, 25.2 task/s, elapsed: 14s, ETA:    10s[> ] 356/602, 25.2 task/s, elapsed: 14s, ETA:    10s[> ] 357/602, 25.2 task/s, elapsed: 14s, ETA:    10s[> ] 358/602, 25.2 task/s, elapsed: 14s, ETA:    10s[> ] 359/602, 25.2 task/s, elapsed: 14s, ETA:    10s[> ] 360/602, 25.2 task/s, elapsed: 14s, ETA:    10s[> ] 361/602, 25.2 task/s, elapsed: 14s, ETA:    10s[> ] 362/602, 25.2 task/s, elapsed: 14s, ETA:    10s[> ] 363/602, 25.2 task/s, elapsed: 14s, ETA:     9s[> ] 364/602, 25.2 task/s, elapsed: 14s, ETA:     9s[> ] 365/602, 25.2 task/s, elapsed: 14s, ETA:     9s[> ] 366/602, 25.2 task/s, elapsed: 15s, ETA:     9s[> ] 367/602, 25.2 task/s, elapsed: 15s, ETA:     9s[> ] 368/602, 25.2 task/s, elapsed: 15s, ETA:     9s[> ] 369/602, 25.2 task/s, elapsed: 15s, ETA:     9s[> ] 370/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 371/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 372/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 373/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 374/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 375/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 376/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 377/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 378/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 379/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 380/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 381/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 382/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 383/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 384/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 385/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 386/602, 25.3 task/s, elapsed: 15s, ETA:     9s[> ] 387/602, 25.3 task/s, elapsed: 15s, ETA:     8s[> ] 388/602, 25.3 task/s, elapsed: 15s, ETA:     8s[> ] 389/602, 25.3 task/s, elapsed: 15s, ETA:     8s[> ] 390/602, 25.3 task/s, elapsed: 15s, ETA:     8s[> ] 391/602, 25.3 task/s, elapsed: 15s, ETA:     8s[> ] 392/602, 25.3 task/s, elapsed: 15s, ETA:     8s[> ] 393/602, 25.3 task/s, elapsed: 16s, ETA:     8s[> ] 394/602, 25.3 task/s, elapsed: 16s, ETA:     8s[> ] 395/602, 25.3 task/s, elapsed: 16s, ETA:     8s[> ] 396/602, 25.4 task/s, elapsed: 16s, ETA:     8s[> ] 397/602, 25.4 task/s, elapsed: 16s, ETA:     8s[> ] 398/602, 25.4 task/s, elapsed: 16s, ETA:     8s[> ] 399/602, 25.4 task/s, elapsed: 16s, ETA:     8s[> ] 400/602, 25.4 task/s, elapsed: 16s, ETA:     8s[> ] 401/602, 25.4 task/s, elapsed: 16s, ETA:     8s[> ] 402/602, 25.4 task/s, elapsed: 16s, ETA:     8s[> ] 403/602, 25.4 task/s, elapsed: 16s, ETA:     8s[> ] 404/602, 25.4 task/s, elapsed: 16s, ETA:     8s[> ] 405/602, 25.4 task/s, elapsed: 16s, ETA:     8s[> ] 406/602, 25.4 task/s, elapsed: 16s, ETA:     8s[> ] 407/602, 25.4 task/s, elapsed: 16s, ETA:     8s[> ] 408/602, 25.4 task/s, elapsed: 16s, ETA:     8s[> ] 409/602, 25.4 task/s, elapsed: 16s, ETA:     8s[> ] 410/602, 25.5 task/s, elapsed: 16s, ETA:     8s[> ] 411/602, 25.5 task/s, elapsed: 16s, ETA:     8s[> ] 412/602, 25.5 task/s, elapsed: 16s, ETA:     7s[> ] 413/602, 25.5 task/s, elapsed: 16s, ETA:     7s[> ] 414/602, 25.5 task/s, elapsed: 16s, ETA:     7s[> ] 415/602, 25.5 task/s, elapsed: 16s, ETA:     7s[> ] 416/602, 25.5 task/s, elapsed: 16s, ETA:     7s[> ] 417/602, 25.5 task/s, elapsed: 16s, ETA:     7s[> ] 418/602, 25.5 task/s, elapsed: 16s, ETA:     7s[> ] 419/602, 25.5 task/s, elapsed: 16s, ETA:     7s[> ] 420/602, 25.5 task/s, elapsed: 16s, ETA:     7s[> ] 421/602, 25.5 task/s, elapsed: 17s, ETA:     7s[> ] 422/602, 25.5 task/s, elapsed: 17s, ETA:     7s[> ] 423/602, 25.5 task/s, elapsed: 17s, ETA:     7s[> ] 424/602, 25.5 task/s, elapsed: 17s, ETA:     7s[> ] 425/602, 25.5 task/s, elapsed: 17s, ETA:     7s[> ] 426/602, 25.6 task/s, elapsed: 17s, ETA:     7s[> ] 427/602, 25.6 task/s, elapsed: 17s, ETA:     7s[> ] 428/602, 25.6 task/s, elapsed: 17s, ETA:     7s[> ] 429/602, 25.6 task/s, elapsed: 17s, ETA:     7s[> ] 430/602, 25.6 task/s, elapsed: 17s, ETA:     7s[> ] 431/602, 25.6 task/s, elapsed: 17s, ETA:     7s[> ] 432/602, 25.6 task/s, elapsed: 17s, ETA:     7s[> ] 433/602, 25.6 task/s, elapsed: 17s, ETA:     7s[> ] 434/602, 25.6 task/s, elapsed: 17s, ETA:     7s[> ] 435/602, 25.6 task/s, elapsed: 17s, ETA:     7s[> ] 436/602, 25.6 task/s, elapsed: 17s, ETA:     6s[> ] 437/602, 25.6 task/s, elapsed: 17s, ETA:     6s[> ] 438/602, 25.6 task/s, elapsed: 17s, ETA:     6s[> ] 439/602, 25.7 task/s, elapsed: 17s, ETA:     6s[> ] 440/602, 25.7 task/s, elapsed: 17s, ETA:     6s[> ] 441/602, 25.7 task/s, elapsed: 17s, ETA:     6s[> ] 442/602, 25.7 task/s, elapsed: 17s, ETA:     6s[> ] 443/602, 25.6 task/s, elapsed: 17s, ETA:     6s[> ] 444/602, 25.7 task/s, elapsed: 17s, ETA:     6s[> ] 445/602, 25.7 task/s, elapsed: 17s, ETA:     6s[> ] 446/602, 25.7 task/s, elapsed: 17s, ETA:     6s[> ] 447/602, 25.7 task/s, elapsed: 17s, ETA:     6s[> ] 448/602, 25.7 task/s, elapsed: 17s, ETA:     6s[> ] 449/602, 25.7 task/s, elapsed: 17s, ETA:     6s[> ] 450/602, 25.7 task/s, elapsed: 18s, ETA:     6s[> ] 451/602, 25.7 task/s, elapsed: 18s, ETA:     6s[> ] 452/602, 25.7 task/s, elapsed: 18s, ETA:     6s[> ] 453/602, 25.7 task/s, elapsed: 18s, ETA:     6s[> ] 454/602, 25.7 task/s, elapsed: 18s, ETA:     6s[> ] 455/602, 25.7 task/s, elapsed: 18s, ETA:     6s[> ] 456/602, 25.7 task/s, elapsed: 18s, ETA:     6s[> ] 457/602, 25.7 task/s, elapsed: 18s, ETA:     6s[> ] 458/602, 25.7 task/s, elapsed: 18s, ETA:     6s[> ] 459/602, 25.7 task/s, elapsed: 18s, ETA:     6s[> ] 460/602, 25.7 task/s, elapsed: 18s, ETA:     6s[> ] 461/602, 25.7 task/s, elapsed: 18s, ETA:     5s[> ] 462/602, 25.7 task/s, elapsed: 18s, ETA:     5s[> ] 463/602, 25.7 task/s, elapsed: 18s, ETA:     5s[> ] 464/602, 25.7 task/s, elapsed: 18s, ETA:     5s[> ] 465/602, 25.7 task/s, elapsed: 18s, ETA:     5s[> ] 466/602, 25.7 task/s, elapsed: 18s, ETA:     5s[> ] 467/602, 25.7 task/s, elapsed: 18s, ETA:     5s[> ] 468/602, 25.7 task/s, elapsed: 18s, ETA:     5s[> ] 469/602, 25.7 task/s, elapsed: 18s, ETA:     5s[> ] 470/602, 25.7 task/s, elapsed: 18s, ETA:     5s[> ] 471/602, 25.8 task/s, elapsed: 18s, ETA:     5s[> ] 472/602, 25.8 task/s, elapsed: 18s, ETA:     5s[> ] 473/602, 25.8 task/s, elapsed: 18s, ETA:     5s[> ] 474/602, 25.8 task/s, elapsed: 18s, ETA:     5s[> ] 475/602, 25.8 task/s, elapsed: 18s, ETA:     5s[> ] 476/602, 25.8 task/s, elapsed: 18s, ETA:     5s[> ] 477/602, 25.8 task/s, elapsed: 19s, ETA:     5s[> ] 478/602, 25.8 task/s, elapsed: 19s, ETA:     5s[> ] 479/602, 25.8 task/s, elapsed: 19s, ETA:     5s[> ] 480/602, 25.8 task/s, elapsed: 19s, ETA:     5s[> ] 481/602, 25.8 task/s, elapsed: 19s, ETA:     5s[> ] 482/602, 25.8 task/s, elapsed: 19s, ETA:     5s[> ] 483/602, 25.8 task/s, elapsed: 19s, ETA:     5s[> ] 484/602, 25.8 task/s, elapsed: 19s, ETA:     5s[> ] 485/602, 25.8 task/s, elapsed: 19s, ETA:     5s[> ] 486/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 487/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 488/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 489/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 490/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 491/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 492/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 493/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 494/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 495/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 496/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 497/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 498/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 499/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 500/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 501/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 502/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 503/602, 25.8 task/s, elapsed: 19s, ETA:     4s[> ] 504/602, 25.8 task/s, elapsed: 20s, ETA:     4s[> ] 505/602, 25.8 task/s, elapsed: 20s, ETA:     4s[> ] 506/602, 25.8 task/s, elapsed: 20s, ETA:     4s[> ] 507/602, 25.8 task/s, elapsed: 20s, ETA:     4s[> ] 508/602, 25.8 task/s, elapsed: 20s, ETA:     4s[> ] 509/602, 25.8 task/s, elapsed: 20s, ETA:     4s[> ] 510/602, 25.8 task/s, elapsed: 20s, ETA:     4s[> ] 511/602, 25.8 task/s, elapsed: 20s, ETA:     4s[> ] 512/602, 25.8 task/s, elapsed: 20s, ETA:     3s[> ] 513/602, 25.8 task/s, elapsed: 20s, ETA:     3s[> ] 514/602, 25.8 task/s, elapsed: 20s, ETA:     3s[> ] 515/602, 25.8 task/s, elapsed: 20s, ETA:     3s[> ] 516/602, 25.8 task/s, elapsed: 20s, ETA:     3s[> ] 517/602, 25.8 task/s, elapsed: 20s, ETA:     3s[> ] 518/602, 25.8 task/s, elapsed: 20s, ETA:     3s[> ] 519/602, 25.8 task/s, elapsed: 20s, ETA:     3s[> ] 520/602, 25.8 task/s, elapsed: 20s, ETA:     3s[> ] 521/602, 25.8 task/s, elapsed: 20s, ETA:     3s[> ] 522/602, 25.8 task/s, elapsed: 20s, ETA:     3s[> ] 523/602, 25.8 task/s, elapsed: 20s, ETA:     3s[> ] 524/602, 25.8 task/s, elapsed: 20s, ETA:     3s[> ] 525/602, 25.8 task/s, elapsed: 20s, ETA:     3s[> ] 526/602, 25.8 task/s, elapsed: 20s, ETA:     3s[> ] 527/602, 25.8 task/s, elapsed: 20s, ETA:     3s[> ] 528/602, 25.9 task/s, elapsed: 20s, ETA:     3s[> ] 529/602, 25.9 task/s, elapsed: 20s, ETA:     3s[> ] 530/602, 25.9 task/s, elapsed: 20s, ETA:     3s[> ] 531/602, 25.9 task/s, elapsed: 21s, ETA:     3s[> ] 532/602, 25.9 task/s, elapsed: 21s, ETA:     3s[> ] 533/602, 25.9 task/s, elapsed: 21s, ETA:     3s[> ] 534/602, 25.9 task/s, elapsed: 21s, ETA:     3s[> ] 535/602, 25.9 task/s, elapsed: 21s, ETA:     3s[> ] 536/602, 25.9 task/s, elapsed: 21s, ETA:     3s[> ] 537/602, 25.9 task/s, elapsed: 21s, ETA:     3s[> ] 538/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 539/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 540/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 541/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 542/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 543/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 544/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 545/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 546/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 547/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 548/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 549/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 550/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 551/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 552/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 553/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 554/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 555/602, 25.9 task/s, elapsed: 21s, ETA:     2s[> ] 556/602, 26.0 task/s, elapsed: 21s, ETA:     2s[> ] 557/602, 26.0 task/s, elapsed: 21s, ETA:     2s[> ] 558/602, 26.0 task/s, elapsed: 21s, ETA:     2s[> ] 559/602, 26.0 task/s, elapsed: 22s, ETA:     2s[> ] 560/602, 26.0 task/s, elapsed: 22s, ETA:     2s[> ] 561/602, 26.0 task/s, elapsed: 22s, ETA:     2s[> ] 562/602, 26.0 task/s, elapsed: 22s, ETA:     2s[> ] 563/602, 26.0 task/s, elapsed: 22s, ETA:     2s[> ] 564/602, 26.0 task/s, elapsed: 22s, ETA:     1s[> ] 565/602, 26.0 task/s, elapsed: 22s, ETA:     1s[> ] 566/602, 26.0 task/s, elapsed: 22s, ETA:     1s[> ] 567/602, 26.0 task/s, elapsed: 22s, ETA:     1s[> ] 568/602, 26.0 task/s, elapsed: 22s, ETA:     1s[> ] 569/602, 26.0 task/s, elapsed: 22s, ETA:     1s[> ] 570/602, 26.0 task/s, elapsed: 22s, ETA:     1s[> ] 571/602, 26.0 task/s, elapsed: 22s, ETA:     1s[> ] 572/602, 26.0 task/s, elapsed: 22s, ETA:     1s[> ] 573/602, 26.0 task/s, elapsed: 22s, ETA:     1s[> ] 574/602, 26.0 task/s, elapsed: 22s, ETA:     1s[> ] 575/602, 26.0 task/s, elapsed: 22s, ETA:     1s[> ] 576/602, 25.6 task/s, elapsed: 23s, ETA:     1s[> ] 577/602, 25.6 task/s, elapsed: 23s, ETA:     1s[> ] 578/602, 25.6 task/s, elapsed: 23s, ETA:     1s[> ] 579/602, 25.6 task/s, elapsed: 23s, ETA:     1s[> ] 580/602, 25.6 task/s, elapsed: 23s, ETA:     1s[> ] 581/602, 25.6 task/s, elapsed: 23s, ETA:     1s[> ] 582/602, 25.6 task/s, elapsed: 23s, ETA:     1s[> ] 583/602, 25.6 task/s, elapsed: 23s, ETA:     1s[> ] 584/602, 25.6 task/s, elapsed: 23s, ETA:     1s[> ] 585/602, 25.6 task/s, elapsed: 23s, ETA:     1s[> ] 586/602, 25.6 task/s, elapsed: 23s, ETA:     1s[> ] 587/602, 25.6 task/s, elapsed: 23s, ETA:     1s[> ] 588/602, 25.6 task/s, elapsed: 23s, ETA:     1s[> ] 589/602, 25.6 task/s, elapsed: 23s, ETA:     1s[> ] 590/602, 25.6 task/s, elapsed: 23s, ETA:     0s[> ] 591/602, 25.6 task/s, elapsed: 23s, ETA:     0s[> ] 592/602, 25.6 task/s, elapsed: 23s, ETA:     0s[> ] 593/602, 25.6 task/s, elapsed: 23s, ETA:     0s[> ] 594/602, 25.6 task/s, elapsed: 23s, ETA:     0s[> ] 595/602, 25.5 task/s, elapsed: 23s, ETA:     0s[> ] 596/602, 25.5 task/s, elapsed: 23s, ETA:     0s[> ] 597/602, 25.5 task/s, elapsed: 23s, ETA:     0s[> ] 598/602, 25.5 task/s, elapsed: 23s, ETA:     0s[> ] 599/602, 25.5 task/s, elapsed: 23s, ETA:     0s[> ] 600/602, 25.5 task/s, elapsed: 23s, ETA:     0s[> ] 601/602, 25.5 task/s, elapsed: 24s, ETA:     0s[>>] 602/602, 25.5 task/s, elapsed: 24s, ETA:     0s
-Results writes to /tmp/tmpynqgrmm4/results/results_nusc.json
-mAP: 0.0000
-mATE: 1.0000
-mASE: 1.0000
-mAOE: 1.0000
-mAVE: 1.0000
-mAAE: 1.0000
-NDS: 0.0000
-Eval time: 13.5s
-
-Per-class results:
-Object Class        	AP    	ATE   	ASE   	AOE   	AVE   	AAE   
-car                 	0.000 	1.000 	1.000 	1.000 	1.000 	1.000 
-truck               	0.000 	1.000 	1.000 	1.000 	1.000 	1.000 
-bus                 	0.000 	1.000 	1.000 	1.000 	1.000 	1.000 
-trailer             	0.000 	1.000 	1.000 	1.000 	1.000 	1.000 
-construction_vehicle	0.000 	1.000 	1.000 	1.000 	1.000 	1.000 
-pedestrian          	0.000 	1.000 	1.000 	1.000 	1.000 	1.000 
-motorcycle          	0.000 	1.000 	1.000 	1.000 	1.000 	1.000 
-bicycle             	0.000 	1.000 	1.000 	1.000 	1.000 	1.000 
-traffic_cone        	0.000 	1.000 	1.000 	nan   	nan   	nan   
-barrier             	0.000 	1.000 	1.000 	1.000 	nan   	nan   
-[                                                  ] 0/602, elapsed: 0s, ETA:[  ] 1/602, 0.2 task/s, elapsed: 4s, ETA:  2560s[  ] 2/602, 0.5 task/s, elapsed: 4s, ETA:  1278s[  ] 3/602, 0.7 task/s, elapsed: 4s, ETA:   898s[  ] 4/602, 0.9 task/s, elapsed: 4s, ETA:   672s[  ] 5/602, 1.1 task/s, elapsed: 5s, ETA:   563s[  ] 6/602, 1.3 task/s, elapsed: 5s, ETA:   468s[  ] 7/602, 1.4 task/s, elapsed: 5s, ETA:   419s[  ] 8/602, 1.6 task/s, elapsed: 5s, ETA:   366s[  ] 9/602, 1.7 task/s, elapsed: 5s, ETA:   339s[  ] 10/602, 1.9 task/s, elapsed: 5s, ETA:   305s[  ] 11/602, 2.0 task/s, elapsed: 5s, ETA:   289s[  ] 12/602, 2.2 task/s, elapsed: 5s, ETA:   264s[  ] 13/602, 2.3 task/s, elapsed: 6s, ETA:   253s[  ] 14/602, 2.5 task/s, elapsed: 6s, ETA:   235s[  ] 15/602, 2.6 task/s, elapsed: 6s, ETA:   227s[  ] 16/602, 2.8 task/s, elapsed: 6s, ETA:   213s[  ] 17/602, 2.8 task/s, elapsed: 6s, ETA:   207s[  ] 18/602, 3.0 task/s, elapsed: 6s, ETA:   195s[  ] 19/602, 3.0 task/s, elapsed: 6s, ETA:   192s[  ] 20/602, 3.2 task/s, elapsed: 6s, ETA:   182s[  ] 21/602, 3.2 task/s, elapsed: 6s, ETA:   179s[  ] 22/602, 3.4 task/s, elapsed: 6s, ETA:   170s[  ] 23/602, 3.4 task/s, elapsed: 7s, ETA:   168s[  ] 24/602, 3.6 task/s, elapsed: 7s, ETA:   161s[  ] 25/602, 3.6 task/s, elapsed: 7s, ETA:   159s[  ] 26/602, 3.8 task/s, elapsed: 7s, ETA:   153s[  ] 27/602, 3.8 task/s, elapsed: 7s, ETA:   151s[  ] 28/602, 3.9 task/s, elapsed: 7s, ETA:   146s[  ] 29/602, 4.0 task/s, elapsed: 7s, ETA:   145s[  ] 30/602, 4.1 task/s, elapsed: 7s, ETA:   140s[  ] 31/602, 4.1 task/s, elapsed: 8s, ETA:   139s[  ] 32/602, 4.3 task/s, elapsed: 8s, ETA:   134s[  ] 33/602, 4.3 task/s, elapsed: 8s, ETA:   133s[  ] 34/602, 4.4 task/s, elapsed: 8s, ETA:   129s[  ] 35/602, 4.4 task/s, elapsed: 8s, ETA:   129s[  ] 36/602, 4.5 task/s, elapsed: 8s, ETA:   125s[  ] 37/602, 4.5 task/s, elapsed: 8s, ETA:   125s[  ] 38/602, 4.6 task/s, elapsed: 8s, ETA:   122snight tensor([[1.]], device='cuda:1')
-Sample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-[  ] 39/602, 4.6 task/s, elapsed: 8s, ETA:   121s[  ] 40/602, 4.8 task/s, elapsed: 8s, ETA:   118s[  ] 41/602, 4.8 task/s, elapsed: 9s, ETA:   118s[  ] 42/602, 4.9 task/s, elapsed: 9s, ETA:   115s[  ] 43/602, 4.9 task/s, elapsed: 9s, ETA:   115s[  ] 44/602, 5.0 task/s, elapsed: 9s, ETA:   112s[  ] 45/602, 5.0 task/s, elapsed: 9s, ETA:   112s[  ] 46/602, 5.1 task/s, elapsed: 9s, ETA:   110s[  ] 47/602, 5.0 task/s, elapsed: 9s, ETA:   110s[  ] 48/602, 5.2 task/s, elapsed: 9s, ETA:   107s[  ] 49/602, 5.1 task/s, elapsed: 10s, ETA:   108s[  ] 50/602, 5.2 task/s, elapsed: 10s, ETA:   105s[  ] 51/602, 5.2 task/s, elapsed: 10s, ETA:   106s[  ] 52/602, 5.3 task/s, elapsed: 10s, ETA:   103snight tensor([[1.]], device='cuda:0')
-Sample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-[  ] 53/602, 5.3 task/s, elapsed: 10s, ETA:   104s[  ] 54/602, 5.4 task/s, elapsed: 10s, ETA:   101s[  ] 55/602, 5.4 task/s, elapsed: 10s, ETA:   102s[  ] 56/602, 5.5 task/s, elapsed: 10s, ETA:   100s[  ] 57/602, 5.5 task/s, elapsed: 10s, ETA:   100s[  ] 58/602, 5.5 task/s, elapsed: 10s, ETA:    98s[  ] 59/602, 5.5 task/s, elapsed: 11s, ETA:    98s[  ] 60/602, 5.6 task/s, elapsed: 11s, ETA:    96s[  ] 61/602, 5.6 task/s, elapsed: 11s, ETA:    97s[  ] 62/602, 5.7 task/s, elapsed: 11s, ETA:    95s[  ] 63/602, 5.7 task/s, elapsed: 11s, ETA:    95s[  ] 64/602, 5.8 task/s, elapsed: 11s, ETA:    94s[  ] 65/602, 5.7 task/s, elapsed: 11s, ETA:    94s[  ] 66/602, 5.8 task/s, elapsed: 11s, ETA:    92s[  ] 67/602, 5.8 task/s, elapsed: 12s, ETA:    92s[  ] 68/602, 5.9 task/s, elapsed: 12s, ETA:    91s[  ] 69/602, 5.9 task/s, elapsed: 12s, ETA:    91s[  ] 70/602, 5.9 task/s, elapsed: 12s, ETA:    89s[  ] 71/602, 5.9 task/s, elapsed: 12s, ETA:    90s[  ] 72/602, 6.0 task/s, elapsed: 12s, ETA:    88s[  ] 73/602, 6.0 task/s, elapsed: 12s, ETA:    89s[  ] 74/602, 6.1 task/s, elapsed: 12s, ETA:    87s[  ] 75/602, 6.0 task/s, elapsed: 12s, ETA:    88s[  ] 76/602, 6.1 task/s, elapsed: 12s, ETA:    86s[  ] 77/602, 6.1 task/s, elapsed: 13s, ETA:    86s[  ] 78/602, 6.1 task/s, elapsed: 13s, ETA:    85s[  ] 79/602, 6.1 task/s, elapsed: 13s, ETA:    85s[  ] 80/602, 6.2 task/s, elapsed: 13s, ETA:    84s[  ] 81/602, 6.2 task/s, elapsed: 13s, ETA:    84s[  ] 82/602, 6.3 task/s, elapsed: 13s, ETA:    83s[  ] 83/602, 6.2 task/s, elapsed: 13s, ETA:    83s[  ] 84/602, 6.3 task/s, elapsed: 13s, ETA:    82s[  ] 85/602, 6.3 task/s, elapsed: 14s, ETA:    83s[  ] 86/602, 6.3 task/s, elapsed: 14s, ETA:    81s[  ] 87/602, 6.3 task/s, elapsed: 14s, ETA:    82s[  ] 88/602, 6.4 task/s, elapsed: 14s, ETA:    81s[  ] 89/602, 6.4 task/s, elapsed: 14s, ETA:    81s[  ] 90/602, 6.4 task/s, elapsed: 14s, ETA:    80s[  ] 91/602, 6.4 task/s, elapsed: 14s, ETA:    80s[  ] 92/602, 6.5 task/s, elapsed: 14s, ETA:    79s[  ] 93/602, 6.4 task/s, elapsed: 14s, ETA:    79s[  ] 94/602, 6.5 task/s, elapsed: 14s, ETA:    78s[  ] 95/602, 6.5 task/s, elapsed: 15s, ETA:    78s[  ] 96/602, 6.5 task/s, elapsed: 15s, ETA:    77s[  ] 97/602, 6.5 task/s, elapsed: 15s, ETA:    78s[  ] 98/602, 6.6 task/s, elapsed: 15s, ETA:    77s[  ] 99/602, 6.5 task/s, elapsed: 15s, ETA:    77s[  ] 100/602, 6.6 task/s, elapsed: 15s, ETA:    76s[  ] 101/602, 6.6 task/s, elapsed: 15s, ETA:    76s[  ] 102/602, 6.6 task/s, elapsed: 15s, ETA:    75s[  ] 103/602, 6.6 task/s, elapsed: 16s, ETA:    75s[  ] 104/602, 6.7 task/s, elapsed: 16s, ETA:    75s[  ] 105/602, 6.6 task/s, elapsed: 16s, ETA:    75s[  ] 106/602, 6.7 task/s, elapsed: 16s, ETA:    74s[  ] 107/602, 6.7 task/s, elapsed: 16s, ETA:    74s[  ] 108/602, 6.7 task/s, elapsed: 16s, ETA:    73s[  ] 109/602, 6.7 task/s, elapsed: 16s, ETA:    73s[  ] 110/602, 6.8 task/s, elapsed: 16s, ETA:    73s[  ] 111/602, 6.7 task/s, elapsed: 16s, ETA:    73s[  ] 112/602, 6.8 task/s, elapsed: 16s, ETA:    72s[  ] 113/602, 6.8 task/s, elapsed: 17s, ETA:    72s[  ] 114/602, 6.8 task/s, elapsed: 17s, ETA:    71s[  ] 115/602, 6.8 task/s, elapsed: 17s, ETA:    72s[  ] 116/602, 6.9 task/s, elapsed: 17s, ETA:    71s[  ] 117/602, 6.8 task/s, elapsed: 17s, ETA:    71s[  ] 118/602, 6.9 task/s, elapsed: 17s, ETA:    70s[  ] 119/602, 6.9 task/s, elapsed: 17s, ETA:    70s[  ] 120/602, 6.9 task/s, elapsed: 17s, ETA:    70s[  ] 121/602, 6.9 task/s, elapsed: 18s, ETA:    70s[  ] 122/602, 6.9 task/s, elapsed: 18s, ETA:    69s[  ] 123/602, 6.9 task/s, elapsed: 18s, ETA:    69s[  ] 124/602, 7.0 task/s, elapsed: 18s, ETA:    69s[  ] 125/602, 6.9 task/s, elapsed: 18s, ETA:    69s[  ] 126/602, 7.0 task/s, elapsed: 18s, ETA:    68s[  ] 127/602, 7.0 task/s, elapsed: 18s, ETA:    68s[  ] 128/602, 7.0 task/s, elapsed: 18s, ETA:    68s[  ] 129/602, 7.0 task/s, elapsed: 18s, ETA:    68s[  ] 130/602, 7.0 task/s, elapsed: 18s, ETA:    67s[  ] 131/602, 7.0 task/s, elapsed: 19s, ETA:    67s[  ] 132/602, 7.1 task/s, elapsed: 19s, ETA:    67s[  ] 133/602, 7.0 task/s, elapsed: 19s, ETA:    67s[  ] 134/602, 7.1 task/s, elapsed: 19s, ETA:    66s[  ] 135/602, 7.1 task/s, elapsed: 19s, ETA:    66s[  ] 136/602, 7.1 task/s, elapsed: 19s, ETA:    66s[  ] 137/602, 7.1 task/s, elapsed: 19s, ETA:    66s[  ] 138/602, 7.1 task/s, elapsed: 19s, ETA:    65s[  ] 139/602, 7.1 task/s, elapsed: 20s, ETA:    65s[  ] 140/602, 7.2 task/s, elapsed: 20s, ETA:    65s[  ] 141/602, 7.1 task/s, elapsed: 20s, ETA:    65s[  ] 142/602, 7.2 task/s, elapsed: 20s, ETA:    64s[  ] 143/602, 7.1 task/s, elapsed: 20s, ETA:    64s[  ] 144/602, 7.2 task/s, elapsed: 20s, ETA:    64s[  ] 145/602, 7.2 task/s, elapsed: 20s, ETA:    64s[  ] 146/602, 7.2 task/s, elapsed: 20s, ETA:    63s[  ] 147/602, 7.2 task/s, elapsed: 20s, ETA:    63s[  ] 148/602, 7.2 task/s, elapsed: 20s, ETA:    63s[  ] 149/602, 7.2 task/s, elapsed: 21s, ETA:    63s[  ] 150/602, 7.3 task/s, elapsed: 21s, ETA:    62s[  ] 151/602, 7.2 task/s, elapsed: 21s, ETA:    62s[  ] 152/602, 7.3 task/s, elapsed: 21s, ETA:    62s[  ] 153/602, 7.2 task/s, elapsed: 21s, ETA:    62s[  ] 154/602, 7.3 task/s, elapsed: 21s, ETA:    61s[  ] 155/602, 7.3 task/s, elapsed: 21s, ETA:    62s[  ] 156/602, 7.3 task/s, elapsed: 21s, ETA:    61s[  ] 157/602, 7.3 task/s, elapsed: 22s, ETA:    61s[  ] 158/602, 7.3 task/s, elapsed: 22s, ETA:    61s[  ] 159/602, 7.3 task/s, elapsed: 22s, ETA:    61s[  ] 160/602, 7.3 task/s, elapsed: 22s, ETA:    60s[  ] 161/602, 7.3 task/s, elapsed: 22s, ETA:    60s[  ] 162/602, 7.4 task/s, elapsed: 22s, ETA:    60s[  ] 163/602, 7.3 task/s, elapsed: 22s, ETA:    60s[  ] 164/602, 7.4 task/s, elapsed: 22s, ETA:    59s[  ] 165/602, 7.4 task/s, elapsed: 22s, ETA:    59s[  ] 166/602, 7.4 task/s, elapsed: 22s, ETA:    59s[  ] 167/602, 7.4 task/s, elapsed: 23s, ETA:    59s[  ] 168/602, 7.4 task/s, elapsed: 23s, ETA:    59s[  ] 169/602, 7.4 task/s, elapsed: 23s, ETA:    59s[  ] 170/602, 7.4 task/s, elapsed: 23s, ETA:    58s[  ] 171/602, 7.4 task/s, elapsed: 23s, ETA:    58s[  ] 172/602, 7.4 task/s, elapsed: 23s, ETA:    58s[  ] 173/602, 7.4 task/s, elapsed: 23s, ETA:    58s[  ] 174/602, 7.5 task/s, elapsed: 23s, ETA:    57s[  ] 175/602, 7.4 task/s, elapsed: 24s, ETA:    57s[  ] 176/602, 7.5 task/s, elapsed: 24s, ETA:    57s[  ] 177/602, 7.4 task/s, elapsed: 24s, ETA:    57s[  ] 178/602, 7.5 task/s, elapsed: 24s, ETA:    57s[  ] 179/602, 7.5 task/s, elapsed: 24s, ETA:    57s[  ] 180/602, 7.5 task/s, elapsed: 24s, ETA:    56s[  ] 181/602, 7.5 task/s, elapsed: 24s, ETA:    56s[  ] 182/602, 7.5 task/s, elapsed: 24s, ETA:    56s[  ] 183/602, 7.5 task/s, elapsed: 24s, ETA:    56s[  ] 184/602, 7.5 task/s, elapsed: 24s, ETA:    55s[  ] 185/602, 7.5 task/s, elapsed: 25s, ETA:    56s[  ] 186/602, 7.6 task/s, elapsed: 25s, ETA:    55s[  ] 187/602, 7.5 task/s, elapsed: 25s, ETA:    55s[  ] 188/602, 7.6 task/s, elapsed: 25s, ETA:    55s[  ] 189/602, 7.5 task/s, elapsed: 25s, ETA:    55s[  ] 190/602, 7.6 task/s, elapsed: 25s, ETA:    54s[  ] 191/602, 7.6 task/s, elapsed: 25s, ETA:    54s[  ] 192/602, 7.6 task/s, elapsed: 25s, ETA:    54s[  ] 193/602, 7.6 task/s, elapsed: 26s, ETA:    54s[  ] 194/602, 7.6 task/s, elapsed: 26s, ETA:    54s[  ] 195/602, 7.6 task/s, elapsed: 26s, ETA:    54s[  ] 196/602, 7.6 task/s, elapsed: 26s, ETA:    53s[  ] 197/602, 7.6 task/s, elapsed: 26s, ETA:    53s[  ] 198/602, 7.6 task/s, elapsed: 26s, ETA:    53s[  ] 199/602, 7.6 task/s, elapsed: 26s, ETA:    53s[  ] 200/602, 7.6 task/s, elapsed: 26s, ETA:    53s[  ] 201/602, 7.6 task/s, elapsed: 26s, ETA:    53s[  ] 202/602, 7.7 task/s, elapsed: 26s, ETA:    52s[  ] 203/602, 7.6 task/s, elapsed: 27s, ETA:    52s[  ] 204/602, 7.7 task/s, elapsed: 27s, ETA:    52s[  ] 205/602, 7.6 task/s, elapsed: 27s, ETA:    52s[  ] 206/602, 7.7 task/s, elapsed: 27s, ETA:    52s[  ] 207/602, 7.7 task/s, elapsed: 27s, ETA:    52s[  ] 208/602, 7.7 task/s, elapsed: 27s, ETA:    51s[  ] 209/602, 7.7 task/s, elapsed: 27s, ETA:    51s[  ] 210/602, 7.7 task/s, elapsed: 27s, ETA:    51s[  ] 211/602, 7.7 task/s, elapsed: 27s, ETA:    51s[  ] 212/602, 7.7 task/s, elapsed: 27s, ETA:    51s[  ] 213/602, 7.7 task/s, elapsed: 28s, ETA:    51s[  ] 214/602, 7.7 task/s, elapsed: 28s, ETA:    50s[  ] 215/602, 7.7 task/s, elapsed: 28s, ETA:    50s[  ] 216/602, 7.7 task/s, elapsed: 28s, ETA:    50s[  ] 217/602, 7.7 task/s, elapsed: 28s, ETA:    50s[  ] 218/602, 7.7 task/s, elapsed: 28s, ETA:    50s[  ] 219/602, 7.7 task/s, elapsed: 28s, ETA:    50s[  ] 220/602, 7.8 task/s, elapsed: 28s, ETA:    49s[  ] 221/602, 7.7 task/s, elapsed: 29s, ETA:    49s[  ] 222/602, 7.8 task/s, elapsed: 29s, ETA:    49s[  ] 223/602, 7.8 task/s, elapsed: 29s, ETA:    49s[  ] 224/602, 7.8 task/s, elapsed: 29s, ETA:    49s[  ] 225/602, 7.8 task/s, elapsed: 29s, ETA:    49s[  ] 226/602, 7.8 task/s, elapsed: 29s, ETA:    48s[  ] 227/602, 7.8 task/s, elapsed: 29s, ETA:    48s[  ] 228/602, 7.8 task/s, elapsed: 29s, ETA:    48s[  ] 229/602, 7.8 task/s, elapsed: 29s, ETA:    48s[  ] 230/602, 7.8 task/s, elapsed: 29s, ETA:    48s[  ] 231/602, 7.8 task/s, elapsed: 30s, ETA:    48s[  ] 232/602, 7.8 task/s, elapsed: 30s, ETA:    47s[  ] 233/602, 7.8 task/s, elapsed: 30s, ETA:    47s[  ] 234/602, 7.8 task/s, elapsed: 30s, ETA:    47s[  ] 235/602, 7.8 task/s, elapsed: 30s, ETA:    47s[  ] 236/602, 7.8 task/s, elapsed: 30s, ETA:    47s[  ] 237/602, 7.8 task/s, elapsed: 30s, ETA:    47s[  ] 238/602, 7.9 task/s, elapsed: 30s, ETA:    46snight tensor([[1.]], device='cuda:1')
-Sample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-[  ] 239/602, 7.8 task/s, elapsed: 31s, ETA:    46s[  ] 240/602, 7.9 task/s, elapsed: 31s, ETA:    46s[  ] 241/602, 7.8 task/s, elapsed: 31s, ETA:    46s[  ] 242/602, 7.9 task/s, elapsed: 31s, ETA:    46s[  ] 243/602, 7.8 task/s, elapsed: 31s, ETA:    46s[  ] 244/602, 7.9 task/s, elapsed: 31s, ETA:    45s[  ] 245/602, 7.8 task/s, elapsed: 31s, ETA:    46s[  ] 246/602, 7.9 task/s, elapsed: 31s, ETA:    45s[  ] 247/602, 7.8 task/s, elapsed: 31s, ETA:    45s[  ] 248/602, 7.9 task/s, elapsed: 31s, ETA:    45s[  ] 249/602, 7.9 task/s, elapsed: 32s, ETA:    45s[  ] 250/602, 7.9 task/s, elapsed: 32s, ETA:    45s[  ] 251/602, 7.9 task/s, elapsed: 32s, ETA:    45s[  ] 252/602, 7.9 task/s, elapsed: 32s, ETA:    44snight tensor([[1.]], device='cuda:0')
-Sample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-[  ] 253/602, 7.9 task/s, elapsed: 32s, ETA:    44s[  ] 254/602, 7.9 task/s, elapsed: 32s, ETA:    44s[  ] 255/602, 7.9 task/s, elapsed: 32s, ETA:    44s[  ] 256/602, 7.9 task/s, elapsed: 32s, ETA:    44s[  ] 257/602, 7.9 task/s, elapsed: 33s, ETA:    44s[  ] 258/602, 7.9 task/s, elapsed: 33s, ETA:    44snight tensor([[1.]], device='cuda:1')
-Sample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-[  ] 259/602, 7.9 task/s, elapsed: 33s, ETA:    44s[  ] 260/602, 7.9 task/s, elapsed: 33s, ETA:    43s[  ] 261/602, 7.9 task/s, elapsed: 33s, ETA:    43s[  ] 262/602, 7.9 task/s, elapsed: 33s, ETA:    43s[  ] 263/602, 7.9 task/s, elapsed: 33s, ETA:    43s[  ] 264/602, 7.9 task/s, elapsed: 33s, ETA:    43s[  ] 265/602, 7.9 task/s, elapsed: 34s, ETA:    43s[  ] 266/602, 7.9 task/s, elapsed: 34s, ETA:    42s[  ] 267/602, 7.9 task/s, elapsed: 34s, ETA:    42s[  ] 268/602, 7.9 task/s, elapsed: 34s, ETA:    42s[  ] 269/602, 7.9 task/s, elapsed: 34s, ETA:    42s[  ] 270/602, 7.9 task/s, elapsed: 34s, ETA:    42s[  ] 271/602, 7.9 task/s, elapsed: 34s, ETA:    42s[  ] 272/602, 7.9 task/s, elapsed: 34s, ETA:    42snight tensor([[1.]], device='cuda:0')
-Sample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-[  ] 273/602, 7.9 task/s, elapsed: 34s, ETA:    42s[  ] 274/602, 8.0 task/s, elapsed: 34s, ETA:    41s[  ] 275/602, 7.9 task/s, elapsed: 35s, ETA:    41s[  ] 276/602, 8.0 task/s, elapsed: 35s, ETA:    41s[  ] 277/602, 7.9 task/s, elapsed: 35s, ETA:    41s[  ] 278/602, 8.0 task/s, elapsed: 35s, ETA:    41s[  ] 279/602, 7.9 task/s, elapsed: 35s, ETA:    41s[  ] 280/602, 8.0 task/s, elapsed: 35s, ETA:    40s[  ] 281/602, 7.9 task/s, elapsed: 35s, ETA:    40s[  ] 282/602, 8.0 task/s, elapsed: 35s, ETA:    40s[  ] 283/602, 7.9 task/s, elapsed: 36s, ETA:    40s[  ] 284/602, 8.0 task/s, elapsed: 36s, ETA:    40s[  ] 285/602, 8.0 task/s, elapsed: 36s, ETA:    40s[  ] 286/602, 8.0 task/s, elapsed: 36s, ETA:    40s[  ] 287/602, 8.0 task/s, elapsed: 36s, ETA:    40s[  ] 288/602, 8.0 task/s, elapsed: 36s, ETA:    39s[  ] 289/602, 8.0 task/s, elapsed: 36s, ETA:    39s[  ] 290/602, 8.0 task/s, elapsed: 36s, ETA:    39s[  ] 291/602, 8.0 task/s, elapsed: 37s, ETA:    39s[  ] 292/602, 8.0 task/s, elapsed: 37s, ETA:    39s[  ] 293/602, 8.0 task/s, elapsed: 37s, ETA:    39s[  ] 294/602, 8.0 task/s, elapsed: 37s, ETA:    39s[  ] 295/602, 8.0 task/s, elapsed: 37s, ETA:    38s[  ] 296/602, 8.0 task/s, elapsed: 37s, ETA:    38s[  ] 297/602, 8.0 task/s, elapsed: 37s, ETA:    38s[  ] 298/602, 8.0 task/s, elapsed: 37s, ETA:    38s[  ] 299/602, 8.0 task/s, elapsed: 37s, ETA:    38s[  ] 300/602, 8.0 task/s, elapsed: 37s, ETA:    38s[> ] 301/602, 8.0 task/s, elapsed: 38s, ETA:    38s[> ] 302/602, 8.0 task/s, elapsed: 38s, ETA:    37s[> ] 303/602, 8.0 task/s, elapsed: 38s, ETA:    37s[> ] 304/602, 8.0 task/s, elapsed: 38s, ETA:    37s[> ] 305/602, 8.0 task/s, elapsed: 38s, ETA:    37s[> ] 306/602, 8.0 task/s, elapsed: 38s, ETA:    37s[> ] 307/602, 8.0 task/s, elapsed: 38s, ETA:    37s[> ] 308/602, 8.0 task/s, elapsed: 38s, ETA:    37s[> ] 309/602, 8.0 task/s, elapsed: 39s, ETA:    37s[> ] 310/602, 8.0 task/s, elapsed: 39s, ETA:    36s[> ] 311/602, 8.0 task/s, elapsed: 39s, ETA:    36s[> ] 312/602, 8.0 task/s, elapsed: 39s, ETA:    36s[> ] 313/602, 8.0 task/s, elapsed: 39s, ETA:    36s[> ] 314/602, 8.1 task/s, elapsed: 39s, ETA:    36s[> ] 315/602, 8.0 task/s, elapsed: 39s, ETA:    36s[> ] 316/602, 8.1 task/s, elapsed: 39s, ETA:    35snight tensor([[1.]], device='cuda:1')
-Sample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-[> ] 317/602, 8.0 task/s, elapsed: 39s, ETA:    35s[> ] 318/602, 8.1 task/s, elapsed: 39s, ETA:    35s[> ] 319/602, 8.0 task/s, elapsed: 40s, ETA:    35s[> ] 320/602, 8.1 task/s, elapsed: 40s, ETA:    35s[> ] 321/602, 8.1 task/s, elapsed: 40s, ETA:    35s[> ] 322/602, 8.1 task/s, elapsed: 40s, ETA:    35s[> ] 323/602, 8.1 task/s, elapsed: 40s, ETA:    35s[> ] 324/602, 8.1 task/s, elapsed: 40s, ETA:    34s[> ] 325/602, 8.1 task/s, elapsed: 40s, ETA:    34s[> ] 326/602, 8.1 task/s, elapsed: 40s, ETA:    34s[> ] 327/602, 8.1 task/s, elapsed: 41s, ETA:    34s[> ] 328/602, 8.1 task/s, elapsed: 41s, ETA:    34s[> ] 329/602, 8.1 task/s, elapsed: 41s, ETA:    34s[> ] 330/602, 8.1 task/s, elapsed: 41s, ETA:    34s[> ] 331/602, 8.1 task/s, elapsed: 41s, ETA:    34s[> ] 332/602, 8.1 task/s, elapsed: 41s, ETA:    33snight tensor([[1.]], device='cuda:0')
-Sample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-[> ] 333/602, 8.1 task/s, elapsed: 41s, ETA:    33s[> ] 334/602, 8.1 task/s, elapsed: 41s, ETA:    33s[> ] 335/602, 8.1 task/s, elapsed: 41s, ETA:    33s[> ] 336/602, 8.1 task/s, elapsed: 41s, ETA:    33s[> ] 337/602, 8.1 task/s, elapsed: 42s, ETA:    33s[> ] 338/602, 8.1 task/s, elapsed: 42s, ETA:    33snight tensor([[1.]], device='cuda:1')
-Sample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-[> ] 339/602, 8.1 task/s, elapsed: 42s, ETA:    32s[> ] 340/602, 8.1 task/s, elapsed: 42s, ETA:    32s[> ] 341/602, 8.1 task/s, elapsed: 42s, ETA:    32s[> ] 342/602, 8.1 task/s, elapsed: 42s, ETA:    32s[> ] 343/602, 8.1 task/s, elapsed: 42s, ETA:    32s[> ] 344/602, 8.1 task/s, elapsed: 42s, ETA:    32s[> ] 345/602, 8.1 task/s, elapsed: 43s, ETA:    32s[> ] 346/602, 8.1 task/s, elapsed: 43s, ETA:    31s[> ] 347/602, 8.1 task/s, elapsed: 43s, ETA:    31s[> ] 348/602, 8.1 task/s, elapsed: 43s, ETA:    31s[> ] 349/602, 8.1 task/s, elapsed: 43s, ETA:    31s[> ] 350/602, 8.1 task/s, elapsed: 43s, ETA:    31s[> ] 351/602, 8.1 task/s, elapsed: 43s, ETA:    31s[> ] 352/602, 8.2 task/s, elapsed: 43s, ETA:    31snight tensor([[1.]], device='cuda:0')
-Sample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-[> ] 353/602, 8.1 task/s, elapsed: 43s, ETA:    31s[> ] 354/602, 8.2 task/s, elapsed: 43s, ETA:    30s[> ] 355/602, 8.1 task/s, elapsed: 44s, ETA:    30s[> ] 356/602, 8.2 task/s, elapsed: 44s, ETA:    30s[> ] 357/602, 8.1 task/s, elapsed: 44s, ETA:    30s[> ] 358/602, 8.2 task/s, elapsed: 44s, ETA:    30s[> ] 359/602, 8.2 task/s, elapsed: 44s, ETA:    30s[> ] 360/602, 8.2 task/s, elapsed: 44s, ETA:    30s[> ] 361/602, 8.2 task/s, elapsed: 44s, ETA:    30s[> ] 362/602, 8.2 task/s, elapsed: 44s, ETA:    29s[> ] 363/602, 8.2 task/s, elapsed: 44s, ETA:    29s[> ] 364/602, 8.2 task/s, elapsed: 44s, ETA:    29s[> ] 365/602, 8.2 task/s, elapsed: 45s, ETA:    29s[> ] 366/602, 8.2 task/s, elapsed: 45s, ETA:    29s[> ] 367/602, 8.2 task/s, elapsed: 45s, ETA:    29s[> ] 368/602, 8.2 task/s, elapsed: 45s, ETA:    29s[> ] 369/602, 8.2 task/s, elapsed: 45s, ETA:    28s[> ] 370/602, 8.2 task/s, elapsed: 45s, ETA:    28s[> ] 371/602, 8.2 task/s, elapsed: 45s, ETA:    28s[> ] 372/602, 8.2 task/s, elapsed: 45s, ETA:    28s[> ] 373/602, 8.2 task/s, elapsed: 46s, ETA:    28s[> ] 374/602, 8.2 task/s, elapsed: 46s, ETA:    28s[> ] 375/602, 8.2 task/s, elapsed: 46s, ETA:    28s[> ] 376/602, 8.2 task/s, elapsed: 46s, ETA:    27s[> ] 377/602, 8.2 task/s, elapsed: 46s, ETA:    27s[> ] 378/602, 8.2 task/s, elapsed: 46s, ETA:    27s[> ] 379/602, 8.2 task/s, elapsed: 46s, ETA:    27s[> ] 380/602, 8.2 task/s, elapsed: 46s, ETA:    27s[> ] 381/602, 8.2 task/s, elapsed: 46s, ETA:    27s[> ] 382/602, 8.2 task/s, elapsed: 46s, ETA:    27s[> ] 383/602, 8.2 task/s, elapsed: 47s, ETA:    27s[> ] 384/602, 8.2 task/s, elapsed: 47s, ETA:    26s[> ] 385/602, 8.2 task/s, elapsed: 47s, ETA:    26s[> ] 386/602, 8.2 task/s, elapsed: 47s, ETA:    26s[> ] 387/602, 8.2 task/s, elapsed: 47s, ETA:    26s[> ] 388/602, 8.2 task/s, elapsed: 47s, ETA:    26s[> ] 389/602, 8.2 task/s, elapsed: 47s, ETA:    26s[> ] 390/602, 8.2 task/s, elapsed: 47s, ETA:    26s[> ] 391/602, 8.2 task/s, elapsed: 48s, ETA:    26s[> ] 392/602, 8.2 task/s, elapsed: 48s, ETA:    25s[> ] 393/602, 8.2 task/s, elapsed: 48s, ETA:    25s[> ] 394/602, 8.2 task/s, elapsed: 48s, ETA:    25s[> ] 395/602, 8.2 task/s, elapsed: 48s, ETA:    25s[> ] 396/602, 8.3 task/s, elapsed: 48s, ETA:    25s[> ] 397/602, 8.2 task/s, elapsed: 48s, ETA:    25s[> ] 398/602, 8.3 task/s, elapsed: 48s, ETA:    25s[> ] 399/602, 8.2 task/s, elapsed: 48s, ETA:    25s[> ] 400/602, 8.3 task/s, elapsed: 48s, ETA:    24s[> ] 401/602, 8.2 task/s, elapsed: 49s, ETA:    24s[> ] 402/602, 8.3 task/s, elapsed: 49s, ETA:    24s[> ] 403/602, 8.3 task/s, elapsed: 49s, ETA:    24s[> ] 404/602, 8.3 task/s, elapsed: 49s, ETA:    24s[> ] 405/602, 8.3 task/s, elapsed: 49s, ETA:    24s[> ] 406/602, 8.3 task/s, elapsed: 49s, ETA:    24s[> ] 407/602, 8.3 task/s, elapsed: 49s, ETA:    24s[> ] 408/602, 8.3 task/s, elapsed: 49s, ETA:    23s[> ] 409/602, 8.3 task/s, elapsed: 49s, ETA:    23s[> ] 410/602, 8.3 task/s, elapsed: 49s, ETA:    23s[> ] 411/602, 8.3 task/s, elapsed: 50s, ETA:    23s[> ] 412/602, 8.3 task/s, elapsed: 50s, ETA:    23s[> ] 413/602, 8.3 task/s, elapsed: 50s, ETA:    23s[> ] 414/602, 8.3 task/s, elapsed: 50s, ETA:    23s[> ] 415/602, 8.3 task/s, elapsed: 50s, ETA:    23s[> ] 416/602, 8.3 task/s, elapsed: 50s, ETA:    22s[> ] 417/602, 8.3 task/s, elapsed: 50s, ETA:    22s[> ] 418/602, 8.3 task/s, elapsed: 50s, ETA:    22s[> ] 419/602, 8.3 task/s, elapsed: 50s, ETA:    22s[> ] 420/602, 8.3 task/s, elapsed: 50s, ETA:    22s[> ] 421/602, 8.3 task/s, elapsed: 51s, ETA:    22s[> ] 422/602, 8.3 task/s, elapsed: 51s, ETA:    22s[> ] 423/602, 8.3 task/s, elapsed: 51s, ETA:    22s[> ] 424/602, 8.3 task/s, elapsed: 51s, ETA:    21s[> ] 425/602, 8.3 task/s, elapsed: 51s, ETA:    21s[> ] 426/602, 8.3 task/s, elapsed: 51s, ETA:    21s[> ] 427/602, 8.3 task/s, elapsed: 51s, ETA:    21s[> ] 428/602, 8.3 task/s, elapsed: 51s, ETA:    21s[> ] 429/602, 8.3 task/s, elapsed: 52s, ETA:    21s[> ] 430/602, 8.3 task/s, elapsed: 52s, ETA:    21s[> ] 431/602, 8.3 task/s, elapsed: 52s, ETA:    21s[> ] 432/602, 8.3 task/s, elapsed: 52s, ETA:    20s[> ] 433/602, 8.3 task/s, elapsed: 52s, ETA:    20s[> ] 434/602, 8.3 task/s, elapsed: 52s, ETA:    20s[> ] 435/602, 8.3 task/s, elapsed: 52s, ETA:    20s[> ] 436/602, 8.3 task/s, elapsed: 52s, ETA:    20s[> ] 437/602, 8.3 task/s, elapsed: 52s, ETA:    20s[> ] 438/602, 8.4 task/s, elapsed: 52s, ETA:    20sSample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16)
-[> ] 439/602, 8.3 task/s, elapsed: 53s, ETA:    20s[> ] 440/602, 8.4 task/s, elapsed: 53s, ETA:    19s[> ] 441/602, 8.3 task/s, elapsed: 53s, ETA:    19s[> ] 442/602, 8.4 task/s, elapsed: 53s, ETA:    19s[> ] 443/602, 8.3 task/s, elapsed: 53s, ETA:    19s[> ] 444/602, 8.4 task/s, elapsed: 53s, ETA:    19s[> ] 445/602, 8.3 task/s, elapsed: 53s, ETA:    19s[> ] 446/602, 8.4 task/s, elapsed: 53s, ETA:    19s[> ] 447/602, 8.3 task/s, elapsed: 54s, ETA:    19s[> ] 448/602, 8.4 task/s, elapsed: 54s, ETA:    18s[> ] 449/602, 8.3 task/s, elapsed: 54s, ETA:    18s[> ] 450/602, 8.4 task/s, elapsed: 54s, ETA:    18s[> ] 451/602, 8.4 task/s, elapsed: 54s, ETA:    18s[> ] 452/602, 8.4 task/s, elapsed: 54s, ETA:    18sSample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16)
-[> ] 453/602, 8.4 task/s, elapsed: 54s, ETA:    18s[> ] 454/602, 8.4 task/s, elapsed: 54s, ETA:    18s[> ] 455/602, 8.4 task/s, elapsed: 54s, ETA:    18s[> ] 456/602, 8.4 task/s, elapsed: 54s, ETA:    17s[> ] 457/602, 8.4 task/s, elapsed: 55s, ETA:    17s[> ] 458/602, 8.4 task/s, elapsed: 55s, ETA:    17s[> ] 459/602, 8.4 task/s, elapsed: 55s, ETA:    17s[> ] 460/602, 8.4 task/s, elapsed: 55s, ETA:    17s[> ] 461/602, 8.4 task/s, elapsed: 55s, ETA:    17s[> ] 462/602, 8.4 task/s, elapsed: 55s, ETA:    17s[> ] 463/602, 8.4 task/s, elapsed: 55s, ETA:    17s[> ] 464/602, 8.4 task/s, elapsed: 55s, ETA:    16s[> ] 465/602, 8.4 task/s, elapsed: 56s, ETA:    16s[> ] 466/602, 8.4 task/s, elapsed: 56s, ETA:    16s[> ] 467/602, 8.4 task/s, elapsed: 56s, ETA:    16s[> ] 468/602, 8.4 task/s, elapsed: 56s, ETA:    16s[> ] 469/602, 8.4 task/s, elapsed: 56s, ETA:    16s[> ] 470/602, 8.4 task/s, elapsed: 56s, ETA:    16s[> ] 471/602, 8.4 task/s, elapsed: 56s, ETA:    16s[> ] 472/602, 8.4 task/s, elapsed: 56s, ETA:    15s[> ] 473/602, 8.4 task/s, elapsed: 56s, ETA:    15s[> ] 474/602, 8.4 task/s, elapsed: 56s, ETA:    15s[> ] 475/602, 8.4 task/s, elapsed: 57s, ETA:    15s[> ] 476/602, 8.4 task/s, elapsed: 57s, ETA:    15s[> ] 477/602, 8.4 task/s, elapsed: 57s, ETA:    15s[> ] 478/602, 8.4 task/s, elapsed: 57s, ETA:    15s[> ] 479/602, 8.4 task/s, elapsed: 57s, ETA:    15s[> ] 480/602, 8.4 task/s, elapsed: 57s, ETA:    15s[> ] 481/602, 8.4 task/s, elapsed: 57s, ETA:    14s[> ] 482/602, 8.4 task/s, elapsed: 57s, ETA:    14s[> ] 483/602, 8.4 task/s, elapsed: 58s, ETA:    14s[> ] 484/602, 8.4 task/s, elapsed: 58s, ETA:    14s[> ] 485/602, 8.4 task/s, elapsed: 58s, ETA:    14s[> ] 486/602, 8.4 task/s, elapsed: 58s, ETA:    14s[> ] 487/602, 8.4 task/s, elapsed: 58s, ETA:    14s[> ] 488/602, 8.4 task/s, elapsed: 58s, ETA:    14s[> ] 489/602, 8.4 task/s, elapsed: 58s, ETA:    13s[> ] 490/602, 8.4 task/s, elapsed: 58s, ETA:    13s[> ] 491/602, 8.4 task/s, elapsed: 59s, ETA:    13s[> ] 492/602, 8.4 task/s, elapsed: 59s, ETA:    13s[> ] 493/602, 8.4 task/s, elapsed: 59s, ETA:    13s[> ] 494/602, 8.4 task/s, elapsed: 59s, ETA:    13s[> ] 495/602, 8.4 task/s, elapsed: 59s, ETA:    13s[> ] 496/602, 8.4 task/s, elapsed: 59s, ETA:    13s[> ] 497/602, 8.4 task/s, elapsed: 59s, ETA:    12s[> ] 498/602, 8.4 task/s, elapsed: 59s, ETA:    12s[> ] 499/602, 8.4 task/s, elapsed: 59s, ETA:    12s[> ] 500/602, 8.4 task/s, elapsed: 59s, ETA:    12s[> ] 501/602, 8.4 task/s, elapsed: 60s, ETA:    12s[> ] 502/602, 8.4 task/s, elapsed: 60s, ETA:    12s[> ] 503/602, 8.4 task/s, elapsed: 60s, ETA:    12s[> ] 504/602, 8.4 task/s, elapsed: 60s, ETA:    12s[> ] 505/602, 8.4 task/s, elapsed: 60s, ETA:    12s[> ] 506/602, 8.4 task/s, elapsed: 60s, ETA:    11s[> ] 507/602, 8.4 task/s, elapsed: 60s, ETA:    11s[> ] 508/602, 8.4 task/s, elapsed: 60s, ETA:    11s[> ] 509/602, 8.4 task/s, elapsed: 61s, ETA:    11s[> ] 510/602, 8.4 task/s, elapsed: 61s, ETA:    11s[> ] 511/602, 8.4 task/s, elapsed: 61s, ETA:    11s[> ] 512/602, 8.4 task/s, elapsed: 61s, ETA:    11s[> ] 513/602, 8.4 task/s, elapsed: 61s, ETA:    11s[> ] 514/602, 8.4 task/s, elapsed: 61s, ETA:    10s[> ] 515/602, 8.4 task/s, elapsed: 61s, ETA:    10s[> ] 516/602, 8.4 task/s, elapsed: 61s, ETA:    10s[> ] 517/602, 8.4 task/s, elapsed: 61s, ETA:    10s[> ] 518/602, 8.4 task/s, elapsed: 61s, ETA:    10s[> ] 519/602, 8.4 task/s, elapsed: 62s, ETA:    10s[> ] 520/602, 8.4 task/s, elapsed: 62s, ETA:    10s[> ] 521/602, 8.4 task/s, elapsed: 62s, ETA:    10s[> ] 522/602, 8.4 task/s, elapsed: 62s, ETA:     9s[> ] 523/602, 8.4 task/s, elapsed: 62s, ETA:     9s[> ] 524/602, 8.4 task/s, elapsed: 62s, ETA:     9s[> ] 525/602, 8.4 task/s, elapsed: 62s, ETA:     9s[> ] 526/602, 8.4 task/s, elapsed: 62s, ETA:     9s[> ] 527/602, 8.4 task/s, elapsed: 63s, ETA:     9s[> ] 528/602, 8.4 task/s, elapsed: 63s, ETA:     9s[> ] 529/602, 8.4 task/s, elapsed: 63s, ETA:     9s[> ] 530/602, 8.4 task/s, elapsed: 63s, ETA:     9s[> ] 531/602, 8.4 task/s, elapsed: 63s, ETA:     8s[> ] 532/602, 8.5 task/s, elapsed: 63s, ETA:     8s[> ] 533/602, 8.4 task/s, elapsed: 63s, ETA:     8s[> ] 534/602, 8.5 task/s, elapsed: 63s, ETA:     8s[> ] 535/602, 8.4 task/s, elapsed: 63s, ETA:     8s[> ] 536/602, 8.5 task/s, elapsed: 63s, ETA:     8s[> ] 537/602, 8.4 task/s, elapsed: 64s, ETA:     8s[> ] 538/602, 8.5 task/s, elapsed: 64s, ETA:     8s[> ] 539/602, 8.4 task/s, elapsed: 64s, ETA:     7s[> ] 540/602, 8.5 task/s, elapsed: 64s, ETA:     7s[> ] 541/602, 8.4 task/s, elapsed: 64s, ETA:     7s[> ] 542/602, 8.5 task/s, elapsed: 64s, ETA:     7s[> ] 543/602, 8.4 task/s, elapsed: 64s, ETA:     7s[> ] 544/602, 8.5 task/s, elapsed: 64s, ETA:     7s[> ] 545/602, 8.4 task/s, elapsed: 65s, ETA:     7s[> ] 546/602, 8.5 task/s, elapsed: 65s, ETA:     7s[> ] 547/602, 8.5 task/s, elapsed: 65s, ETA:     7s[> ] 548/602, 8.5 task/s, elapsed: 65s, ETA:     6s[> ] 549/602, 8.5 task/s, elapsed: 65s, ETA:     6s[> ] 550/602, 8.5 task/s, elapsed: 65s, ETA:     6s[> ] 551/602, 8.5 task/s, elapsed: 65s, ETA:     6s[> ] 552/602, 8.5 task/s, elapsed: 65s, ETA:     6s[> ] 553/602, 8.5 task/s, elapsed: 65s, ETA:     6s[> ] 554/602, 8.5 task/s, elapsed: 65s, ETA:     6s[> ] 555/602, 8.5 task/s, elapsed: 66s, ETA:     6s[> ] 556/602, 8.5 task/s, elapsed: 66s, ETA:     5s[> ] 557/602, 8.5 task/s, elapsed: 66s, ETA:     5s[> ] 558/602, 8.5 task/s, elapsed: 66s, ETA:     5s[> ] 559/602, 8.5 task/s, elapsed: 66s, ETA:     5s[> ] 560/602, 8.5 task/s, elapsed: 66s, ETA:     5s[> ] 561/602, 8.5 task/s, elapsed: 66s, ETA:     5s[> ] 562/602, 8.5 task/s, elapsed: 66s, ETA:     5s[> ] 563/602, 8.5 task/s, elapsed: 66s, ETA:     5s[> ] 564/602, 8.5 task/s, elapsed: 66s, ETA:     4s[> ] 565/602, 8.5 task/s, elapsed: 67s, ETA:     4s[> ] 566/602, 8.5 task/s, elapsed: 67s, ETA:     4s[> ] 567/602, 8.5 task/s, elapsed: 67s, ETA:     4s[> ] 568/602, 8.5 task/s, elapsed: 67s, ETA:     4s[> ] 569/602, 8.5 task/s, elapsed: 67s, ETA:     4s[> ] 570/602, 8.5 task/s, elapsed: 67s, ETA:     4s[> ] 571/602, 8.5 task/s, elapsed: 67s, ETA:     4s[> ] 572/602, 8.5 task/s, elapsed: 67s, ETA:     4s[> ] 573/602, 8.5 task/s, elapsed: 67s, ETA:     3s[> ] 574/602, 8.5 task/s, elapsed: 67s, ETA:     3s[> ] 575/602, 8.5 task/s, elapsed: 68s, ETA:     3s[> ] 576/602, 8.5 task/s, elapsed: 68s, ETA:     3s[> ] 577/602, 8.5 task/s, elapsed: 68s, ETA:     3s[> ] 578/602, 8.5 task/s, elapsed: 68s, ETA:     3s[> ] 579/602, 8.5 task/s, elapsed: 68s, ETA:     3s[> ] 580/602, 8.5 task/s, elapsed: 68s, ETA:     3s[> ] 581/602, 8.5 task/s, elapsed: 68s, ETA:     2s[> ] 582/602, 8.5 task/s, elapsed: 68s, ETA:     2s[> ] 583/602, 8.5 task/s, elapsed: 69s, ETA:     2s[> ] 584/602, 8.5 task/s, elapsed: 69s, ETA:     2s[> ] 585/602, 8.5 task/s, elapsed: 69s, ETA:     2s[> ] 586/602, 8.5 task/s, elapsed: 69s, ETA:     2s[> ] 587/602, 8.5 task/s, elapsed: 69s, ETA:     2s[> ] 588/602, 8.5 task/s, elapsed: 69s, ETA:     2s[> ] 589/602, 8.5 task/s, elapsed: 69s, ETA:     2s[> ] 590/602, 8.5 task/s, elapsed: 69s, ETA:     1s[> ] 591/602, 8.5 task/s, elapsed: 69s, ETA:     1s[> ] 592/602, 8.5 task/s, elapsed: 69s, ETA:     1s[> ] 593/602, 8.5 task/s, elapsed: 70s, ETA:     1s[> ] 594/602, 8.5 task/s, elapsed: 70s, ETA:     1s[> ] 595/602, 8.5 task/s, elapsed: 70s, ETA:     1s[> ] 596/602, 8.5 task/s, elapsed: 70s, ETA:     1s[> ] 597/602, 8.5 task/s, elapsed: 70s, ETA:     1s[> ] 598/602, 8.5 task/s, elapsed: 70s, ETA:     0s[> ] 599/602, 8.5 task/s, elapsed: 70s, ETA:     0s[> ] 600/602, 8.6 task/s, elapsed: 70s, ETA:     0s[> ] 601/602, 8.5 task/s, elapsed: 70s, ETA:     0s[>>] 602/602, 8.6 task/s, elapsed: 70s, ETA:     0s
-
-Start to convert detection format...
-[                                                  ] 0/602, elapsed: 0s, ETA:[  ] 1/602, 24.5 task/s, elapsed: 0s, ETA:    25s[  ] 2/602, 22.7 task/s, elapsed: 0s, ETA:    26s[  ] 3/602, 24.5 task/s, elapsed: 0s, ETA:    24s[  ] 4/602, 24.9 task/s, elapsed: 0s, ETA:    24s[  ] 5/602, 25.3 task/s, elapsed: 0s, ETA:    24s[  ] 6/602, 25.5 task/s, elapsed: 0s, ETA:    23s[  ] 7/602, 25.9 task/s, elapsed: 0s, ETA:    23s[  ] 8/602, 26.0 task/s, elapsed: 0s, ETA:    23s[  ] 9/602, 26.1 task/s, elapsed: 0s, ETA:    23s[  ] 10/602, 26.1 task/s, elapsed: 0s, ETA:    23s[  ] 11/602, 26.2 task/s, elapsed: 0s, ETA:    23s[  ] 12/602, 26.2 task/s, elapsed: 0s, ETA:    23s[  ] 13/602, 26.1 task/s, elapsed: 0s, ETA:    23s[  ] 14/602, 26.1 task/s, elapsed: 1s, ETA:    22s[  ] 15/602, 26.1 task/s, elapsed: 1s, ETA:    22s[  ] 16/602, 26.0 task/s, elapsed: 1s, ETA:    23s[  ] 17/602, 26.0 task/s, elapsed: 1s, ETA:    23s[  ] 18/602, 25.9 task/s, elapsed: 1s, ETA:    23s[  ] 19/602, 25.8 task/s, elapsed: 1s, ETA:    23s[  ] 20/602, 25.8 task/s, elapsed: 1s, ETA:    23s[  ] 21/602, 25.8 task/s, elapsed: 1s, ETA:    23s[  ] 22/602, 25.7 task/s, elapsed: 1s, ETA:    23s[  ] 23/602, 25.8 task/s, elapsed: 1s, ETA:    22s[  ] 24/602, 25.7 task/s, elapsed: 1s, ETA:    22s[  ] 25/602, 25.7 task/s, elapsed: 1s, ETA:    22s[  ] 26/602, 25.7 task/s, elapsed: 1s, ETA:    22s[  ] 27/602, 25.7 task/s, elapsed: 1s, ETA:    22s[  ] 28/602, 25.7 task/s, elapsed: 1s, ETA:    22s[  ] 29/602, 25.7 task/s, elapsed: 1s, ETA:    22s[  ] 30/602, 25.8 task/s, elapsed: 1s, ETA:    22s[  ] 31/602, 25.8 task/s, elapsed: 1s, ETA:    22s[  ] 32/602, 25.9 task/s, elapsed: 1s, ETA:    22s[  ] 33/602, 25.8 task/s, elapsed: 1s, ETA:    22s[  ] 34/602, 25.9 task/s, elapsed: 1s, ETA:    22s[  ] 35/602, 25.9 task/s, elapsed: 1s, ETA:    22s[  ] 36/602, 25.9 task/s, elapsed: 1s, ETA:    22s[  ] 37/602, 25.9 task/s, elapsed: 1s, ETA:    22s[  ] 38/602, 25.9 task/s, elapsed: 1s, ETA:    22s[  ] 39/602, 25.9 task/s, elapsed: 2s, ETA:    22s[  ] 40/602, 26.0 task/s, elapsed: 2s, ETA:    22s[  ] 41/602, 26.0 task/s, elapsed: 2s, ETA:    22s[  ] 42/602, 26.0 task/s, elapsed: 2s, ETA:    22s[  ] 43/602, 26.0 task/s, elapsed: 2s, ETA:    21s[  ] 44/602, 26.0 task/s, elapsed: 2s, ETA:    21s[  ] 45/602, 26.0 task/s, elapsed: 2s, ETA:    21s[  ] 46/602, 26.0 task/s, elapsed: 2s, ETA:    21s[  ] 47/602, 26.0 task/s, elapsed: 2s, ETA:    21s[  ] 48/602, 26.0 task/s, elapsed: 2s, ETA:    21s[  ] 49/602, 26.0 task/s, elapsed: 2s, ETA:    21s[  ] 50/602, 25.9 task/s, elapsed: 2s, ETA:    21s[  ] 51/602, 25.9 task/s, elapsed: 2s, ETA:    21s[  ] 52/602, 25.9 task/s, elapsed: 2s, ETA:    21s[  ] 53/602, 25.9 task/s, elapsed: 2s, ETA:    21s[  ] 54/602, 25.9 task/s, elapsed: 2s, ETA:    21s[  ] 55/602, 26.0 task/s, elapsed: 2s, ETA:    21s[  ] 56/602, 26.0 task/s, elapsed: 2s, ETA:    21s[  ] 57/602, 26.0 task/s, elapsed: 2s, ETA:    21s[  ] 58/602, 26.0 task/s, elapsed: 2s, ETA:    21s[  ] 59/602, 25.9 task/s, elapsed: 2s, ETA:    21s[  ] 60/602, 26.0 task/s, elapsed: 2s, ETA:    21s[  ] 61/602, 26.0 task/s, elapsed: 2s, ETA:    21s[  ] 62/602, 25.1 task/s, elapsed: 2s, ETA:    21s[  ] 63/602, 25.2 task/s, elapsed: 3s, ETA:    21s[  ] 64/602, 25.2 task/s, elapsed: 3s, ETA:    21s[  ] 65/602, 25.2 task/s, elapsed: 3s, ETA:    21s[  ] 66/602, 25.2 task/s, elapsed: 3s, ETA:    21s[  ] 67/602, 25.2 task/s, elapsed: 3s, ETA:    21s[  ] 68/602, 25.3 task/s, elapsed: 3s, ETA:    21s[  ] 69/602, 25.1 task/s, elapsed: 3s, ETA:    21s[  ] 70/602, 25.0 task/s, elapsed: 3s, ETA:    21s[  ] 71/602, 25.0 task/s, elapsed: 3s, ETA:    21s[  ] 72/602, 25.0 task/s, elapsed: 3s, ETA:    21s[  ] 73/602, 25.0 task/s, elapsed: 3s, ETA:    21s[  ] 74/602, 24.9 task/s, elapsed: 3s, ETA:    21s[  ] 75/602, 24.8 task/s, elapsed: 3s, ETA:    21s[  ] 76/602, 24.8 task/s, elapsed: 3s, ETA:    21s[  ] 77/602, 24.8 task/s, elapsed: 3s, ETA:    21s[  ] 78/602, 24.8 task/s, elapsed: 3s, ETA:    21s[  ] 79/602, 24.7 task/s, elapsed: 3s, ETA:    21s[  ] 80/602, 24.7 task/s, elapsed: 3s, ETA:    21s[  ] 81/602, 24.8 task/s, elapsed: 3s, ETA:    21s[  ] 82/602, 24.8 task/s, elapsed: 3s, ETA:    21s[  ] 83/602, 24.7 task/s, elapsed: 3s, ETA:    21s[  ] 84/602, 24.6 task/s, elapsed: 3s, ETA:    21s[  ] 85/602, 24.6 task/s, elapsed: 3s, ETA:    21s[  ] 86/602, 24.7 task/s, elapsed: 3s, ETA:    21s[  ] 87/602, 24.7 task/s, elapsed: 4s, ETA:    21s[  ] 88/602, 24.7 task/s, elapsed: 4s, ETA:    21s[  ] 89/602, 24.6 task/s, elapsed: 4s, ETA:    21s[  ] 90/602, 24.6 task/s, elapsed: 4s, ETA:    21s[  ] 91/602, 24.6 task/s, elapsed: 4s, ETA:    21s[  ] 92/602, 24.6 task/s, elapsed: 4s, ETA:    21s[  ] 93/602, 24.6 task/s, elapsed: 4s, ETA:    21s[  ] 94/602, 24.6 task/s, elapsed: 4s, ETA:    21s[  ] 95/602, 24.6 task/s, elapsed: 4s, ETA:    21s[  ] 96/602, 24.6 task/s, elapsed: 4s, ETA:    21s[  ] 97/602, 24.6 task/s, elapsed: 4s, ETA:    20s[  ] 98/602, 24.6 task/s, elapsed: 4s, ETA:    20s[  ] 99/602, 24.6 task/s, elapsed: 4s, ETA:    20s[  ] 100/602, 24.6 task/s, elapsed: 4s, ETA:    20s[  ] 101/602, 24.6 task/s, elapsed: 4s, ETA:    20s[  ] 102/602, 24.6 task/s, elapsed: 4s, ETA:    20s[  ] 103/602, 24.6 task/s, elapsed: 4s, ETA:    20s[  ] 104/602, 24.6 task/s, elapsed: 4s, ETA:    20s[  ] 105/602, 24.6 task/s, elapsed: 4s, ETA:    20s[  ] 106/602, 24.6 task/s, elapsed: 4s, ETA:    20s[  ] 107/602, 24.6 task/s, elapsed: 4s, ETA:    20s[  ] 108/602, 24.6 task/s, elapsed: 4s, ETA:    20s[  ] 109/602, 24.6 task/s, elapsed: 4s, ETA:    20s[  ] 110/602, 24.6 task/s, elapsed: 4s, ETA:    20s[  ] 111/602, 24.6 task/s, elapsed: 5s, ETA:    20s[  ] 112/602, 24.6 task/s, elapsed: 5s, ETA:    20s[  ] 113/602, 24.6 task/s, elapsed: 5s, ETA:    20s[  ] 114/602, 24.7 task/s, elapsed: 5s, ETA:    20s[  ] 115/602, 24.7 task/s, elapsed: 5s, ETA:    20s[  ] 116/602, 24.7 task/s, elapsed: 5s, ETA:    20s[  ] 117/602, 24.7 task/s, elapsed: 5s, ETA:    20s[  ] 118/602, 24.7 task/s, elapsed: 5s, ETA:    20s[  ] 119/602, 24.7 task/s, elapsed: 5s, ETA:    20s[  ] 120/602, 24.7 task/s, elapsed: 5s, ETA:    20s[  ] 121/602, 24.7 task/s, elapsed: 5s, ETA:    19s[  ] 122/602, 24.7 task/s, elapsed: 5s, ETA:    19s[  ] 123/602, 24.7 task/s, elapsed: 5s, ETA:    19s[  ] 124/602, 24.7 task/s, elapsed: 5s, ETA:    19s[  ] 125/602, 24.7 task/s, elapsed: 5s, ETA:    19s[  ] 126/602, 24.7 task/s, elapsed: 5s, ETA:    19s[  ] 127/602, 24.7 task/s, elapsed: 5s, ETA:    19s[  ] 128/602, 24.7 task/s, elapsed: 5s, ETA:    19s[  ] 129/602, 24.8 task/s, elapsed: 5s, ETA:    19s[  ] 130/602, 24.8 task/s, elapsed: 5s, ETA:    19s[  ] 131/602, 24.8 task/s, elapsed: 5s, ETA:    19s[  ] 132/602, 24.8 task/s, elapsed: 5s, ETA:    19s[  ] 133/602, 24.8 task/s, elapsed: 5s, ETA:    19s[  ] 134/602, 24.8 task/s, elapsed: 5s, ETA:    19s[  ] 135/602, 24.8 task/s, elapsed: 5s, ETA:    19s[  ] 136/602, 24.8 task/s, elapsed: 5s, ETA:    19s[  ] 137/602, 24.8 task/s, elapsed: 6s, ETA:    19s[  ] 138/602, 24.9 task/s, elapsed: 6s, ETA:    19s[  ] 139/602, 24.9 task/s, elapsed: 6s, ETA:    19s[  ] 140/602, 24.8 task/s, elapsed: 6s, ETA:    19s[  ] 141/602, 24.8 task/s, elapsed: 6s, ETA:    19s[  ] 142/602, 24.8 task/s, elapsed: 6s, ETA:    19s[  ] 143/602, 24.9 task/s, elapsed: 6s, ETA:    18s[  ] 144/602, 24.9 task/s, elapsed: 6s, ETA:    18s[  ] 145/602, 24.8 task/s, elapsed: 6s, ETA:    18s[  ] 146/602, 24.9 task/s, elapsed: 6s, ETA:    18s[  ] 147/602, 24.9 task/s, elapsed: 6s, ETA:    18s[  ] 148/602, 24.9 task/s, elapsed: 6s, ETA:    18s[  ] 149/602, 24.9 task/s, elapsed: 6s, ETA:    18s[  ] 150/602, 24.9 task/s, elapsed: 6s, ETA:    18s[  ] 151/602, 25.0 task/s, elapsed: 6s, ETA:    18s[  ] 152/602, 25.0 task/s, elapsed: 6s, ETA:    18s[  ] 153/602, 25.0 task/s, elapsed: 6s, ETA:    18s[  ] 154/602, 25.0 task/s, elapsed: 6s, ETA:    18s[  ] 155/602, 25.0 task/s, elapsed: 6s, ETA:    18s[  ] 156/602, 25.0 task/s, elapsed: 6s, ETA:    18s[  ] 157/602, 25.0 task/s, elapsed: 6s, ETA:    18s[  ] 158/602, 25.0 task/s, elapsed: 6s, ETA:    18s[  ] 159/602, 25.0 task/s, elapsed: 6s, ETA:    18s[  ] 160/602, 25.0 task/s, elapsed: 6s, ETA:    18s[  ] 161/602, 25.0 task/s, elapsed: 6s, ETA:    18s[  ] 162/602, 25.0 task/s, elapsed: 6s, ETA:    18s[  ] 163/602, 25.0 task/s, elapsed: 7s, ETA:    18s[  ] 164/602, 25.0 task/s, elapsed: 7s, ETA:    18s[  ] 165/602, 25.0 task/s, elapsed: 7s, ETA:    17s[  ] 166/602, 25.0 task/s, elapsed: 7s, ETA:    17s[  ] 167/602, 25.0 task/s, elapsed: 7s, ETA:    17s[  ] 168/602, 25.0 task/s, elapsed: 7s, ETA:    17s[  ] 169/602, 25.1 task/s, elapsed: 7s, ETA:    17s[  ] 170/602, 25.1 task/s, elapsed: 7s, ETA:    17s[  ] 171/602, 25.1 task/s, elapsed: 7s, ETA:    17s[  ] 172/602, 25.1 task/s, elapsed: 7s, ETA:    17s[  ] 173/602, 25.1 task/s, elapsed: 7s, ETA:    17s[  ] 174/602, 25.1 task/s, elapsed: 7s, ETA:    17s[  ] 175/602, 25.1 task/s, elapsed: 7s, ETA:    17s[  ] 176/602, 25.1 task/s, elapsed: 7s, ETA:    17s[  ] 177/602, 25.1 task/s, elapsed: 7s, ETA:    17s[  ] 178/602, 25.1 task/s, elapsed: 7s, ETA:    17s[  ] 179/602, 25.1 task/s, elapsed: 7s, ETA:    17s[  ] 180/602, 25.1 task/s, elapsed: 7s, ETA:    17s[  ] 181/602, 25.2 task/s, elapsed: 7s, ETA:    17s[  ] 182/602, 25.2 task/s, elapsed: 7s, ETA:    17s[  ] 183/602, 25.2 task/s, elapsed: 7s, ETA:    17s[  ] 184/602, 25.2 task/s, elapsed: 7s, ETA:    17s[  ] 185/602, 25.2 task/s, elapsed: 7s, ETA:    17s[  ] 186/602, 25.2 task/s, elapsed: 7s, ETA:    17s[  ] 187/602, 25.2 task/s, elapsed: 7s, ETA:    16s[  ] 188/602, 25.2 task/s, elapsed: 7s, ETA:    16s[  ] 189/602, 25.2 task/s, elapsed: 7s, ETA:    16s[  ] 190/602, 25.2 task/s, elapsed: 8s, ETA:    16s[  ] 191/602, 25.2 task/s, elapsed: 8s, ETA:    16s[  ] 192/602, 25.2 task/s, elapsed: 8s, ETA:    16s[  ] 193/602, 25.2 task/s, elapsed: 8s, ETA:    16s[  ] 194/602, 25.2 task/s, elapsed: 8s, ETA:    16s[  ] 195/602, 25.3 task/s, elapsed: 8s, ETA:    16s[  ] 196/602, 25.3 task/s, elapsed: 8s, ETA:    16s[  ] 197/602, 25.3 task/s, elapsed: 8s, ETA:    16s[  ] 198/602, 25.3 task/s, elapsed: 8s, ETA:    16s[  ] 199/602, 25.3 task/s, elapsed: 8s, ETA:    16s[  ] 200/602, 25.3 task/s, elapsed: 8s, ETA:    16s[  ] 201/602, 25.3 task/s, elapsed: 8s, ETA:    16s[  ] 202/602, 25.3 task/s, elapsed: 8s, ETA:    16s[  ] 203/602, 25.3 task/s, elapsed: 8s, ETA:    16s[  ] 204/602, 25.3 task/s, elapsed: 8s, ETA:    16s[  ] 205/602, 25.4 task/s, elapsed: 8s, ETA:    16s[  ] 206/602, 25.4 task/s, elapsed: 8s, ETA:    16s[  ] 207/602, 25.4 task/s, elapsed: 8s, ETA:    16s[  ] 208/602, 25.4 task/s, elapsed: 8s, ETA:    16s[  ] 209/602, 25.4 task/s, elapsed: 8s, ETA:    15s[  ] 210/602, 25.4 task/s, elapsed: 8s, ETA:    15s[  ] 211/602, 25.4 task/s, elapsed: 8s, ETA:    15s[  ] 212/602, 25.5 task/s, elapsed: 8s, ETA:    15s[  ] 213/602, 25.5 task/s, elapsed: 8s, ETA:    15s[  ] 214/602, 25.5 task/s, elapsed: 8s, ETA:    15s[  ] 215/602, 25.5 task/s, elapsed: 8s, ETA:    15s[  ] 216/602, 25.5 task/s, elapsed: 8s, ETA:    15s[  ] 217/602, 25.5 task/s, elapsed: 9s, ETA:    15s[  ] 218/602, 25.5 task/s, elapsed: 9s, ETA:    15s[  ] 219/602, 25.5 task/s, elapsed: 9s, ETA:    15s[  ] 220/602, 25.5 task/s, elapsed: 9s, ETA:    15s[  ] 221/602, 25.5 task/s, elapsed: 9s, ETA:    15s[  ] 222/602, 25.5 task/s, elapsed: 9s, ETA:    15s[  ] 223/602, 25.5 task/s, elapsed: 9s, ETA:    15s[  ] 224/602, 25.5 task/s, elapsed: 9s, ETA:    15s[  ] 225/602, 25.5 task/s, elapsed: 9s, ETA:    15s[  ] 226/602, 25.5 task/s, elapsed: 9s, ETA:    15s[  ] 227/602, 25.5 task/s, elapsed: 9s, ETA:    15s[  ] 228/602, 25.5 task/s, elapsed: 9s, ETA:    15s[  ] 229/602, 25.5 task/s, elapsed: 9s, ETA:    15s[  ] 230/602, 25.5 task/s, elapsed: 9s, ETA:    15s[  ] 231/602, 25.5 task/s, elapsed: 9s, ETA:    15s[  ] 232/602, 25.5 task/s, elapsed: 9s, ETA:    15s[  ] 233/602, 25.5 task/s, elapsed: 9s, ETA:    14s[  ] 234/602, 25.5 task/s, elapsed: 9s, ETA:    14s[  ] 235/602, 25.5 task/s, elapsed: 9s, ETA:    14s[  ] 236/602, 25.5 task/s, elapsed: 9s, ETA:    14s[  ] 237/602, 25.5 task/s, elapsed: 9s, ETA:    14s[  ] 238/602, 25.5 task/s, elapsed: 9s, ETA:    14s[  ] 239/602, 25.5 task/s, elapsed: 9s, ETA:    14s[  ] 240/602, 25.5 task/s, elapsed: 9s, ETA:    14s[  ] 241/602, 25.5 task/s, elapsed: 9s, ETA:    14s[  ] 242/602, 25.5 task/s, elapsed: 9s, ETA:    14s[  ] 243/602, 25.5 task/s, elapsed: 10s, ETA:    14s[  ] 244/602, 25.5 task/s, elapsed: 10s, ETA:    14s[  ] 245/602, 25.6 task/s, elapsed: 10s, ETA:    14s[  ] 246/602, 25.6 task/s, elapsed: 10s, ETA:    14s[  ] 247/602, 25.6 task/s, elapsed: 10s, ETA:    14s[  ] 248/602, 25.6 task/s, elapsed: 10s, ETA:    14s[  ] 249/602, 25.6 task/s, elapsed: 10s, ETA:    14s[  ] 250/602, 25.6 task/s, elapsed: 10s, ETA:    14s[  ] 251/602, 25.6 task/s, elapsed: 10s, ETA:    14s[  ] 252/602, 25.6 task/s, elapsed: 10s, ETA:    14s[  ] 253/602, 25.6 task/s, elapsed: 10s, ETA:    14s[  ] 254/602, 25.6 task/s, elapsed: 10s, ETA:    14s[  ] 255/602, 25.6 task/s, elapsed: 10s, ETA:    14s[  ] 256/602, 25.6 task/s, elapsed: 10s, ETA:    14s[  ] 257/602, 25.6 task/s, elapsed: 10s, ETA:    13s[  ] 258/602, 25.6 task/s, elapsed: 10s, ETA:    13s[  ] 259/602, 25.6 task/s, elapsed: 10s, ETA:    13s[  ] 260/602, 25.6 task/s, elapsed: 10s, ETA:    13s[  ] 261/602, 25.6 task/s, elapsed: 10s, ETA:    13s[  ] 262/602, 25.6 task/s, elapsed: 10s, ETA:    13s[  ] 263/602, 25.6 task/s, elapsed: 10s, ETA:    13s[  ] 264/602, 25.6 task/s, elapsed: 10s, ETA:    13s[  ] 265/602, 25.6 task/s, elapsed: 10s, ETA:    13s[  ] 266/602, 25.7 task/s, elapsed: 10s, ETA:    13s[  ] 267/602, 25.7 task/s, elapsed: 10s, ETA:    13s[  ] 268/602, 25.7 task/s, elapsed: 10s, ETA:    13s[  ] 269/602, 25.7 task/s, elapsed: 10s, ETA:    13s[  ] 270/602, 25.7 task/s, elapsed: 11s, ETA:    13s[  ] 271/602, 25.7 task/s, elapsed: 11s, ETA:    13s[  ] 272/602, 25.7 task/s, elapsed: 11s, ETA:    13s[  ] 273/602, 25.7 task/s, elapsed: 11s, ETA:    13s[  ] 274/602, 25.7 task/s, elapsed: 11s, ETA:    13s[  ] 275/602, 25.7 task/s, elapsed: 11s, ETA:    13s[  ] 276/602, 25.7 task/s, elapsed: 11s, ETA:    13s[  ] 277/602, 25.7 task/s, elapsed: 11s, ETA:    13s[  ] 278/602, 25.7 task/s, elapsed: 11s, ETA:    13s[  ] 279/602, 25.7 task/s, elapsed: 11s, ETA:    13s[  ] 280/602, 25.7 task/s, elapsed: 11s, ETA:    13s[  ] 281/602, 25.7 task/s, elapsed: 11s, ETA:    12s[  ] 282/602, 25.7 task/s, elapsed: 11s, ETA:    12s[  ] 283/602, 25.7 task/s, elapsed: 11s, ETA:    12s[  ] 284/602, 25.7 task/s, elapsed: 11s, ETA:    12s[  ] 285/602, 25.7 task/s, elapsed: 11s, ETA:    12s[  ] 286/602, 25.7 task/s, elapsed: 11s, ETA:    12s[  ] 287/602, 25.7 task/s, elapsed: 11s, ETA:    12s[  ] 288/602, 25.7 task/s, elapsed: 11s, ETA:    12s[  ] 289/602, 25.7 task/s, elapsed: 11s, ETA:    12s[  ] 290/602, 25.7 task/s, elapsed: 11s, ETA:    12s[  ] 291/602, 25.7 task/s, elapsed: 11s, ETA:    12s[  ] 292/602, 25.7 task/s, elapsed: 11s, ETA:    12s[  ] 293/602, 25.7 task/s, elapsed: 11s, ETA:    12s[  ] 294/602, 25.7 task/s, elapsed: 11s, ETA:    12s[  ] 295/602, 25.7 task/s, elapsed: 11s, ETA:    12s[  ] 296/602, 25.7 task/s, elapsed: 11s, ETA:    12s[  ] 297/602, 25.8 task/s, elapsed: 12s, ETA:    12s[  ] 298/602, 25.8 task/s, elapsed: 12s, ETA:    12s[  ] 299/602, 25.8 task/s, elapsed: 12s, ETA:    12s[  ] 300/602, 25.8 task/s, elapsed: 12s, ETA:    12s[> ] 301/602, 25.8 task/s, elapsed: 12s, ETA:    12s[> ] 302/602, 25.8 task/s, elapsed: 12s, ETA:    12s[> ] 303/602, 25.8 task/s, elapsed: 12s, ETA:    12s[> ] 304/602, 25.8 task/s, elapsed: 12s, ETA:    12s[> ] 305/602, 25.8 task/s, elapsed: 12s, ETA:    12s[> ] 306/602, 25.8 task/s, elapsed: 12s, ETA:    11s[> ] 307/602, 25.8 task/s, elapsed: 12s, ETA:    11s[> ] 308/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 309/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 310/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 311/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 312/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 313/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 314/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 315/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 316/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 317/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 318/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 319/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 320/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 321/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 322/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 323/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 324/602, 25.9 task/s, elapsed: 12s, ETA:    11s[> ] 325/602, 25.9 task/s, elapsed: 13s, ETA:    11s[> ] 326/602, 25.9 task/s, elapsed: 13s, ETA:    11s[> ] 327/602, 25.9 task/s, elapsed: 13s, ETA:    11s[> ] 328/602, 25.9 task/s, elapsed: 13s, ETA:    11s[> ] 329/602, 25.9 task/s, elapsed: 13s, ETA:    11s[> ] 330/602, 25.9 task/s, elapsed: 13s, ETA:    10s[> ] 331/602, 25.9 task/s, elapsed: 13s, ETA:    10s[> ] 332/602, 25.9 task/s, elapsed: 13s, ETA:    10s[> ] 333/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 334/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 335/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 336/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 337/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 338/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 339/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 340/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 341/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 342/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 343/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 344/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 345/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 346/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 347/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 348/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 349/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 350/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 351/602, 26.0 task/s, elapsed: 13s, ETA:    10s[> ] 352/602, 26.0 task/s, elapsed: 14s, ETA:    10s[> ] 353/602, 26.0 task/s, elapsed: 14s, ETA:    10s[> ] 354/602, 26.0 task/s, elapsed: 14s, ETA:    10s[> ] 355/602, 26.0 task/s, elapsed: 14s, ETA:     9s[> ] 356/602, 26.0 task/s, elapsed: 14s, ETA:     9s[> ] 357/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 358/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 359/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 360/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 361/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 362/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 363/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 364/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 365/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 366/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 367/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 368/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 369/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 370/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 371/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 372/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 373/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 374/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 375/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 376/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 377/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 378/602, 26.1 task/s, elapsed: 14s, ETA:     9s[> ] 379/602, 17.4 task/s, elapsed: 22s, ETA:    13s[> ] 380/602, 17.4 task/s, elapsed: 22s, ETA:    13s[> ] 381/602, 17.4 task/s, elapsed: 22s, ETA:    13s[> ] 382/602, 17.4 task/s, elapsed: 22s, ETA:    13s[> ] 383/602, 17.5 task/s, elapsed: 22s, ETA:    13s[> ] 384/602, 17.5 task/s, elapsed: 22s, ETA:    12s[> ] 385/602, 17.5 task/s, elapsed: 22s, ETA:    12s[> ] 386/602, 17.5 task/s, elapsed: 22s, ETA:    12s[> ] 387/602, 17.5 task/s, elapsed: 22s, ETA:    12s[> ] 388/602, 17.5 task/s, elapsed: 22s, ETA:    12s[> ] 389/602, 17.5 task/s, elapsed: 22s, ETA:    12s[> ] 390/602, 17.6 task/s, elapsed: 22s, ETA:    12s[> ] 391/602, 17.6 task/s, elapsed: 22s, ETA:    12s[> ] 392/602, 17.6 task/s, elapsed: 22s, ETA:    12s[> ] 393/602, 17.6 task/s, elapsed: 22s, ETA:    12s[> ] 394/602, 17.6 task/s, elapsed: 22s, ETA:    12s[> ] 395/602, 17.6 task/s, elapsed: 22s, ETA:    12s[> ] 396/602, 17.7 task/s, elapsed: 22s, ETA:    12s[> ] 397/602, 17.7 task/s, elapsed: 22s, ETA:    12s[> ] 398/602, 17.7 task/s, elapsed: 23s, ETA:    12s[> ] 399/602, 17.7 task/s, elapsed: 23s, ETA:    11s[> ] 400/602, 17.7 task/s, elapsed: 23s, ETA:    11s[> ] 401/602, 17.7 task/s, elapsed: 23s, ETA:    11s[> ] 402/602, 17.8 task/s, elapsed: 23s, ETA:    11s[> ] 403/602, 17.8 task/s, elapsed: 23s, ETA:    11s[> ] 404/602, 17.8 task/s, elapsed: 23s, ETA:    11s[> ] 405/602, 17.8 task/s, elapsed: 23s, ETA:    11s[> ] 406/602, 17.8 task/s, elapsed: 23s, ETA:    11s[> ] 407/602, 17.8 task/s, elapsed: 23s, ETA:    11s[> ] 408/602, 17.9 task/s, elapsed: 23s, ETA:    11s[> ] 409/602, 17.9 task/s, elapsed: 23s, ETA:    11s[> ] 410/602, 17.9 task/s, elapsed: 23s, ETA:    11s[> ] 411/602, 17.9 task/s, elapsed: 23s, ETA:    11s[> ] 412/602, 17.9 task/s, elapsed: 23s, ETA:    11s[> ] 413/602, 17.9 task/s, elapsed: 23s, ETA:    11s[> ] 414/602, 18.0 task/s, elapsed: 23s, ETA:    10s[> ] 415/602, 18.0 task/s, elapsed: 23s, ETA:    10s[> ] 416/602, 18.0 task/s, elapsed: 23s, ETA:    10s[> ] 417/602, 18.0 task/s, elapsed: 23s, ETA:    10s[> ] 418/602, 18.0 task/s, elapsed: 23s, ETA:    10s[> ] 419/602, 18.0 task/s, elapsed: 23s, ETA:    10s[> ] 420/602, 18.1 task/s, elapsed: 23s, ETA:    10s[> ] 421/602, 18.1 task/s, elapsed: 23s, ETA:    10s[> ] 422/602, 18.1 task/s, elapsed: 23s, ETA:    10s[> ] 423/602, 18.1 task/s, elapsed: 23s, ETA:    10s[> ] 424/602, 18.1 task/s, elapsed: 23s, ETA:    10s[> ] 425/602, 18.1 task/s, elapsed: 23s, ETA:    10s[> ] 426/602, 18.1 task/s, elapsed: 23s, ETA:    10s[> ] 427/602, 18.2 task/s, elapsed: 24s, ETA:    10s[> ] 428/602, 18.2 task/s, elapsed: 24s, ETA:    10s[> ] 429/602, 18.2 task/s, elapsed: 24s, ETA:    10s[> ] 430/602, 18.2 task/s, elapsed: 24s, ETA:     9s[> ] 431/602, 18.2 task/s, elapsed: 24s, ETA:     9s[> ] 432/602, 18.2 task/s, elapsed: 24s, ETA:     9s[> ] 433/602, 18.3 task/s, elapsed: 24s, ETA:     9s[> ] 434/602, 18.3 task/s, elapsed: 24s, ETA:     9s[> ] 435/602, 18.3 task/s, elapsed: 24s, ETA:     9s[> ] 436/602, 18.3 task/s, elapsed: 24s, ETA:     9s[> ] 437/602, 18.3 task/s, elapsed: 24s, ETA:     9s[> ] 438/602, 18.3 task/s, elapsed: 24s, ETA:     9s[> ] 439/602, 18.4 task/s, elapsed: 24s, ETA:     9s[> ] 440/602, 18.4 task/s, elapsed: 24s, ETA:     9s[> ] 441/602, 18.4 task/s, elapsed: 24s, ETA:     9s[> ] 442/602, 18.4 task/s, elapsed: 24s, ETA:     9s[> ] 443/602, 18.4 task/s, elapsed: 24s, ETA:     9s[> ] 444/602, 18.4 task/s, elapsed: 24s, ETA:     9s[> ] 445/602, 18.4 task/s, elapsed: 24s, ETA:     9s[> ] 446/602, 18.4 task/s, elapsed: 24s, ETA:     8s[> ] 447/602, 18.5 task/s, elapsed: 24s, ETA:     8s[> ] 448/602, 18.5 task/s, elapsed: 24s, ETA:     8s[> ] 449/602, 18.5 task/s, elapsed: 24s, ETA:     8s[> ] 450/602, 18.5 task/s, elapsed: 24s, ETA:     8s[> ] 451/602, 18.5 task/s, elapsed: 24s, ETA:     8s[> ] 452/602, 18.5 task/s, elapsed: 24s, ETA:     8s[> ] 453/602, 18.5 task/s, elapsed: 24s, ETA:     8s[> ] 454/602, 18.5 task/s, elapsed: 24s, ETA:     8s[> ] 455/602, 18.6 task/s, elapsed: 25s, ETA:     8s[> ] 456/602, 18.6 task/s, elapsed: 25s, ETA:     8s[> ] 457/602, 18.6 task/s, elapsed: 25s, ETA:     8s[> ] 458/602, 18.6 task/s, elapsed: 25s, ETA:     8s[> ] 459/602, 18.6 task/s, elapsed: 25s, ETA:     8s[> ] 460/602, 18.6 task/s, elapsed: 25s, ETA:     8s[> ] 461/602, 18.6 task/s, elapsed: 25s, ETA:     8s[> ] 462/602, 18.7 task/s, elapsed: 25s, ETA:     8s[> ] 463/602, 18.7 task/s, elapsed: 25s, ETA:     7s[> ] 464/602, 18.7 task/s, elapsed: 25s, ETA:     7s[> ] 465/602, 18.7 task/s, elapsed: 25s, ETA:     7s[> ] 466/602, 18.7 task/s, elapsed: 25s, ETA:     7s[> ] 467/602, 18.7 task/s, elapsed: 25s, ETA:     7s[> ] 468/602, 18.7 task/s, elapsed: 25s, ETA:     7s[> ] 469/602, 18.7 task/s, elapsed: 25s, ETA:     7s[> ] 470/602, 18.8 task/s, elapsed: 25s, ETA:     7s[> ] 471/602, 18.8 task/s, elapsed: 25s, ETA:     7s[> ] 472/602, 18.8 task/s, elapsed: 25s, ETA:     7s[> ] 473/602, 18.8 task/s, elapsed: 25s, ETA:     7s[> ] 474/602, 18.8 task/s, elapsed: 25s, ETA:     7s[> ] 475/602, 18.8 task/s, elapsed: 25s, ETA:     7s[> ] 476/602, 18.8 task/s, elapsed: 25s, ETA:     7s[> ] 477/602, 18.8 task/s, elapsed: 25s, ETA:     7s[> ] 478/602, 18.9 task/s, elapsed: 25s, ETA:     7s[> ] 479/602, 18.9 task/s, elapsed: 25s, ETA:     7s[> ] 480/602, 18.9 task/s, elapsed: 25s, ETA:     6s[> ] 481/602, 18.9 task/s, elapsed: 25s, ETA:     6s[> ] 482/602, 18.9 task/s, elapsed: 25s, ETA:     6s[> ] 483/602, 18.9 task/s, elapsed: 26s, ETA:     6s[> ] 484/602, 18.9 task/s, elapsed: 26s, ETA:     6s[> ] 485/602, 18.9 task/s, elapsed: 26s, ETA:     6s[> ] 486/602, 19.0 task/s, elapsed: 26s, ETA:     6s[> ] 487/602, 19.0 task/s, elapsed: 26s, ETA:     6s[> ] 488/602, 19.0 task/s, elapsed: 26s, ETA:     6s[> ] 489/602, 19.0 task/s, elapsed: 26s, ETA:     6s[> ] 490/602, 19.0 task/s, elapsed: 26s, ETA:     6s[> ] 491/602, 19.0 task/s, elapsed: 26s, ETA:     6s[> ] 492/602, 19.0 task/s, elapsed: 26s, ETA:     6s[> ] 493/602, 19.0 task/s, elapsed: 26s, ETA:     6s[> ] 494/602, 19.0 task/s, elapsed: 26s, ETA:     6s[> ] 495/602, 19.1 task/s, elapsed: 26s, ETA:     6s[> ] 496/602, 19.1 task/s, elapsed: 26s, ETA:     6s[> ] 497/602, 19.1 task/s, elapsed: 26s, ETA:     6s[> ] 498/602, 19.1 task/s, elapsed: 26s, ETA:     5s[> ] 499/602, 19.1 task/s, elapsed: 26s, ETA:     5s[> ] 500/602, 19.1 task/s, elapsed: 26s, ETA:     5s[> ] 501/602, 19.1 task/s, elapsed: 26s, ETA:     5s[> ] 502/602, 19.1 task/s, elapsed: 26s, ETA:     5s[> ] 503/602, 19.1 task/s, elapsed: 26s, ETA:     5s[> ] 504/602, 19.2 task/s, elapsed: 26s, ETA:     5s[> ] 505/602, 19.2 task/s, elapsed: 26s, ETA:     5s[> ] 506/602, 19.2 task/s, elapsed: 26s, ETA:     5s[> ] 507/602, 19.2 task/s, elapsed: 26s, ETA:     5s[> ] 508/602, 19.2 task/s, elapsed: 26s, ETA:     5s[> ] 509/602, 19.2 task/s, elapsed: 26s, ETA:     5s[> ] 510/602, 19.2 task/s, elapsed: 27s, ETA:     5s[> ] 511/602, 19.2 task/s, elapsed: 27s, ETA:     5s[> ] 512/602, 19.2 task/s, elapsed: 27s, ETA:     5s[> ] 513/602, 19.3 task/s, elapsed: 27s, ETA:     5s[> ] 514/602, 19.3 task/s, elapsed: 27s, ETA:     5s[> ] 515/602, 19.3 task/s, elapsed: 27s, ETA:     5s[> ] 516/602, 19.3 task/s, elapsed: 27s, ETA:     4s[> ] 517/602, 19.3 task/s, elapsed: 27s, ETA:     4s[> ] 518/602, 19.3 task/s, elapsed: 27s, ETA:     4s[> ] 519/602, 19.3 task/s, elapsed: 27s, ETA:     4s[> ] 520/602, 19.3 task/s, elapsed: 27s, ETA:     4s[> ] 521/602, 19.3 task/s, elapsed: 27s, ETA:     4s[> ] 522/602, 19.3 task/s, elapsed: 27s, ETA:     4s[> ] 523/602, 19.3 task/s, elapsed: 27s, ETA:     4s[> ] 524/602, 19.3 task/s, elapsed: 27s, ETA:     4s[> ] 525/602, 19.3 task/s, elapsed: 27s, ETA:     4s[> ] 526/602, 19.3 task/s, elapsed: 27s, ETA:     4s[> ] 527/602, 19.3 task/s, elapsed: 27s, ETA:     4s[> ] 528/602, 19.3 task/s, elapsed: 27s, ETA:     4s[> ] 529/602, 19.3 task/s, elapsed: 27s, ETA:     4s[> ] 530/602, 19.4 task/s, elapsed: 27s, ETA:     4s[> ] 531/602, 19.4 task/s, elapsed: 27s, ETA:     4s[> ] 532/602, 19.4 task/s, elapsed: 27s, ETA:     4s[> ] 533/602, 19.4 task/s, elapsed: 28s, ETA:     4s[> ] 534/602, 19.4 task/s, elapsed: 28s, ETA:     4s[> ] 535/602, 19.4 task/s, elapsed: 28s, ETA:     3s[> ] 536/602, 19.4 task/s, elapsed: 28s, ETA:     3s[> ] 537/602, 19.4 task/s, elapsed: 28s, ETA:     3s[> ] 538/602, 19.4 task/s, elapsed: 28s, ETA:     3s[> ] 539/602, 19.4 task/s, elapsed: 28s, ETA:     3s[> ] 540/602, 19.4 task/s, elapsed: 28s, ETA:     3s[> ] 541/602, 19.4 task/s, elapsed: 28s, ETA:     3s[> ] 542/602, 19.4 task/s, elapsed: 28s, ETA:     3s[> ] 543/602, 19.5 task/s, elapsed: 28s, ETA:     3s[> ] 544/602, 19.5 task/s, elapsed: 28s, ETA:     3s[> ] 545/602, 19.5 task/s, elapsed: 28s, ETA:     3s[> ] 546/602, 19.5 task/s, elapsed: 28s, ETA:     3s[> ] 547/602, 19.5 task/s, elapsed: 28s, ETA:     3s[> ] 548/602, 19.5 task/s, elapsed: 28s, ETA:     3s[> ] 549/602, 19.5 task/s, elapsed: 28s, ETA:     3s[> ] 550/602, 19.5 task/s, elapsed: 28s, ETA:     3s[> ] 551/602, 19.5 task/s, elapsed: 28s, ETA:     3s[> ] 552/602, 19.5 task/s, elapsed: 28s, ETA:     3s[> ] 553/602, 19.5 task/s, elapsed: 28s, ETA:     3s[> ] 554/602, 19.5 task/s, elapsed: 28s, ETA:     2s[> ] 555/602, 19.5 task/s, elapsed: 28s, ETA:     2s[> ] 556/602, 19.5 task/s, elapsed: 28s, ETA:     2s[> ] 557/602, 19.5 task/s, elapsed: 28s, ETA:     2s[> ] 558/602, 19.6 task/s, elapsed: 29s, ETA:     2s[> ] 559/602, 19.6 task/s, elapsed: 29s, ETA:     2s[> ] 560/602, 19.6 task/s, elapsed: 29s, ETA:     2s[> ] 561/602, 19.6 task/s, elapsed: 29s, ETA:     2s[> ] 562/602, 19.6 task/s, elapsed: 29s, ETA:     2s[> ] 563/602, 19.6 task/s, elapsed: 29s, ETA:     2s[> ] 564/602, 19.6 task/s, elapsed: 29s, ETA:     2s[> ] 565/602, 19.6 task/s, elapsed: 29s, ETA:     2s[> ] 566/602, 19.6 task/s, elapsed: 29s, ETA:     2s[> ] 567/602, 19.6 task/s, elapsed: 29s, ETA:     2s[> ] 568/602, 19.6 task/s, elapsed: 29s, ETA:     2s[> ] 569/602, 19.6 task/s, elapsed: 29s, ETA:     2s[> ] 570/602, 19.6 task/s, elapsed: 29s, ETA:     2s[> ] 571/602, 19.6 task/s, elapsed: 29s, ETA:     2s[> ] 572/602, 19.6 task/s, elapsed: 29s, ETA:     2s[> ] 573/602, 19.6 task/s, elapsed: 29s, ETA:     1s[> ] 574/602, 19.6 task/s, elapsed: 29s, ETA:     1s[> ] 575/602, 19.6 task/s, elapsed: 29s, ETA:     1s[> ] 576/602, 19.6 task/s, elapsed: 29s, ETA:     1s[> ] 577/602, 19.6 task/s, elapsed: 29s, ETA:     1s[> ] 578/602, 19.6 task/s, elapsed: 29s, ETA:     1s[> ] 579/602, 19.6 task/s, elapsed: 29s, ETA:     1s[> ] 580/602, 19.6 task/s, elapsed: 30s, ETA:     1s[> ] 581/602, 19.6 task/s, elapsed: 30s, ETA:     1s[> ] 582/602, 19.7 task/s, elapsed: 30s, ETA:     1s[> ] 583/602, 19.7 task/s, elapsed: 30s, ETA:     1s[> ] 584/602, 19.7 task/s, elapsed: 30s, ETA:     1s[> ] 585/602, 19.7 task/s, elapsed: 30s, ETA:     1s[> ] 586/602, 19.7 task/s, elapsed: 30s, ETA:     1s[> ] 587/602, 19.7 task/s, elapsed: 30s, ETA:     1s[> ] 588/602, 19.7 task/s, elapsed: 30s, ETA:     1s[> ] 589/602, 19.7 task/s, elapsed: 30s, ETA:     1s[> ] 590/602, 19.7 task/s, elapsed: 30s, ETA:     1s[> ] 591/602, 19.7 task/s, elapsed: 30s, ETA:     1s[> ] 592/602, 19.7 task/s, elapsed: 30s, ETA:     1s[> ] 593/602, 19.7 task/s, elapsed: 30s, ETA:     0s[> ] 594/602, 19.7 task/s, elapsed: 30s, ETA:     0s[> ] 595/602, 19.7 task/s, elapsed: 30s, ETA:     0s[> ] 596/602, 19.7 task/s, elapsed: 30s, ETA:     0s[> ] 597/602, 19.7 task/s, elapsed: 30s, ETA:     0s[> ] 598/602, 19.7 task/s, elapsed: 30s, ETA:     0s[> ] 599/602, 19.7 task/s, elapsed: 30s, ETA:     0s[> ] 600/602, 19.7 task/s, elapsed: 30s, ETA:     0s[> ] 601/602, 19.7 task/s, elapsed: 30s, ETA:     0s[>>] 602/602, 19.7 task/s, elapsed: 31s, ETA:     0s
-Results writes to /tmp/tmpsprsn6zv/results/results_nusc.json
-mAP: 0.0000
-mATE: 1.0000
-mASE: 1.0000
-mAOE: 1.0000
-mAVE: 1.0000
-mAAE: 1.0000
-NDS: 0.0000
-Eval time: 13.5s
-
-Per-class results:
-Object Class        	AP    	ATE   	ASE   	AOE   	AVE   	AAE   
-car                 	0.000 	1.000 	1.000 	1.000 	1.000 	1.000 
-truck               	0.000 	1.000 	1.000 	1.000 	1.000 	1.000 
-bus                 	0.000 	1.000 	1.000 	1.000 	1.000 	1.000 
-trailer             	0.000 	1.000 	1.000 	1.000 	1.000 	1.000 
-construction_vehicle	0.000 	1.000 	1.000 	1.000 	1.000 	1.000 
-pedestrian          	0.000 	1.000 	1.000 	1.000 	1.000 	1.000 
-motorcycle          	0.000 	1.000 	1.000 	1.000 	1.000 	1.000 
-bicycle             	0.000 	1.000 	1.000 	1.000 	1.000 	1.000 
-traffic_cone        	0.000 	1.000 	1.000 	nan   	nan   	nan   
-barrier             	0.000 	1.000 	1.000 	1.000 	nan   	nan   
-Sample LID weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16, grad_fn=<RsubBackward1>)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:1', dtype=torch.float16, grad_fn=<RsubBackward1>)
-Sample LID weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16, grad_fn=<RsubBackward1>)
-Sample CAM weight:  tensor([[[1.]]], device='cuda:0', dtype=torch.float16, grad_fn=<RsubBackward1>)
