@@ -132,8 +132,8 @@ train_pipeline:
   -
     type: LoadBEVSegmentation
     dataset_root: ${dataset_root}
-    xbound: [-50.0, 50.0, 0.1] #0.5 was the original value that gave 200x200 BEV Map Seg, changed to 0.05 to get 2000x2000
-    ybound: [-50.0, 50.0, 0.1] 
+    xbound: [-50.0, 50.0, 0.5] #0.5 was the original value that gave 200x200 BEV Map Seg, changed to 0.05 to get 2000x2000
+    ybound: [-50.0, 50.0, 0.5] 
     classes: ${map_classes}
   -
     type: RandomFlip3D
@@ -226,8 +226,8 @@ test_pipeline:
   -
     type: LoadBEVSegmentation
     dataset_root: ${dataset_root}
-    xbound: [-50.0, 50.0, 0.1]
-    ybound: [-50.0, 50.0, 0.1]
+    xbound: [-50.0, 50.0, 0.5]
+    ybound: [-50.0, 50.0, 0.5]
     classes: ${map_classes}
   -
     type: PointsRangeFilter
@@ -258,8 +258,8 @@ test_pipeline:
       - lidar_aug_matrix
 
 data:
-  samples_per_gpu: 4
-  workers_per_gpu: 4
+  samples_per_gpu: 2
+  workers_per_gpu: 2
   train:
     type: CBGSDataset
     dataset:

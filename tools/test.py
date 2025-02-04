@@ -172,8 +172,8 @@ def main():
     dataset = build_dataset(cfg.data.test)
     data_loader = build_dataloader(
         dataset,
-        samples_per_gpu=samples_per_gpu,
-        workers_per_gpu=cfg.data.workers_per_gpu,
+        samples_per_gpu=1,
+        workers_per_gpu=1,
         dist=distributed,
         shuffle=False,
     )
@@ -184,7 +184,7 @@ def main():
     fp16_cfg = cfg.get("fp16", None)
     if fp16_cfg is not None:
         wrap_fp16_model(model)
-    checkpoint = load_checkpoint(model, args.checkpoint, map_location="cpu")
+    checkpoint = load_checkpoint(model, args.checkpoint, map_location="cuda:0")
     if args.fuse_conv_bn:
         model = fuse_conv_bn(model)
     # old versions did not save class info in checkpoints, this walkaround is
@@ -203,7 +203,9 @@ def main():
             device_ids=[torch.cuda.current_device()],
             broadcast_buffers=False,
         )
+        print("Before multi_gpu_test",flush=True)
         outputs = multi_gpu_test(model, data_loader, args.tmpdir, args.gpu_collect)
+        print("After multi_gpu_test",flush=True)
 
     rank, _ = get_dist_info()
     if rank == 0:

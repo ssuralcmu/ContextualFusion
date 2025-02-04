@@ -122,7 +122,7 @@ class BEVFusion(Base3DFusionModel):
             camera2lidar,
             img_aug_matrix,
             lidar_aug_matrix,
-            img_metas,
+            # img_metas,
         )
         return x
 

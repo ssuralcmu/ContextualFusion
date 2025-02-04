@@ -82,6 +82,9 @@ def main() -> None:
         model.eval()
 
     for data in tqdm(dataflow):
+
+        # print("Data keys:",data.keys())
+        # print("Data metas:",data["metas"].data[0][0].keys())
         metas = data["metas"].data[0][0]
         name = "{}-{}".format(metas["timestamp"], metas["token"])
 
@@ -99,7 +102,7 @@ def main() -> None:
                 labels = labels[indices]
 
             bboxes[..., 2] -= bboxes[..., 5] / 2
-            print("GT",bboxes)
+            # print("GT",bboxes)
             bboxes = LiDARInstance3DBoxes(bboxes, box_dim=9)
         elif args.mode == "pred" and "boxes_3d" in outputs[0]:
             bboxes = outputs[0]["boxes_3d"].tensor.numpy()
@@ -130,7 +133,7 @@ def main() -> None:
             masks = masks.astype(np.bool)
         elif args.mode == "pred" and "masks_bev" in outputs[0]:
             masks = outputs[0]["masks_bev"].numpy()
-            masks = masks >= args.map_scoregt_masks_bev
+            masks = masks >= args.map_score
         else:
             masks = None
 

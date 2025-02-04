@@ -10,3 +10,6 @@
 /336_training/*
 /data/*
 
+/debug*
+*/*.egg
+*/*.pyc
