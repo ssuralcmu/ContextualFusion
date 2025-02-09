@@ -159,7 +159,7 @@ def main() -> None:
         name = "{}-{}".format(metas["timestamp"], metas["token"])
 
 
-        save_path = 'all_val_basemaps/'+name+"_based_map_image.png"  # Change this to your desired save location
+        save_path = 'all_'+args.split+'_basemaps/'+name+"_based_map_image.png"  # Change this to your desired save location
         fig.savefig(save_path, dpi=300, bbox_inches='tight')
         plt.close(fig)  # Close the figure to free memory
 
@@ -167,7 +167,7 @@ def main() -> None:
         
         #Save metas variable to file
         # print("Saving metas variable...")
-        metas_save_path = 'all_val_metas/'+name+"_metas.npy"  # Change this to your desired save location
+        metas_save_path = 'all_'+args.split+'_metas/'+name+"_metas.npy"  # Change this to your desired save location
         np.save(metas_save_path, metas)
 
 

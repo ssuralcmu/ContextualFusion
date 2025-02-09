@@ -13,3 +13,5 @@
 /debug*
 */*.egg
 */*.pyc
+
+/all_*/
